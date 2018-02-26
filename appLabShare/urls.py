@@ -25,9 +25,8 @@ urlpatterns = [
     url(r'^accounts/', include ("registration.backends.simple.urls")),
 
 
-
     # These are to be uncommented when the views are implemented
-    
+
     # # url(r'^login/$', views.user_login, name='login')
     # # url(r'^signup/$', views.user_signup, name='login')
     # url(r'^profile/$', views.profile, name='profile')
