@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Student(models.Model):
-    
+    # dummy variable DELETE ON IMPLEMENTATION
+    dummy = models.CharField(max_length = 5)
 
 class UserProfile(models.Model):
     # links UserProfile to a user model instance

@@ -8,9 +8,14 @@ from appLabShare import views
 
 urlpatterns = [
     url(r'^$', views.testView, name = "testView")
-    url(r'^login/$', views.user_login, name='login')
-    url(r'^signup/$', views.user_signup, name='login')
-    url(r'^profile/$', views.profile, name='profile')
-        #r'^profile/$' needs to be dynamic
-    url(r'labs/$', views.labs, name='labs')
+
+
+
+    # These are to be uncommented when the views are implemented
+    
+    # # url(r'^login/$', views.user_login, name='login')
+    # # url(r'^signup/$', views.user_signup, name='login')
+    # url(r'^profile/$', views.profile, name='profile')
+    #     #r'^profile/$' needs to be dynamic
+    # url(r'labs/$', views.labs, name='labs')
 ]
