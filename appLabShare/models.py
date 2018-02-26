@@ -19,7 +19,7 @@ class UserProfile(models.Model):
 class Tutor (models.Model):
     # Is there any other fields????????!!!!!!!!! ##########################################
     profile = models.OneToOneField (UserProfile)
-
+    idNumber = models.IntegerField(default = 0,unique= True)
     def __str__ (self):
         return self.profile.__str__
 
@@ -50,7 +50,7 @@ class Lab (models.Model):
 
 
 class Post (models.Model):
-    # Using User Profile as it makes it easier 
+    # Using User Profile as it makes it easier
     # (though might need to change if we want to discern between
     #  tutors and students in posts)
     author = models.ForeignKey (UserProfile)
@@ -71,6 +71,8 @@ class Student(models.Model):
     # Inherits from the userprofile
     profile = models.OneToOneField (UserProfile)
 
+    studentId = models.IntegerField(default = 0,unique = True)
+
     # The symmetrical set to false as we do not want adding friends to add both ways
     friends = models.ManyToManyField ("self", symmetrical=False)
 
@@ -79,4 +81,3 @@ class Student(models.Model):
 
     def __str__ (self):
         return self.profile.__str__
-
