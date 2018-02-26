@@ -1,13 +1,28 @@
 from django.conf.urls import url
+from django.conf.urls import include
+
+from registration.backends.simple.views import RegistrationView
 
 from appLabShare import views
+
+
+
+
+class MyRegistrationView (RegistrationView):
+    def getSuccessUrl (self, user):
+        return "/labShare/"
+
 
 
 # The initial app url mapping below is just for testing and can be changed
 # modified to have better url naming later :)
 
 urlpatterns = [
-    url(r'^$', views.testView, name = "testView")
+    url(r'^$', views.testView, name = "testView"),
+
+    # patterns for registration-redux
+    url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
+    url(r'^accounts/', include ("registration.backends.simple.urls")),
 
 
 
