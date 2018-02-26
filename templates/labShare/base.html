@@ -13,9 +13,17 @@
 
 
     <body>
-        {% block header %}{% endblock %}
+        {% block header %}
+          <img src="{% static "images/logo.png" %}" alt="Labshare Logo" />
+        {% endblock %}
 
-        {% block body %}{% endblock %}
+        {% block body %}
+          <ul>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'labs' %}">My Labs</a></li>
+              <li><a href="{% url 'profile' %}">My Profile</a></li>
+              <!-- still need to add sign out button -->
+        {% endblock %}
     </body>
 
 
