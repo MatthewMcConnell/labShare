@@ -5,7 +5,9 @@
 
     <head lang="en">
         <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.png" %}" sizes="16x2"/>
         <link rel="stylesheet" type="text/css" href="{% static "CSS/stylesheet.css" %}" />
+        <script type="text/JavaScript" href = "{% static "javascript/script.js" %}"></script>
         <title>
             LabShare -
             {% block title_block %}
@@ -17,7 +19,7 @@
 
     <body>
         {% block header_block %}
-          <img src="{% static "images/logo.png" %}" alt="LabShare Logo" />
+          <img src="{% static "images/logo.png" %}" alt="LabShare Logo" height = "135" width = "450"/>
         {% endblock %}
 
         {% block body_block %}

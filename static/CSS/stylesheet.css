@@ -1,11 +1,27 @@
 body {
-  background-color: #ccffff;
+  background-color: #191919;
 }
-
+.sign-up
+{
+  color: #2379f7;
+}
+.sign-up:hover
+{
+  color: #4cffff;
+}
 .welcome {
-  color: black;
+  /*
+  background: -webkit-linear-gradient(pink, red);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  */
   text-align: center;
-  font-size: 40pt
+letter-spacing: 6px;
+  font-size: 400pt;
+  text-shadow: 0 2px white;
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: #b8bec5;
 }
 
 input {
@@ -27,10 +43,43 @@ button {
 
 .text {
   text-align: center;
+  color: white;
+  
 }
 
 a {
   margin-left: 47.5%;
   color: green;
   font-size: 28px;
+}
+
+
+.mouse-cursor-gradient-tracking {
+  position: relative;
+  background: #2379f7;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+}
+.mouse-cursor-gradient-tracking span {
+  position: relative;
+}
+.mouse-cursor-gradient-tracking::before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, #4cffff, transparent);
+  transform: translate(-50%, -50%);
+  transition: width .2s ease, height .2s ease;
+}
+.mouse-cursor-gradient-tracking:hover::before {
+  --size: 1000px;
 }
