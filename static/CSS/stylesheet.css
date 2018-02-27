@@ -2,8 +2,15 @@ body {
   background: radial-gradient( #191919, #323232);
   /*background-color: #191919;*/
 }
+*
+{
+  font-family: "consolas";
+  font-size: 100%;
+}
 .sign-up
 {
+  font-family: "consolas";
+  font-weight: bold;
   color: #2379f7;
 }
 .sign-up:hover
@@ -39,6 +46,22 @@ button {
   padding: 12px 20px;
   margin-top: 50px;
   margin-left: 45%;
+  border-bottom-color: #b3b3b3;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: #b3b3b3;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: #b3b3b3;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: #b3b3b3;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-style: solid;
+  border-top-width: 1px;
 }
 .inputform
 {
