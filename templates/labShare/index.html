@@ -1,5 +1,4 @@
 {% extends 'labShare/base.html' %}
-{% load staticfiles %}
 
 {% block title_block %}
   Index
@@ -7,6 +6,15 @@
 
 {% block body_block %}
   <div>
-    hello
+    <h1 class="welcome">Welcome to LabShare!</h1>
   </div>
+  <form>
+    <input type="text" name="username" placeholder="Username"><br>
+    <input type="text" name="password" placeholder="Password"><br>
+  </form>
+  <button type="button">Login</button>
+  <div>
+    <h2 class="text">Don't have an account?</h2>
+  </div>
+  <a href="">Sign Up</a>
 {% endblock %}

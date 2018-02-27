@@ -1,0 +1,36 @@
+body {
+  background-color: #ccffff;
+}
+
+.welcome {
+  color: black;
+  text-align: center;
+  font-size: 40pt
+}
+
+input {
+  box-sizing: border-box;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  text-align: center;
+  align-self: center;
+  margin-left: 35%
+}
+
+button {
+  width: 10%;
+  padding: 12px 20px;
+  margin-top: 50px;
+  margin-left: 45%;
+}
+
+.text {
+  text-align: center;
+}
+
+a {
+  margin-left: 47.5%;
+  color: green;
+  font-size: 28px;
+}
