@@ -40,11 +40,47 @@ button {
   margin-top: 50px;
   margin-left: 45%;
 }
+.inputform
+{
+  font-size: 16pt;
+  border-bottom-color: #b3b3b3;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: #b3b3b3;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: #b3b3b3;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: #b3b3b3;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+.inputform:focus
+{
+  outline: none;
+}
+img.logo {
+    display: block;
+    margin: 0 auto;
+}
 
+hr {
+    display: block;
+    height: 4px;
+    border: 0;
+    border-top: 3px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
 .text {
   text-align: center;
   color: white;
-  
+
 }
 
 a {
