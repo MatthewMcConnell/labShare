@@ -13,7 +13,7 @@
 
     <body>
         {% block header %}
-          <img src="{% static "images/logo.png" %}" alt="Labshare Logo" />
+        <img src="{% static 'images/logo.png' %}" alt="Labshare Logo" />
         {% endblock %}
 
         {% block body %}
@@ -22,6 +22,7 @@
               <li><a href="{% url 'labs' %}">My Labs</a></li>
               <li><a href="{% url 'profile' %}">My Profile</a></li>
               <!-- still need to add sign out button -->
+            {% endif %}
         {% endblock %}
     </body>
 

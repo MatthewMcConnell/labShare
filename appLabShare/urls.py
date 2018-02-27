@@ -18,7 +18,10 @@ class MyRegistrationView (RegistrationView):
 # modified to have better url naming later :)
 
 urlpatterns = [
-    url(r'^$', views.testView, name = "testView"),
+    #url(r'^$', views.testView, name = "testView"),
+    url(r'^$', views.index, name = "index"),
+
+
 
     # patterns for registration-redux
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
