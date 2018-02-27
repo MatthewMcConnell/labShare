@@ -18,13 +18,19 @@
 
 
     <body>
+
         {% block header_block %}
           <img class = "logo" src="{% static "images/logo.png" %}" alt="LabShare Logo" height = "135" width = "450"/>
+
+          <img class = "gif" src="{% static "images/beakergif1.gif" %}" alt="gif of beaker" height="190" width="230">
           <hr>
+
         {% endblock %}
 
         {% block body_block %}
+
         {% endblock %}
+
         <ul>
           {% if user.is_authenticated %}
             <li><a href="{% url 'labs' %}">My Labs</a></li>

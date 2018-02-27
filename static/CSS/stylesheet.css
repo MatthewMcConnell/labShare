@@ -1,5 +1,6 @@
 body {
-  background-color: #191919;
+  background: radial-gradient( #191919, #323232);
+  /*background-color: #191919;*/
 }
 .sign-up
 {
@@ -10,20 +11,19 @@ body {
   color: #4cffff;
 }
 .welcome {
-  /*
-  background: -webkit-linear-gradient(pink, red);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  */
+  font-family: "consolas", monospace ;
   text-align: center;
-letter-spacing: 6px;
+  letter-spacing: 15px;
   font-size: 400pt;
-  text-shadow: 0 2px white;
   font-size: 4.5rem;
   font-weight: bold;
   color: #b8bec5;
 }
+@font-face {
+  font-family: "consolas"
+  src:url(css/fonts/consolas.tff)format("ttf");
 
+}
 input {
   box-sizing: border-box;
   width: 30%;
@@ -66,10 +66,20 @@ button {
 }
 img.logo {
     display: block;
+    padding-top: 15px;
     margin: 0 auto;
+    float: left;
 }
 
+img.gif
+
+{
+  display: block;
+  float: right;
+  margin-left: auto;
+}
 hr {
+  clear: both;
     display: block;
     height: 4px;
     border: 0;
