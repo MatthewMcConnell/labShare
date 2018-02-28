@@ -31,13 +31,15 @@
 
         {% endblock %}
 
+        <!-- The below is commented just now as if you are logged in as a 
+             super user then the url's try to load and we have not created them
+             yet, implement the url's once you have created the view for it -->
         <ul>
           {% if user.is_authenticated %}
-            <li><a href="{% url 'labs' %}">My Labs</a></li>
-            <li><a href="{% url 'profile' %}">My Profile</a></li>
-              <!-- still need to add sign out button -->
+              <!-- add button for (sign out; labs; profile) here -->
           {% endif %}
         </ul>
+        
     </body>
 
 
