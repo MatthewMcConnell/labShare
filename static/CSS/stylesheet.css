@@ -118,7 +118,7 @@ hr {
 
 a {
   margin-left: 47.5%;
-  color: green;
+  color: yellow;
   font-size: 28px;
 }
 
@@ -153,10 +153,11 @@ a {
   --size: 1000px;
 }
 
-p {
-  color: white;
+#header_links li{
+  text-decoration: none;
 }
 
-.header_link {
-  display: inline;
+li {
+  font-size: 20px;
+  text-decoration: none;
 }
