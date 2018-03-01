@@ -24,11 +24,13 @@
 
           <img class = "gif" src="{% static "images/beakergif1.gif" %}" alt="gif of beaker" height="190" width="230">
           <hr>
-          <div>
-            <a href=""><h2 class="header_link">My Labs</h2></a>
-            <a href=""><h2 class="header_link">My Profile</h2></a>
-            <a href=""><h2 class="header_link">Sign Out</h2></a>
-        </div>
+          <div id="header_links">
+            <ul>
+              <li><a href="">My Labs</a></li>
+              <li><a href="">My Profile</a></li>
+              <li><a href="">Sign Out</a></li>
+            </ul>
+          </div>
         {% endblock %}
 
         {% block body_block %}
