@@ -3,7 +3,8 @@ from django.http import HttpResponse
 
 def testView (request):
     return HttpResponse("The page worked!")
-
+def index (request):
+    return render(request,"labShare/intro.html")
 def login(request):
     return render(request, "registration/login.html")
 
