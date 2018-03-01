@@ -1,26 +1,32 @@
 {% extends 'labShare/base.html' %}
 
 {% block title_block %}
-  Index
+  Login
 {% endblock %}
 
 {% block body_block %}
   <div>
     <h1 class="welcome">Welcome to LabShare!</h1>
   </div>
-  <form method="post" action=".">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class = "inputform" value="Log in"><br>
-    <input type="hidden" class = "inputform" name="next" value="{{ next }}"><br>
-  </form>
-  <!--<button class="mouse-cursor-gradient-tracking" type="button">Login</button>-->
-  <button class="mouse-cursor-gradient-tracking" type="button">
-  <span> Login </span>
-</button>
-  <div>
-    <h2 class="text">Don't have an account?</h2>
-  </div>
-  <a href="{% url 'register' %}" class = "sign-up">Sign Up</a>
+  {% if user.is_authenticated %}
+    <div>
+      <h2 class="text">You're already logged in! Get back to your labs!<h2><br>
+    </div>
+  {% else %}
+    <form method="post" action=".">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class = "inputform" value="Log in"><br>
+      <input type="hidden" class = "inputform" name="next" value="{{ next }}"><br>
+    </form>
+    <!--<button class="mouse-cursor-gradient-tracking" type="button">Login</button>-->
+    <button class="mouse-cursor-gradient-tracking" type="button">
+    <span> Login </span>
+  </button>
+    <div>
+      <h2 class="text">Don't have an account?</h2>
+    </div>
+    <a href="{% url 'registration_register' %}" class = "sign-up">Sign Up</a>
+  {% endif %}
 
 {% endblock %}

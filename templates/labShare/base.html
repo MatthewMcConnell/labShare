@@ -24,14 +24,17 @@
 
           <img class = "gif" src="{% static "images/beakergif1.gif" %}" alt="gif of beaker" height="190" width="230">
           <hr>
-
+          <div>
+            <a href=""><h2 class="header_link">My Labs</h2></a>
+            <a href=""><h2 class="header_link">My Profile</h2></a>
+            <a href=""><h2 class="header_link">Sign Out</h2></a>
+        </div>
         {% endblock %}
 
         {% block body_block %}
-
         {% endblock %}
 
-        <!-- The below is commented just now as if you are logged in as a 
+        <!-- The below is commented just now as if you are logged in as a
              super user then the url's try to load and we have not created them
              yet, implement the url's once you have created the view for it -->
         <ul>
@@ -39,7 +42,7 @@
               <h1>You are logged in!</h1>
           {% endif %}
         </ul>
-        
+
     </body>
 
 

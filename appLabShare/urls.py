@@ -19,7 +19,7 @@ class MyRegistrationView (RegistrationView):
 
 urlpatterns = [
     #url(r'^$', views.testView, name = "testView"),
-    url(r'^$', views.index, name = "index"),
+    url(r'^$', views.login, name = "login"),
     url(r'signup/^$', views.signUp, name = "signup"),
 
 
