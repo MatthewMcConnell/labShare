@@ -10,6 +10,7 @@ from appLabShare import views
 
 class MyRegistrationView (RegistrationView):
     def getSuccessUrl (self, user):
+        # Change this to profile page instead when implemented
         return "/labShare/"
 
 
