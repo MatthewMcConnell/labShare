@@ -27,6 +27,7 @@ urlpatterns = [
 
 
     # patterns for registration-redux
+    url(r'^$', views.login, name="registration_complete"),
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
     url(r'^accounts/', include ("registration.backends.simple.urls")),
 
