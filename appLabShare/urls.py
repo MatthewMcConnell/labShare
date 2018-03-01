@@ -8,9 +8,9 @@ from appLabShare import views
 
 
 
-class MyRegistrationView (RegistrationView):
-    def getSuccessUrl (self, user):
-        return "/labShare/"
+# class MyRegistrationView (RegistrationView):
+#     def getSuccessUrl (self, user):
+#         return "/labShare/"
 
 
 
@@ -26,7 +26,7 @@ urlpatterns = [
 
 
     # patterns for registration-redux
-    url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
+    # url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
     url(r'^accounts/', include ("registration.backends.simple.urls")),
 
 

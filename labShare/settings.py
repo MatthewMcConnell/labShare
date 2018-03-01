@@ -36,13 +36,13 @@ ALLOWED_HOSTS = ["127.0.0.1", "0.0.0.0"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'registration',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appLabShare',
-    'registration',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 
 
 
-# registration-redux vars
+# django-registration-redux vars
 
 # If True, users can register
 REGISTRATION_OPEN = True
