@@ -24,13 +24,15 @@
 
           <img class = "gif" src="{% static "images/beakergif1.gif" %}" alt="gif of beaker" height="190" width="230">
           <hr>
-          <div id="header_links">
-            <ul>
-              <li><a href="">My Labs</a></li>
-              <li><a href="">My Profile</a></li>
-              <li><a href="">Sign Out</a></li>
-            </ul>
-          </div>
+          {% if user.is_authenticated %}
+            <div id="header_links">
+              <ul>
+                <li><a href="">My Labs</a></li>
+                <li><a href="" class="HLB">My Profile</a></li>
+                <li><a href="" class="HLB">Sign Out</a></li>
+              </ul>
+            </div>
+          {% endif %}
         {% endblock %}
 
         {% block body_block %}
