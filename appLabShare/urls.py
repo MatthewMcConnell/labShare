@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from django.conf.urls import include
+from django.urls import reverse
 
 from registration.backends.simple.views import RegistrationView
 
@@ -9,9 +10,8 @@ from appLabShare import views
 
 
 class MyRegistrationView (RegistrationView):
-    def getSuccessUrl (self, user):
-        # Change this to profile page instead when implemented
-        return "/labShare/"
+    def get_success_url (self, user):
+        return reverse ("register-profile")
 
 
 
@@ -27,9 +27,11 @@ urlpatterns = [
 
 
     # patterns for registration-redux
-    url(r'^$', views.login, name="registration_complete"),
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
     url(r'^accounts/', include ("registration.backends.simple.urls")),
+
+    # profile registration for after user registration (2-parts)
+    url(r'^register-profile/', views.register_profile, name="register-profile")
 
 
     # These are to be uncommented when the views are implemented
