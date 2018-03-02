@@ -24,7 +24,7 @@ urlpatterns = [
 
     #url(r'^$', views.testView, name = "testView"),
     url(r'^$', views.index, name = "index"),
-    #url(r'^$', views.login, name = "login"),
+    url(r'^$', views.login, name = "login"),
 
 
     url(r'^labShare/', include ("appLabShare.urls")),
