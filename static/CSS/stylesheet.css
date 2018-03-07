@@ -28,7 +28,7 @@ body {
 
 @font-face {
   font-family: "Gotham"
-  src:url(css/fonts/MINECRAFT PE.ttf)format("ttf");
+  src:url(css/fonts/Gotham_Bold.ttf)format("ttf");
 }
 
 input {
