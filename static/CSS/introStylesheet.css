@@ -4,7 +4,7 @@
   margin: 0;
 }
 body{
-  background:black;
+  background: radial-gradient( #222222, #322f3a, rgb(55, 55, 92));
 }
 img {
   padding-top: 20px;

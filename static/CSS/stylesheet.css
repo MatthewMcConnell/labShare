@@ -1,6 +1,5 @@
 body {
-  background: radial-gradient( #4cf100, #ff0000, blue);
-  /* background-color: #eb1414; */
+  background: radial-gradient( #222222, #322f3a, rgb(55, 55, 92));
 }
 *
 {
