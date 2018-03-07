@@ -164,6 +164,7 @@ a {
   text-decoration: none;
   position: relative;
   color: #b8bec5;
+  display: inline-block;
 }
 
 .L1 {
