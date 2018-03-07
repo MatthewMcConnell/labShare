@@ -6,13 +6,18 @@ from appLabShare.forms import UserProfileForm
 
 def testView (request):
     return HttpResponse("The page worked!")
-def index (request):
-    return render(request,"labShare/intro.html")
+
+def enter (request):
+    return render(request,"labShare/enter.html")
+
 def login(request):
     return render(request, "registration/login.html")
 
 def signUp(request):
     return render(request, "labshare/signup.html")
+
+def profile(request):
+    return HttpResponse("You are on the profile page!")
 
 
 @login_required
@@ -26,13 +31,14 @@ def register_profile (request):
             userProfile = form.save (commit = False)
             userProfile.user = request.user
             userProfile.save()
-
-            return redirect ("login")
+            # Once the user has registered fully, go to profile page
+            # as signup automatically logs in once complete.
+            return redirect ("profile")
         else:
             print (form.errors)
 
     contextDict = {"form": form}
 
-    return render (request, "labShare/profile_registration.html", contextDict)
+    return render (request, "labShare/setup_profile.html", contextDict)
 
 

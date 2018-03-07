@@ -19,14 +19,10 @@ class MyRegistrationView (RegistrationView):
 # modified to have better url naming later :)
 
 urlpatterns = [
-    #url(r'^$', views.testView, name = "testView"),
-    url(r'^$', views.login, name = "login"),
-    url(r'^$', views.index, name = "index"),
-
+    # Blank URL goes to the intro page
+    url(r'^$', views.enter, name = "enter"),
     url(r'signup/^$', views.signUp, name = "signup"),
-
-
-
+    url(r'^profile/$', views.profile, name='profile'),
 
     # patterns for registration-redux
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
@@ -39,8 +35,6 @@ urlpatterns = [
     # These are to be uncommented when the views are implemented
 
     # # url(r'^login/$', views.user_login, name='login')
-    # # url(r'^signup/$', views.user_signup, name='login')
-    # url(r'^profile/$', views.profile, name='profile')
     #     #r'^profile/$' needs to be dynamic
     # url(r'labs/$', views.labs, name='labs')
 ]

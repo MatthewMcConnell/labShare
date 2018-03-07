@@ -1,14 +1,14 @@
 body {
-  background: radial-gradient( #222222, #322f3a, rgb(55, 55, 92));
+  background: rgb(38, 38, 38);
 }
 *
 {
-  font-family: "consolas";
+  font-family: "Arial";
   font-size: 100%;
 }
 .sign-up
 {
-  font-family: "consolas";
+  font-family: "Arial";
   font-weight: bold;
   color: #2379f7;
 }
@@ -17,19 +17,20 @@ body {
   color: #4cffff;
 }
 .welcome {
-  font-family: "consolas", monospace ;
+  font-family: "Arial";
   text-align: center;
-  letter-spacing: 15px;
+  letter-spacing: 10px;
   font-size: 400pt;
   font-size: 4.5rem;
   font-weight: bold;
-  color: #b8bec5;
+  color: rgb(232, 232, 232);
 }
-@font-face {
-  font-family: "consolas"
-  src:url(css/fonts/consolas.tff)format("ttf");
 
+@font-face {
+  font-family: "Gotham"
+  src:url(css/fonts/MINECRAFT PE.ttf)format("ttf");
 }
+
 input {
   box-sizing: border-box;
   width: 30%;
@@ -100,6 +101,7 @@ img.gif
   float: right;
   margin-left: auto;
 }
+
 hr {
   clear: both;
     display: block;
@@ -109,10 +111,10 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
+
 .text {
   text-align: center;
   color: white;
-
 }
 
 a {
@@ -120,7 +122,6 @@ a {
   color: green;
   font-size: 28px;
 }
-
 
 .mouse-cursor-gradient-tracking {
   position: relative;
@@ -133,9 +134,11 @@ a {
   outline: none;
   overflow: hidden;
 }
+
 .mouse-cursor-gradient-tracking span {
   position: relative;
 }
+
 .mouse-cursor-gradient-tracking::before {
   --size: 0;
   content: '';
@@ -148,6 +151,7 @@ a {
   transform: translate(-50%, -50%);
   transition: width .2s ease, height .2s ease;
 }
+
 .mouse-cursor-gradient-tracking:hover::before {
   --size: 1000px;
 }
@@ -166,5 +170,4 @@ a {
 
 .HLB {
   border-left: 5px solid #b8bec5;
-
 }

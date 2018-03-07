@@ -137,7 +137,7 @@ ACCOUNT_ACTIVATION_DAYS = 10000000000 # basically infinite
 # If True, the user will be automatically logged in.
 REGISTRATION_AUTO_LOGIN = True
 # The page you want users to arrive at after they successfully log in
-LOGIN_REDIRECT_URL = '/labShare/'
+LOGIN_REDIRECT_URL = '/labShare/profile/'
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/labShare/accounts/login/'
