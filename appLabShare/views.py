@@ -17,7 +17,7 @@ def signUp(request):
     return render(request, "labshare/signup.html")
 
 def profile(request):
-    return HttpResponse("You are on the profile page!")
+    return render(request, "labshare/profile.html")
 
 
 @login_required
