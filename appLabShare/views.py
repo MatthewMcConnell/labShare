@@ -40,5 +40,3 @@ def register_profile (request):
     contextDict = {"form": form}
 
     return render (request, "labShare/setup_profile.html", contextDict)
-
-

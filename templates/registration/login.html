@@ -1,30 +1,45 @@
-{% extends 'labShare/base.html' %}
-
-{% block title_block %}
-  Login
-{% endblock %}
-
-{% block body_block %}
-  <div>
-    <h1 class="welcome">Welcome to LabShare!</h1>
-  </div>
-  {% if user.is_authenticated %}
-    <div>
-      <h2 class="text">You're already logged in! Get back to your labs!<h2><br>
-      <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static "CSS/loginStylesheet.css" %}">
+  </head>
+  <!--<body background = "{% static "images/labShareBackground.jpg" %}">-->
+  <body>
+    {% if user.is_authenticated %}
+    <div id="header_links">
+      <ul>
+        <span id="L1">
+          <li><a href="" class="L1">My Labs</a></li>
+        </span>
+        <li><a href="{% url 'profile' %}?next=/labShare/" class="HLB">My Profile</a></li>
+        <li><a href="{% url 'auth_logout' %}?next=/labShare/" class="HLB">Sign Out</a></li>
+      </ul>
     </div>
-  {% else %}
-    <form method="post" action=".">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" class = "inputform" value="Log in"><br>
-      <input type="hidden" class = "inputform" name="next" value="{{ next }}"><br>
-    </form>
+      <div>
+        <h2 class="text">You're already logged in! Get back to your labs!<h2><br>
+        <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
+      </div>
+    {% else %}
+      <div class="container">
+      <img src="{% static "images/user_image.png" %}" draggable="false">
+      <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!--<div class="inputform">
+          <input type="submit" name="username" placeholder="Enter Username" value="login">
+        </div>
+        <div class="inputform">
+          <input type="password" name="password" placeholder="Enter Password" value="{{next}}">
+        </div>-->
+        <input type="submit" name="submit" value="LOGIN" class="loginButton">
+        <p>New to labshare?</p>
+      </form>
+      <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGNUP" class="signUpButton"></a>
 
-    <div>
-      <h2 class="text">Don't have an account?</h2>
     </div>
-    <a href="{% url 'registration_register' %}" class = "sign-up">Sign Up</a>
-  {% endif %}
-
-{% endblock %}
+    {% endif %}
+  </body>
+</html>
