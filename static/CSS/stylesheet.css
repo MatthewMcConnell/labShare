@@ -167,12 +167,12 @@ a {
   display: inline-block;
 }
 
-.L1 {
-  margin-left: 20%;
+#L1 a{
+  margin-left: 28%;
 }
 
 .HLB {
-  padding-left: 8%;
-  margin-left: 10%;
+  padding-left: 5%;
+  margin-left: 5%;
   border-left: 5px solid #b8bec5;
 }
