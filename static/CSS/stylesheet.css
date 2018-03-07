@@ -156,6 +156,11 @@ a {
   --size: 1000px;
 }
 
+header
+{
+  background: #03A9f4;
+}
+
 #header_links li{
   display: inline;
 }

@@ -6,10 +6,13 @@
     <title>Login</title>
     <link rel="stylesheet" href="{% static "CSS/loginStylesheet.css" %}">
   </head>
-  <!--<body background = "{% static "images/labShareBackground.jpg" %}">-->
-  <body>
+  <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
+
     {% if user.is_authenticated %}
-    <div id="header_links">
+    <header style="  background-color: #d99058;margin-top: -90px;
+">
+    <img src="{% static "images/logo.png" %}" alt="logo" style="max-width:35%; height:auto;">
+    <div id="header_links" style="padding-bottom: 15px;font-size: 28px;">
       <ul>
         <span id="L1">
           <li><a href="" class="L1">My Labs</a></li>
@@ -18,10 +21,13 @@
         <li><a href="{% url 'auth_logout' %}?next=/labShare/" class="HLB">Sign Out</a></li>
       </ul>
     </div>
+    </header>
+    <body style="background-color: black;">
       <div>
         <h2 class="text">You're already logged in! Get back to your labs!<h2><br>
         <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
       </div>
+    </body>
     {% else %}
       <div class="container">
       <img src="{% static "images/user_image.png" %}" draggable="false">
@@ -40,6 +46,10 @@
       <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGNUP" class="signUpButton"></a>
 
     </div>
+    <div class="logo">
+      <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
+    </div>
+
     {% endif %}
   </body>
 </html>
