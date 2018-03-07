@@ -27,8 +27,8 @@
           {% if user.is_authenticated %}
             <div id="header_links">
               <ul>
-                <li><a href="">My Labs</a></li>
-                <li><a href="" class="HLB">My Profile</a></li>
+                <li><a href="" class="L1">My Labs</a></li>
+                <li><a href="{% url 'profile' %}?next=/labShare/" class="HLB">My Profile</a></li>
                 <li><a href="{% url 'auth_logout' %}?next=/labShare/" class="HLB">Sign Out</a></li>
               </ul>
             </div>
@@ -37,17 +37,7 @@
 
         {% block body_block %}
         {% endblock %}
-
-        <!-- The below is commented just now as if you are logged in as a
-             super user then the url's try to load and we have not created them
-             yet, implement the url's once you have created the view for it -->
-        <ul>
-          {% if user.is_authenticated %}
-              <h1>You are logged in!</h1>
-              <a href="{% url 'auth_logout' %}?next=/labShare/">Log out</a>
-          {% endif %}
-        </ul>
-
+        
     </body>
 
 

@@ -163,9 +163,13 @@ a {
 #header_links a {
   text-decoration: none;
   position: relative;
-  margin-left: 9%;
-  padding-left: 185px;
+  margin-left: 4%;
+  padding-left: 100px;
   color: #b8bec5;
+}
+
+.L1 {
+  margin-left: 20%;
 }
 
 .HLB {
