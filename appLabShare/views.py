@@ -14,10 +14,10 @@ def login(request):
     return render(request, "registration/login.html")
 
 def signUp(request):
-    return render(request, "labshare/signup.html")
+    return render(request, "labShare/signup.html")
 
 def profile(request):
-    return render(request, "labshare/profile.html")
+    return render(request, "labShare/profile.html")
 
 
 @login_required
