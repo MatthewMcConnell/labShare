@@ -1,5 +1,5 @@
 body, html{
-  background-color: #313440;
+  /*background-color: #313440;*/
   margin: 0;
   padding: 0;
 }
@@ -60,7 +60,8 @@ margin-top: -2px;
 }
 .container{
   width: 90%;
-  height: 900px;
+  height: auto;
+  padding-bottom: 5%;
   text-align: center;
   background-color: rgba(38,40,49,0.9);
   border: none;
@@ -92,7 +93,7 @@ margin-top: -2px;
 {
   float: right;
   padding-right: 20%;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .helptext {
@@ -133,25 +134,70 @@ margin-top: -2px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-
   line-height: 1.4em;
 }
-.subject
-{
-  display:inline-block;
-  font-family: "Arial";
-  letter-spacing: 10px;
-  float: left;
-  padding-left: 20px;
-  font-size: 25px;
-  padding-bottom: 20px;
-  clear: both;
-}
-.labs
-{
 
-  margin: 10px 0px 20px;
-  text-decoration: none;
-  display: inline;
-  clear: both;
+#subject1 {
+    width:100%;
+    clear: both;
+    margin:0 auto;
+    text-align:left;
+}
+
+#subject1 .box {
+  text-decoration:none;
+  background-color:#9e2842;
+}
+#subject2 {
+    width:100%;
+    clear: both;
+    margin:0 auto;
+    text-align:left;
+}
+
+#subject2 .box {
+  text-decoration:none;
+  background-color:#25876C;
+}
+#subject3 {
+    width:100%;
+    clear: both;
+    margin:0 auto;
+    text-align:left;
+}
+
+#subject3 .box {
+  text-decoration:none;
+  background-color:#90d1df;
+}
+
+.text{
+  font-size: 50px;
+  float: left;
+  margin-top: 2%;
+  margin-left: 20px;
+}
+
+.box {
+
+    color: white;
+    border-radius: 3%;
+    display: inline-block;
+    height: 350px;
+    width: 350px;
+    margin:6.3%;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 350px;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+}
+.box:hover{
+
+        -webkit-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        transform: scale(1.15);
+
 }

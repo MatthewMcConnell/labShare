@@ -1,31 +1,34 @@
 {% extends 'labShare/loggedInBase.html' %}
 
+
 {% block body_block %}
-<div class="topRight">
-  <h2>Lab Groups</h2>
-</div>
 
+<span style="font-size: 60px;">My Labs</span>
 <div class="subject">
-  <span class="subjectName">Subject Name</span>
-  <ul class="labs">
-    <li>Lab1</li>
-    <li>Lab2</li>
-    <li>Lab3</li>
-  </ul>
-</div>
+  <span class="text">Computing Science</span>
 
-<div class="subject">
-  <span class="subjectName">Subject Name</span>
-  <ul class="labs">
-    <li>Lab1</li>
-    <li>Lab2</li>
-  </ul>
+  <div id="subject1">
+        <a href="#"><div class="box">Lab 1</div></a>
+        <a href="#"><div class="box">Lab 4</div></a>
+        <a href="#"><div class="box">Lab 6</div></a>
+  </div>
 </div>
+<hr>
+<div class="subject">
+  <span class="text">Economics</span>
+  <div id="subject2">
+        <a href="#"><div class="box">Lab 2</div></a>
+        <a href="#"><div class="box">Lab 7</div></a>
+  </div>
+</div>
+<hr>
+<div class="subject">
+  <span class="text">Physics</span>
 
-<div class="subject">
-  <span class="subjectName">Subject Name</span>
-  <ul class="labs">
-    <li>Lab1</li>
-  </ul>
+  <div id="subject3">
+        <a href="#"><div class="box">Lab 4</div></a>
+  </div>
 </div>
+<hr>
+
 {% endblock %}
