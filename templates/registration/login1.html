@@ -1,0 +1,30 @@
+{% extends 'labShare/base.html' %}
+
+{% block title_block %}
+  Login
+{% endblock %}
+
+{% block body_block %}
+  <div>
+    <h1 class="welcome">Welcome to LabShare!</h1>
+  </div>
+  {% if user.is_authenticated %}
+    <div>
+      <h2 class="text">You're already logged in! Get back to your labs!<h2><br>
+      <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
+    </div>
+  {% else %}
+    <form method="post" action=".">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class = "inputform" value="Log in"><br>
+      <input type="hidden" class = "inputform" name="next" value="{{ next }}"><br>
+    </form>
+
+    <div>
+      <h2 class="text">Don't have an account?</h2>
+    </div>
+    <a href="{% url 'registration_register' %}" class = "sign-up">Sign Up</a>
+  {% endif %}
+
+{% endblock %}

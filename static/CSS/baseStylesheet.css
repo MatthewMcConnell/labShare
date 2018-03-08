@@ -1,0 +1,96 @@
+body, html{
+
+  /*background-color: #313440;*/
+  margin: 0;
+  padding: 0;
+}
+
+header
+{
+  width: 100%;
+  height: 110px;
+  background-color: rgba(38,40,49,0.9);
+  clear: all;
+  border-bottom: 5px solid white;
+}
+
+.navbar img
+{
+  position: absolute;
+  padding: 3px;
+  float: left;
+  margin-left: 2%;
+  margin-top: -12px;
+  max-width: 35%;
+  height: auto;
+
+}
+ul{
+width: auto;
+float: right;
+margin-top: -2px;
+}
+.navbar{
+  list-style: none;
+  padding: 20px 0px 20px 0px;
+}
+#link{
+
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  letter-spacing: 5px;
+}
+
+
+
+#link:hover{
+  color: #4cffff;
+  transition: 0.3s;
+}
+.nav > li{
+  margin-top: 22px;
+  display: inline-block;
+  padding-right: 40px;
+}
+.current
+{
+  color: #4cffff;
+}
+.container{
+  width: 90%;
+  height: 900px;
+  text-align: center;
+  background-color: rgba(38,40,49,0.9);
+  border: none;
+  border-radius: 25px 25px;
+  margin: 13% auto;
+  clear: both;
+}
+.container img
+{
+  width: 240px;
+  height: 240;
+  margin-top: -120px;
+  margin-bottom: 30px;
+  border-radius: 50%;
+
+}
+.elements
+{
+  font-family: "Arial";
+  letter-spacing: 2px;
+  color: white;
+}
+.labList
+{
+  float:left;
+  padding-left: 20%;
+}
+.listItems
+{
+  float: right;
+  padding-right: 20%;
+  margin-top: 20px;
+}

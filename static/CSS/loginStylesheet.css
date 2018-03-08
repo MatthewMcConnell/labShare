@@ -1,0 +1,172 @@
+html {
+
+}
+body
+{
+  margin: 0 auto;
+  background-repeat: repeat-x;
+  background-color: black;
+  background-size: 100%;
+  background-position-x: 25%;
+
+}
+body img
+{
+  background-position-x: 25%;
+
+  margin-top: 100px;
+}
+
+.logo
+{
+  transform: translate(0, -30%);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container
+{
+  transform: translate(0, -35%);
+
+  width: 500px;
+  height: 490px;
+  text-align: center;
+  background-color: rgba(38,40,49,0.9);
+  border: none;
+  border-radius: 25px 100px 25px;
+  margin: 0 auto;
+  margin-top: 150px;
+  clear: both;
+}
+
+.container img
+{
+  width: 120px;
+  height: 120px;
+  margin-top: -55px;
+  margin-bottom: 30px;
+  border-radius: 50%;
+}
+.containerLoggedIn
+{
+  transform: translate(0, -40%);
+
+  position: relative;
+  width: 500px;
+  height: 490px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgba(38,40,49,0.95);
+  border: none;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 150px;
+  clear: both;
+}
+.containerElements
+{
+  position: absolute;
+  vertical-align:middle;
+  font-family: "Arial";
+  letter-spacing: 2px;
+  color: white;
+  top: 50%;
+  transform: translate(25%, -200%);
+}
+.alreadyLoggedIn
+{
+  position: absolute;
+  margin-bottom: 30px;
+  font-family: "Arial";
+  letter-spacing: 2px;
+  color: white;
+  top: 30%;
+  transform: translate(-48%, 300%);
+
+}
+
+.signOut
+{
+  position: absolute;
+  vertical-align:middle;
+  margin-bottom: 30px;
+  font-family: "Arial";
+  letter-spacing: 2px;
+  color: white;
+  top: 50%;
+  transform: translate(-48%, 300%);
+}
+.elements
+{
+  vertical-align:middle;
+  font-family: "Arial";
+  letter-spacing: 2px;
+  color: white;
+}
+input[type = "text"],input[type = "password"]
+{
+  border-radius: 5px;
+  height: 45px;
+  width: 300px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding-left: 30px;
+}
+
+inputform::before
+{
+  content: "";
+  position: absolute;
+  font-family: "consolas";
+  font-size: 30px;
+}
+
+.loginButton
+{
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #4cffff;
+  border: none;
+  border-radius: 5px;
+}
+p{
+  color: white;
+}
+.purpleButton
+{
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #9b59b6;
+  border: none;
+  border-radius: 5px;
+}
+.blueButton
+{
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #0EBFE9;
+  border: none;
+  border-radius: 5px;
+}
+#header_links li{
+  display: inline;
+}
+
+#header_links a {
+  text-decoration: none;
+  position: relative;
+  color: #b8bec5;
+  display: inline-block;
+}
+
+#L1 a{
+  margin-left: 28%;
+}
+
+.HLB {
+  padding-left: 5%;
+  margin-left: 5%;
+  border-left: 5px solid #b8bec5;
+}
