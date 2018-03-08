@@ -1,5 +1,4 @@
 body, html{
-
   background-color: #313440;
   margin: 0;
   padding: 0;
@@ -136,4 +135,23 @@ margin-top: -2px;
   border-radius: 5px;
 
   line-height: 1.4em;
+}
+.subject
+{
+  display:inline-block;
+  font-family: "Arial";
+  letter-spacing: 10px;
+  float: left;
+  padding-left: 20px;
+  font-size: 25px;
+  padding-bottom: 20px;
+  clear: both;
+}
+.labs
+{
+
+  margin: 10px 0px 20px;
+  text-decoration: none;
+  display: inline;
+  clear: both;
 }
