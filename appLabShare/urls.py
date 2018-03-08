@@ -17,7 +17,7 @@ class MyRegistrationView (RegistrationView):
 urlpatterns = [
     # Blank URL goes to the intro page
     url(r'^$', views.enter, name = "enter"),
-    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^profile/(?P<username>\w+)/$', views.profile, name='profile'),
 
     # url(r'labs/$', views.labs, name='labs')
 
