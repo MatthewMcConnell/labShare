@@ -181,3 +181,11 @@ header
   margin-left: 5%;
   border-left: 5px solid #b8bec5;
 }
+
+.required{
+  color: red;
+}
+
+.helptext {
+  color: red;
+}

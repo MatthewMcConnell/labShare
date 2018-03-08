@@ -95,3 +95,21 @@ margin-top: -2px;
   padding-right: 20%;
   margin-top: 20px;
 }
+
+.helptext {
+  color: white;
+}
+
+.submit
+{
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #0EBFE9;
+  border: none;
+  border-radius: 5px;
+}
+
+.required{
+  position: static;
+  align-self: center;
+}
