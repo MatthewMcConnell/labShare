@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html>
+<html style="font-family: url({% static "CSS/fonts/MINECRAFT PE.ttf" %})">
   <head>
     <meta charset="utf-8" lang="en">
     <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.png" %}" sizes="16x2"/>
@@ -26,7 +26,7 @@
   </header>
   <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
     <div class="container">
-      <img src="{% static "images/user_image.png" %}" draggable="false">
+      <a href="{% url 'profile' user.username %}?next=/labShare/"><img src="{% static "images/user_image.png" %}" draggable="false"></a>
 
       <div class="elements">
         {% block body_block %}

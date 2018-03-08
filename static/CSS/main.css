@@ -73,14 +73,26 @@ margin-top: -2px;
   margin: 13% auto;
   clear: both;
 }
+
 .container img
 {
+
   width: 240px;
   height: 240;
   margin-top: -120px;
   margin-bottom: 30px;
   border-radius: 50%;
 }
+.container img:hover
+{
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);  
+}
+
 .elements
 {
   font-family: "Arial";
