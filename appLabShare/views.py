@@ -17,18 +17,14 @@ def enter (request):
 #     return render(request, "labShare/signup.html")
 
 @login_required
-<<<<<<< HEAD
 def profile(request, username):
     contextDict = {username: username}
     return render(request, "labShare/profile.html", contextDict)
-=======
-def profile(request):
-    # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
-    return render(request, "labShare/profile.html")
+
+
 def myLabs(request):
     # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
     return render(request, "labShare/myLabs.html")
->>>>>>> f7f5f6ca3edbce066ec40943eba17ad87f4e8601
 
 
 @login_required
