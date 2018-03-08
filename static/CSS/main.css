@@ -197,7 +197,7 @@ margin-top: -2px;
 }
 
 .box {
-
+  justify-content: space-between;
     color: white;
     border-radius: 3%;
     display: inline-block;
@@ -225,6 +225,29 @@ hr
   width: 90%;
 }
 
+.hoverUnderLine{
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  color: #9b59b6;
+}
+.hoverUnderLine::after {
+  content: ' ';
+  position: absolute;
+  width: 77%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #9b59b6;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hoverUnderLine:hover::after {
+  transform: scaleX(1);
+  transform-origin:bottom left;
+}
+
 input {
   text-align: center;
   padding: 10px;
@@ -247,4 +270,3 @@ input {
 
 label {
   margin-left:
-}
