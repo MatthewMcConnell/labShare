@@ -4,19 +4,21 @@ from django.contrib.auth.decorators import login_required
 
 from appLabShare.forms import UserProfileForm
 
-def testView (request):
-    return HttpResponse("The page worked!")
 
+# The portal page that everyone should go to if they're not logged in
+# If they are logged in then shouldn't we just redirect them to their profile straight away?
 def enter (request):
     return render(request,"labShare/enter.html")
 
-def login(request):
-    return render(request, "registration/login.html")
+# def login(request):
+#     return render(request, "registration/login.html")
 
-def signUp(request):
-    return render(request, "labShare/signup.html")
+# def signUp(request):
+#     return render(request, "labShare/signup.html")
 
+@login_required
 def profile(request):
+    # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
     return render(request, "labShare/profile.html")
 
 
@@ -40,3 +42,8 @@ def register_profile (request):
     contextDict = {"form": form}
 
     return render (request, "labShare/setup_profile.html", contextDict)
+
+
+
+# Just a reminder that a lot of the user related views (e.g. login, registration etc.)
+# are dealt with the django-registration-redux package and so you should look there for those views
