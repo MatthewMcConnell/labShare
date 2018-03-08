@@ -1,10 +1,10 @@
-{% extends "labShare/base.html" %}
+{% extends "labShare/loggedInBase.html" %}
 
 {% block body_block %}
     <h1>Register here</h1>
     <form action="." method="post">
         {% csrf_token %}
-        
+
         <!-- This is stolen from {form.as_p} (registration-redux) -->
         <p class="required">
             <label class="required" for="id_username">
