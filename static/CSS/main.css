@@ -8,8 +8,8 @@ header
 {
   width: 100%;
   height: 110px;
-  /* background-color: rgba(38,40,49,0.9); */
-  background-color: #242730;
+  background-color: rgba(38,40,49,0.95);
+  /*background-color: #242730;*/
   clear: all;
   border-bottom: 5px solid white;
 }
@@ -172,7 +172,7 @@ margin-top: -2px;
 }
 
 .text{
-  font-size: 50px;
+  font-size: 65px;
   float: left;
   margin-top: 2%;
   margin-left: 20px;
@@ -183,13 +183,13 @@ margin-top: -2px;
     color: white;
     border-radius: 3%;
     display: inline-block;
-    height: 350px;
-    width: 350px;
+    height: 300px;
+    width: 300px;
     margin:6.3%;
     font-size: 50px;
     text-align: center;
     vertical-align: middle;
-    line-height: 350px;
+    line-height: 300px;
     -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2s ease-in-out;
     -o-transition: 0.2s ease-in-out;
@@ -199,5 +199,9 @@ margin-top: -2px;
         -webkit-transform: scale(1.15);
         -ms-transform: scale(1.15);
         transform: scale(1.15);
+}
 
+hr
+{
+  width: 90%;
 }
