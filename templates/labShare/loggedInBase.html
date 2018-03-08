@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" lang="en">
     <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.png" %}" sizes="16x2"/>
-    <link rel="stylesheet" href="{% static "CSS/baseStylesheet.css" %}">
+    <link rel="stylesheet" href="{% static "CSS/main.css" %}">
 
     </script>
     <title>
@@ -18,8 +18,8 @@
     <div class="navbar">
     <img src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="225">
       <ul class="nav">
-        <li><a href="{% url 'myLabs' %}?next=/labShare/" id="link">My Labs</a></li>
-        <li><a class="current"href="{% url 'profile' %}?next=/labShare/" id="link">My Profile</a></li>
+        <li><a href="#" id="link">My Labs</a></li>
+        <li><a class="current"href="{% url 'profile' user.username %}?next=/labShare/" id="link">My Profile</a></li>
         <li><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
       </ul>
     </div>
