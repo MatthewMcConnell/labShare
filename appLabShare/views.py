@@ -20,6 +20,9 @@ def enter (request):
 def profile(request):
     # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
     return render(request, "labShare/profile.html")
+def myLabs(request):
+    # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
+    return render(request, "labShare/myLabs.html")
 
 
 @login_required
