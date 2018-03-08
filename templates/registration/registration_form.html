@@ -10,7 +10,8 @@
             <label class="required" for="id_username">
                 Username:
             </label>
-            <input type="text" name="username" autofocus maxlength="150" required id="id_username" />
+            <input type="text" name="username" autofocus length="8" required id="id_username" />
+            <br>
             <span class="helptext">
                 Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
             </span>
@@ -43,17 +44,18 @@
                 </ul>
             </span>
         </p>
+        <br>
         <p class="required">
             <label class="required" for="id_password2">
                 Password confirmation:
             </label>
-            <input type="password" name="password2" required id="id_password2" />
+            <input type="password" name="password2" required id="id_password2" /><br>
             <span class="helptext">
                 Enter the same password as before, for verification.
             </span>
         </p>
 
-
-        <input type="submit" value="Submit">
+        <br>
+        <input type="submit" value="Submit" class="submit">
     </form>
 {% endblock %}
