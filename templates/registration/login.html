@@ -9,6 +9,9 @@
   <div class="logo">
     <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
   </div>
+<<<<<<< HEAD
+  <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
+=======
 
   <body>
     <!-- <style>
@@ -18,45 +21,34 @@
     </style> -->
   <body background="{% static "images/media_209689_en.jpg" %}" style="background-repeat: repeat;">
 
+>>>>>>> f7f5f6ca3edbce066ec40943eba17ad87f4e8601
 
     {% if user.is_authenticated %}
-    <!--<header style="  background-color: #d99058;margin-top: -90px;">
-    <img src="{% static "images/logo.png" %}" alt="logo" style="max-width:35%; height:auto;">
-    <div id="header_links" style="padding-bottom: 15px;font-size: 28px;">
-      <ul>
-        <span id="L1">
-          <li><a href="" class="L1">My Labs</a></li>
-        </span>
-        <li><a href="{% url 'profile' %}?next=/labShare/" class="HLB">My Profile</a></li>
-        <li><a href="{% url 'auth_logout' %}?next=/labShare/" class="HLB">Sign Out</a></li>
-      </ul>
-    </div>
-  </header> -->
-    <div class="containerLoggedIn">
+      <div class="containerLoggedIn">
 
-      <div>
-        <h2 class="containerElements"> You're already logged in<br> Get back to your labs!<h2><br>
-        <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
-        <a href="{% url 'profile' %}?next=/labShare/" class = "alreadyLoggedIn"><input type="button" name="profileLink" value="Go to Profile" class="purpleButton"></a>
-        <br>
-        <a href="{% url 'auth_logout' %}?next=/labShare/"  class="signOut"><input type="button" name="signout" value="Sign Out :(" class="blueButton"></a>
+        <div>
+          <h2 class="containerElements"> You're already logged in<br> Get back to your labs!<h2><br>
+          <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
+          <a href="{% url 'profile' user.username %}" class = "alreadyLoggedIn"><input type="button" name="profileLink" value="Go to Profile" class="purpleButton"></a>
+          <br>
+          <a href="{% url 'auth_logout' %}?next=/labShare/"  class="signOut"><input type="button" name="signout" value="Sign Out :(" class="blueButton"></a>
+
+        </div>
+    {% else %}
+        <div class="container">
+          <img src="{% static "images/user_image.png" %}" draggable="false">
+          <form method="post" action=".">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" name="submit" value="LOGIN" class="purpleButton">
+            <p>New to labshare?</p>
+          </form>
+          <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="blueButton"></a>
+
+        </div>
 
       </div>
-    {% else %}
-      <div class="container">
-      <img src="{% static "images/user_image.png" %}" draggable="false">
-      <form method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <input type="submit" name="submit" value="LOGIN" class="purpleButton">
-        <p class="loginText">New to labshare?</p>
-      </form>
-      <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="blueButton"></a>
-
-    </div>
-
-    </div>
 
     {% endif %}
   </body>
