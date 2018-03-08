@@ -5,7 +5,7 @@ body
 {
   margin: 0 auto;
   background-repeat: repeat-x;
-  background-color: black;
+  background-color: #313440;
   background-size: 100%;
   background-position-x: 25%;
 
@@ -48,6 +48,15 @@ body img
   margin-bottom: 30px;
   border-radius: 50%;
 }
+
+/* Text styles for "Username:" & "Password:" */
+.loginText
+{
+  font-family: "Arial"
+  font-size: 10pt;
+  color: white;
+}
+
 .containerLoggedIn
 {
   transform: translate(0, -40%);

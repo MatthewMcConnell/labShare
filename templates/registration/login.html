@@ -9,7 +9,15 @@
   <div class="logo">
     <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
   </div>
-  <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
+
+  <body>
+    <!-- <style>
+      body {
+        background-color: rgb(20, 30, 35);
+      }
+    </style> -->
+  <!-- <body background="{% static "images/media_209689_en.jpg" %}" style="background-repeat: repeat;"> -->
+
 
     {% if user.is_authenticated %}
     <!--<header style="  background-color: #d99058;margin-top: -90px;">
@@ -42,7 +50,7 @@
         {{ form.as_p }}
 
         <input type="submit" name="submit" value="LOGIN" class="purpleButton">
-        <p>New to labshare?</p>
+        <p class="loginText">New to labshare?</p>
       </form>
       <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="blueButton"></a>
 
