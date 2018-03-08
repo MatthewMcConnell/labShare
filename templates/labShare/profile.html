@@ -1,9 +1,26 @@
-{% extends "labShare/base.html" %}
+{% extends "labShare/loggedInBase.html" %}
 
 {% block title %}
     My Profile
 {% endblock %}
 
+
 {% block body_block %}
-    <h1>Welcome to your profile</h1>
+    <h1>{exampleUsername}</h1>
+    <br>
+    <h4>This is an example bio, this will be replaced by the bio stored in the database</h5>
+    <br>
+    <h4>profile image replaces one above</h4>
+    <br>
+    <h4>Education: University of example</h4>
+    <h4>major: Computing Science</h4>
+    <br>
+    <h4 class="labList">lab Groups:</h4>
+    <ul class="listItems">
+      <li>lab3</li>
+      <li>lab8</li>
+      <li>lab10</li>
+    </ul>
+
+
 {% endblock %}

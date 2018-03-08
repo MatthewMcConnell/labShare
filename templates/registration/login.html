@@ -9,8 +9,7 @@
   <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
 
     {% if user.is_authenticated %}
-    <header style="  background-color: #d99058;margin-top: -90px;
-">
+    <!--<header style="  background-color: #d99058;margin-top: -90px;">
     <img src="{% static "images/logo.png" %}" alt="logo" style="max-width:35%; height:auto;">
     <div id="header_links" style="padding-bottom: 15px;font-size: 28px;">
       <ul>
@@ -21,33 +20,31 @@
         <li><a href="{% url 'auth_logout' %}?next=/labShare/" class="HLB">Sign Out</a></li>
       </ul>
     </div>
-    </header>
-    <body style="background-color: black;">
+  </header> -->
+    <div class="containerLoggedIn">
+
       <div>
-        <h2 class="text">You're already logged in! Get back to your labs!<h2><br>
+        <h2 class="containerElements">You're already logged in!<br> Get back to your labs!<h2><br>
         <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
+        <a href="{% url 'profile' %}?next=/labShare/" class = "loggedInSignUp"><input type="button" name="profileLink" value="Go to Profile" class="signUpButton"></a>
+
       </div>
-    </body>
     {% else %}
       <div class="container">
       <img src="{% static "images/user_image.png" %}" draggable="false">
       <form method="post" action=".">
         {% csrf_token %}
         {{ form.as_p }}
-        <!--<div class="inputform">
-          <input type="submit" name="username" placeholder="Enter Username" value="login">
-        </div>
-        <div class="inputform">
-          <input type="password" name="password" placeholder="Enter Password" value="{{next}}">
-        </div>-->
+
         <input type="submit" name="submit" value="LOGIN" class="loginButton">
         <p>New to labshare?</p>
       </form>
-      <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGNUP" class="signUpButton"></a>
+      <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="signUpButton"></a>
 
     </div>
     <div class="logo">
       <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
+    </div>
     </div>
 
     {% endif %}
