@@ -6,6 +6,9 @@
     <title>Login</title>
     <link rel="stylesheet" href="{% static "CSS/loginStylesheet.css" %}">
   </head>
+  <div class="logo">
+    <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
+  </div>
   <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
 
     {% if user.is_authenticated %}
@@ -44,9 +47,7 @@
       <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="blueButton"></a>
 
     </div>
-    <div class="logo">
-      <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
-    </div>
+
     </div>
 
     {% endif %}
