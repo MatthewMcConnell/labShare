@@ -26,7 +26,9 @@
       <div>
         <h2 class="containerElements">You're already logged in!<br> Get back to your labs!<h2><br>
         <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
-        <a href="{% url 'profile' %}?next=/labShare/" class = "loggedInSignUp"><input type="button" name="profileLink" value="Go to Profile" class="signUpButton"></a>
+        <a href="{% url 'profile' %}?next=/labShare/" class = "alreadyLoggedIn"><input type="button" name="profileLink" value="Go to Profile" class="purpleButton"></a>
+        <br>
+        <a href="{% url 'auth_logout' %}?next=/labShare/"  class="signOut"><input type="button" name="signout" value="Sign Out :(" class="blueButton"></a>
 
       </div>
     {% else %}
@@ -36,10 +38,10 @@
         {% csrf_token %}
         {{ form.as_p }}
 
-        <input type="submit" name="submit" value="LOGIN" class="loginButton">
+        <input type="submit" name="submit" value="LOGIN" class="purpleButton">
         <p>New to labshare?</p>
       </form>
-      <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="signUpButton"></a>
+      <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="blueButton"></a>
 
     </div>
     <div class="logo">
