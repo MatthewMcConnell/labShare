@@ -17,17 +17,20 @@
   <header>
     <div class="navbar">
     <img src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="225">
+    {% if user.is_authenticated %}
       <ul class="nav">
         <li><a href="{% url 'myLabs' %}?next=/labShare/" id="link">My Labs</a></li>
-        <li><a href="{% url 'profile' user.username %}?next=/labShare/" id="link">My Profile</a></li>
+        <li><a href="{% url 'profile' user.username%}" id="link">My Profile</a></li>
         <li><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
       </ul>
+    {% endif %}
     </div>
   </header>
   <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
     <div class="container">
-      <a href="{% url 'profile' user.username %}?next=/labShare/"><img src="{% static "images/user_image.png" %}" draggable="false"></a>
-
+      {% if user.is_authenticated %}
+        <a href="{% url 'profile' user.username %}?next=/labShare/"><img src="{% static "images/user_image.png" %}" draggable="false"></a>
+      {% endif %}
       <div class="elements">
         {% block body_block %}
         {% endblock %}

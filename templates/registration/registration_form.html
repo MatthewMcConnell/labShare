@@ -1,61 +1,62 @@
 {% extends "labShare/loggedInBase.html" %}
 
 {% block body_block %}
-    <h1>Register here</h1>
+    <h1 style="text-decoration:underline">Registration</h1>
     <form action="." method="post">
         {% csrf_token %}
 
         <!-- This is stolen from {form.as_p} (registration-redux) -->
-        <p class="required">
+
             <label class="required" for="id_username">
-                Username:
-            </label>
-            <input type="text" name="username" autofocus length="8" required id="id_username" />
-            <br>
+                Matric Number:
+            </label><br>
+            <input type="text" name="username" autofocus length="8" required id="id_username"
+              placeholder="Required"/>
+
+        <p>
             <span class="helptext">
-                Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+                Matric Format: 7 digits followed by first letter of surname.
             </span>
         </p>
         <p class="required">
             <label class="required" for="id_email">
                 E-mail:
-            </label>
-            <input type="email" name="email" required id="id_email" />
+            </label><br>
+            <input type="email" name="email" required id="id_email" placeholder="Required"/>
         </p>
         <p class="required">
             <label class="required" for="id_password1">
                 Password:
-            </label>
-            <input type="password" name="password1" required id="id_password1" />
-            <span class="helptext">
-                <ul>
-                    <li>
-                        Your password can&#39;t be too similar to your other personal information.
-                    </li>
-                    <li>
-                        Your password must contain at least 8 characters.
-                    </li>
-                    <li>
-                        Your password can&#39;t be a commonly used password.
-                    </li>
-                    <li>
-                        Your password can&#39;t be entirely numeric.
-                    </li>
-                </ul>
-            </span>
+            </label><br>
+            <input type="password" name="password1" required id="id_password1" placeholder="Required"/>
         </p>
-        <br>
         <p class="required">
             <label class="required" for="id_password2">
                 Password confirmation:
-            </label>
-            <input type="password" name="password2" required id="id_password2" /><br>
-            <span class="helptext">
-                Enter the same password as before, for verification.
-            </span>
+            </label><br>
+            <input type="password" name="password2" required id="id_password2" placeholder="Required"/>
         </p>
 
-        <br>
-        <input type="submit" value="Submit" class="submit">
+        <div>
+          <ul class="registerList">
+              <li>
+                  Your password can&#39;t be too similar to your other personal information.
+              </li>
+              <li>
+                  Your password must contain at least 8 characters.
+              </li>
+              <li>
+                  Your password can&#39;t be a commonly used password.
+              </li>
+              <li>
+                  Your password can&#39;t be entirely numeric.
+              </li>
+          </ul>
+        </div>
+
+        <p>
+          <input type="submit" value="Submit" class="submit">
+        </p>
+
     </form>
 {% endblock %}

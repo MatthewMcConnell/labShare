@@ -16,6 +16,8 @@ header
   /*background-color: #242730;*/
   clear: all;
   border-bottom: 5px solid white;
+  position: fixed;
+  top: 0;
 }
 
 .navbar img
@@ -72,6 +74,7 @@ margin-top: -2px;
   border-radius: 25px 25px;
   margin: 13% auto;
   clear: both;
+  margin-top: 135px;
 }
 
 .container img
@@ -90,7 +93,7 @@ margin-top: -2px;
   -o-transition: 0.2s ease-in-out;
   -webkit-transform: scale(1.15);
   -ms-transform: scale(1.15);
-  transform: scale(1.15);  
+  transform: scale(1.15);
 }
 
 .elements
@@ -122,11 +125,11 @@ margin-top: -2px;
   background-color: #0EBFE9;
   border: none;
   border-radius: 5px;
+  align-self: center;
 }
 
 .required{
   position: static;
-  align-self: center;
 }
 
 /* Comment Stream CSS */
@@ -220,4 +223,28 @@ margin-top: -2px;
 hr
 {
   width: 90%;
+}
+
+input {
+  text-align: center;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 25px;
+  border: 2px solid #4d4d4d;
+  align-self: center;
+}
+
+#id_username {
+  align-self: center;
+}
+
+.registerList {
+  text-align: center;
+  list-style-type: none;
+  align-self: center;
+  float: none;
+}
+
+label {
+  margin-left:
 }

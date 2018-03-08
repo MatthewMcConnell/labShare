@@ -27,13 +27,20 @@
           <img src="{% static "images/user_image.png" %}" draggable="false">
           <form method="post" action=".">
             {% csrf_token %}
-            {{ form.as_p }}
+            <!--{{ form.as_p }}-->
+            <input type="hidden" name="csrfmiddlewaretoken" value="vAOpzHefVp27Q146jKSvGmbLaY4wPoZ16hfKBTX5H8psgIuPsyhsA22qVhHqOw3c">
+            <p>
+              <input type="text" name="username" autofocus="" maxlength="254" required="" id="id_username"
+              placeholder="Matric Number">
+            </p>
+            <p>
+              <input type="password" name="password" required="" id="id_password"placeholder="Password">
+            </p>
 
             <input type="submit" name="submit" value="LOGIN" class="purpleButton">
             <p>New to labshare?</p>
           </form>
           <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="blueButton"></a>
-
         </div>
 
       </div>
