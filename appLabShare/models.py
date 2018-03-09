@@ -12,13 +12,14 @@ class Course (models.Model):
 
 class UserProfile(models.Model):
     # links UserProfile to a user model instance
-    # Has a username,password,email,first_name,last_name
+    # Has a username,password,email
     user = models.OneToOneField(User)
 
     # Boolean flag to tell us if they are a student or tutor
-    isStudent = models.BooleanField(default = True)
+    isStudent = models.BooleanField()
 
     # Shared Tutor and Student attributes
+    name = models.CharField(max_length = 128, default = "")
     picture = models.ImageField(upload_to='profile_images', default = "static/images/user_image.png")
     bio = models.CharField(max_length = 128)
     degree = models.CharField(max_length = 128)
@@ -28,7 +29,6 @@ class UserProfile(models.Model):
 
     # The symmetrical set to false as we do not want adding friends to add both ways
     friends = models.ManyToManyField ("self", symmetrical=False)
-    # labs = models.ManyToManyField (Lab)
     courses = models.ManyToManyField (Course)
 
     def __str__(self):

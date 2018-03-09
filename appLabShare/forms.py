@@ -4,8 +4,9 @@ from appLabShare.models import UserProfile
 
 class UserProfileForm (forms.ModelForm):
     # Required form fields
-    isStudent = forms.BooleanField (required = True)
-    name = forms.CharField (required = True, max_length = 50)
+    # isStudent it required but is made this way by having the initial value as true
+    isStudent = forms.BooleanField (initial=True, required=False)
+    name = forms.CharField (required = True, max_length = 128)
 
     # Non-required fields
     university = forms.CharField (required = False, max_length = 128)
