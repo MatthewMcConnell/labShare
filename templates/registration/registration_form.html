@@ -2,7 +2,7 @@
 
 {% block body_block %}
     <h1 style="text-decoration:underline">Registration</h1>
-    <h4>All * marked fields are required</h4>
+    <h4 style="color:#ff1a1a;">All * marked fields are required</h4>
 
     <form action="." method="post">
         {% csrf_token %}
@@ -10,7 +10,7 @@
         <!-- This is stolen from {form.as_p} (registration-redux) -->
 
             <label class="required" for="id_username">
-                Matric Number*:
+                Matric Number:<span style="color:#ff1a1a">*</span>
             </label><br>
             <input type="text" name="username" autofocus length="8" required id="id_username"
               placeholder="Matric Number"/>
@@ -22,19 +22,19 @@
         </p>
         <p class="required">
             <label class="required" for="id_email">
-                E-mail*:
+                E-mail:<span style="color:#ff1a1a">*</span>
             </label><br>
             <input type="email" name="email" required id="id_email" placeholder="E-mail Address"/>
         </p>
         <p class="required">
             <label class="required" for="id_password1">
-                Password*:
+                Password:<span style="color:#ff1a1a">*</span>
             </label><br>
             <input type="password" name="password1" required id="id_password1" placeholder="Password"/>
         </p>
         <p class="required">
             <label class="required" for="id_password2">
-                Password confirmation*:
+                Password confirmation:<span style="color:#ff1a1a">*</span>
             </label><br>
             <input type="password" name="password2" required id="id_password2" placeholder="Password"/>
         </p>
