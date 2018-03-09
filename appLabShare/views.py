@@ -21,7 +21,7 @@ def enter (request):
 
 @login_required
 def profile(request, username):
-    contextDict = {username: username}
+    contextDict = {"username": username}
 
     # This gets the user profile from which we can get all profile attributes
     profile = UserProfile.objects.get (user = User.objects.get (username = username))
@@ -34,13 +34,13 @@ def profile(request, username):
 def profileRedirect (request):
     return HttpResponseRedirect (reverse ("profile", args=[request.user.username]))
 
-def myLabs(request):
+def labList(request, username):
     # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
-    return render(request, "labShare/myLabs.html")
+    return render(request, "labShare/labList.html")
 
-def labTemplate(request, course, labNumber):
+def lab(request, course, labNumber):
     # This will be the template view for the specific lab page, not currently finished.
-    return render(request, "labShare/labtemplate.html")
+    return render(request, "labShare/lab.html")
 
 
 @login_required

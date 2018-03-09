@@ -19,8 +19,8 @@ urlpatterns = [
     url(r'^$', views.enter, name = "enter"),
     url(r'^profile/$', views.profileRedirect, name="profileRedirect"),
     url(r'^profile/(?P<username>\w+)/$', views.profile, name='profile'),
-    url(r'^myLabs/$', views.myLabs, name='myLabs'),
-    url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.labTemplate, name='labTemplate'),
+    url(r'^labList/(?P<username>\w+)/$', views.labList, name='labList'),
+    url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.lab, name='lab'),
 
     # patterns for registration-redux
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),

@@ -19,12 +19,14 @@
     <h4>Education: University of example</h4>
     <h4>major: Computing Science</h4>
     <br>
-    <h4 class="labList">lab Groups:</h4>
+    <!-- <h4 class="labList">lab Groups:</h4>
 
     <ul class="listItems">
       <li>lab3</li>
       <li>lab8</li>
       <li>lab10</li>
-    </ul>
+    </ul> -->
+
+    <a href="{% url 'labList' username %}" id="link">{{ username }}'s Labs</a>
 
 {% endblock %}
