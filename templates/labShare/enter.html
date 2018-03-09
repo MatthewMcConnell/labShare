@@ -5,19 +5,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>Welcome to Labshare!</title>
+
   <link rel="stylesheet" type="text/css" href="{% static "CSS/enter.css"%}" />
   <img src="{% static 'images/logo.png' %}" alt="logo" class = "logo">
+
   <div class="logo"></div>
 
   </div>
 
   </div>
 </head>
-<body background="{% static "images/equationBackground.jpg" %}">
+
+<body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
   <div class="wrapper">
     <span class="text1"> Welcome to Labshare! </span>
     <a href="{% url 'auth_login' %}" style="text-decoration:none;"><span class="text1"> Enter </span></a>
   </div>
 </body>
+
 </html>

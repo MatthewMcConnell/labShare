@@ -5,7 +5,8 @@
 }
 body{
   /*background: radial-gradient( #222222, #322f3a, rgb(55, 55, 92));*/
-  background: rgb(0, 0, 0);
+  /* background: #313440; */
+  background-image: "{% static 'images/equationBackground.jpg' %}";
 }
 img {
   padding-top: 20px;

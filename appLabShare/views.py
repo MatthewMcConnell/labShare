@@ -25,7 +25,7 @@ def profile(request, username):
 
     # This gets the user profile from which we can get all profile attributes
     profile = UserProfile.objects.get (user = User.objects.get (username = username))
-    
+
     contextDict["picture"] = profile.picture
 
     return render(request, "labShare/profile.html", contextDict)
@@ -37,6 +37,10 @@ def profileRedirect (request):
 def myLabs(request):
     # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
     return render(request, "labShare/myLabs.html")
+
+def labTemplate(request):
+    # This will be the template view for the specific lab page, not currently finished.
+    return render(request, "labShare/labtemplate.html")
 
 
 @login_required
