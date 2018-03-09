@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 from appLabShare.forms import UserProfileForm
+from appLabShare.models import UserProfile
+from django.contrib.auth.models import User
 
 
 # The portal page that everyone should go to if they're not logged in
@@ -19,8 +22,17 @@ def enter (request):
 @login_required
 def profile(request, username):
     contextDict = {username: username}
+
+    # This gets the user profile from which we can get all profile attributes
+    profile = UserProfile.objects.get (user = User.objects.get (username = username))
+    
+    contextDict["picture"] = profile.picture
+
     return render(request, "labShare/profile.html", contextDict)
 
+@login_required
+def profileRedirect (request):
+    return HttpResponseRedirect (reverse ("profile", args=[request.user.username]))
 
 def myLabs(request):
     # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
@@ -40,7 +52,7 @@ def register_profile (request):
             userProfile.save()
             # Once the user has registered fully, go to profile page
             # as signup automatically logs in once complete.
-            return redirect ("profile")
+            return redirect ("profileRedirect")
         else:
             print (form.errors)
 
