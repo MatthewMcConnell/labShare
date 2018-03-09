@@ -38,7 +38,7 @@ def myLabs(request):
     # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
     return render(request, "labShare/myLabs.html")
 
-def labTemplate(request):
+def labTemplate(request, course, labNumber):
     # This will be the template view for the specific lab page, not currently finished.
     return render(request, "labShare/labtemplate.html")
 

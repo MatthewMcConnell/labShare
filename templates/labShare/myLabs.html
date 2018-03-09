@@ -8,7 +8,8 @@
   <span class="text">Computing Science</span>
 
   <div id="subject1">
-        <a href="#"><div class="box">Lab 1</div></a>
+        <!-- Below is an example of how I have made the lab url's dynamic -->
+        <a href="{% url 'labTemplate' 'CS' 1 %}"><div class="box">Lab 1</div></a>
         <a href="#"><div class="box">Lab 4</div></a>
         <a href="#"><div class="box">Lab 6</div></a>
   </div>

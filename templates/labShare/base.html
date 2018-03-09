@@ -30,7 +30,7 @@
                 <span id="L1">
                   <li><a href="" class="L1">My Labs</a></li>
                 </span>
-                <li><a href="{% url 'profile' user.username %}?next=/labShare/" class="HLB">My Profile</a></li>
+                <li><a href="{% url 'profile' user.username %}" class="HLB">My Profile</a></li>
                 <li><a href="{% url 'auth_logout' %}?next=/labShare/" class="HLB">Sign Out</a></li>
               </ul>
             </div>
