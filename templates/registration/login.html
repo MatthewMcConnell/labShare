@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static "CSS/loginStylesheet.css" %}">
+    <link rel="stylesheet" href="{% static "CSS/login.css" %}">
   </head>
   <div class="logo">
     <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
@@ -27,30 +27,19 @@
           <img src="{% static "images/user_image.png" %}" draggable="false">
           <form method="post" action=".">
             {% csrf_token %}
-            
-
-            
-            <!-- Stolen from registration-redux -->
+            <!--{{ form.as_p }}-->
             <p>
-              <label for="id_username">
-                Username:
-              </label>
-              <input type="text" name="username" maxlength="254" autofocus required id="id_username" />
+              <input type="text" name="username" autofocus="" maxlength="254" required="" id="id_username"
+              placeholder="Matric Number">
             </p>
             <p>
-              <label for="id_password">
-                Password:
-              </label>
-              <input type="password" name="password" required id="id_password" />
+              <input type="password" name="password" required="" id="id_password"placeholder="Password">
             </p>
-
-
 
             <input type="submit" name="submit" value="LOGIN" class="purpleButton">
             <p>New to labshare?</p>
           </form>
           <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="blueButton"></a>
-
         </div>
 
       </div>

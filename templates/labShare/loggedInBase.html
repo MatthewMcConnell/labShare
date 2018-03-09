@@ -17,15 +17,16 @@
   <header>
     <div class="navbar">
     <img src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="225">
+    {% if user.is_authenticated %}
       <ul class="nav">
-        <li><a href="#" id="link">My Labs</a></li>
-        <li><a href="{% url 'profile' user.username %}" class="current" id="link">My Profile</a></li>
-        <li><a href="{% url 'myLabs' %}" id="link">My Labs</a></li>
-        <li><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
+        <li class="hoverUnderLine"><a href="{% url 'myLabs' %}" id="link">My Labs</a></li>
+        <li class="hoverUnderLine"><a href="{% url 'profile' user.username %}" id="link">My Profile</a></li>
+        <li class="hoverUnderLine"><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
       </ul>
+    {% endif %}
     </div>
   </header>
-  <!-- <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;"> -->
+  <body background="{% static "images/equationBackground.jpg" %}" style="background-repeat: repeat;">
     <div class="container">
       <!-- NOTE: I have changed this to be dynamic so I can dynamically use profile pictures
                  Use the block in extending templates with the path to include a picture -->
