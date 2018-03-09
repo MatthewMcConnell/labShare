@@ -1,9 +1,8 @@
-{% extends "labShare/base.html" %}
-<!-- !!!!!!!!! This can not extend from loggedInBase.html as the user is not logged in yet
-     !!!!!!!!! they are only just registering!!!!!!!!!!!!! -->
+{% extends "labShare/loggedInBase.html" %}
 
 {% block body_block %}
-    <h1 style="text-decoration:underline">Registration</h1>
+    <h1>Registration (Please fill out all fields)</h1>
+    <!--  above contained the following within <h1>:  style="text-decoration:underline"-->
     <form action="." method="post">
         {% csrf_token %}
 
@@ -42,16 +41,16 @@
         <div>
           <ul class="registerList">
               <li>
-                  Your password must contain at least 8 characters.
+                  • Your password must contain at least 8 characters.
               </li>
               <li>
-                  Your password must contain both letters and numbers.
+                  • Your password must contain both letters and numbers.
               </li>
               <li>
-                  Your password shouldn&#39;t be too similar to your other personal information.
+                  • Your password shouldn&#39;t be too similar to your other personal information.
               </li>
               <li>
-                  Your password can&#39;t be a commonly used password.
+                  • Your password can&#39;t be a commonly used password.
               </li>
           </ul>
         </div>
