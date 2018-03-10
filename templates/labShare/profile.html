@@ -6,18 +6,16 @@
 
 <!-- Currently I'm figuring out how to get images from profile_images folder to load
      If anyone can do this quickly please tell me :) -->
-{% block picture %}{{ MEDIA_URL }}{{ picture }}{% endblock %}
+{% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
 
 {% block body_block %}
 
-    <h1>{exampleUsername}</h1>
+    <h1>{{ pageUser.username }} - {{ profile.name }}</h1>
     <br>
-    <h4>This is an example bio, this will be replaced by the bio stored in the database</h5>
-    <br>
-    <h4>profile image replaces one above</h4>
+    <h4>{{ profile.bio }}</h4>
     <br>
     <h4>Education: University of example</h4>
-    <h4>major: Computing Science</h4>
+    <h4>Major: {{ profile.degree }}</h4>
     <br>
     <!-- <h4 class="labList">lab Groups:</h4>
 
@@ -27,6 +25,6 @@
       <li>lab10</li>
     </ul> -->
 
-    <a href="{% url 'labList' username %}" id="link">{{ username }}'s Labs</a>
+    <a href="{% url 'labList' pageUser.username %}" id="link">{{ pageUser.username }}'s Labs</a>
 
 {% endblock %}

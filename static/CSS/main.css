@@ -2,9 +2,13 @@ body, html{
   /*background-color: #313440;*/
   margin: 0;
   padding: 0;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+html {
+  background: url("backgrounds/htc_mountain_wallpaper.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 

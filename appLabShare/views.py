@@ -19,24 +19,29 @@ def enter (request):
 # def signUp(request):
 #     return render(request, "labShare/signup.html")
 
+
 @login_required
 def profile(request, username):
-    contextDict = {"username": username}
+    contextDict = {}
 
-    # This gets the user profile from which we can get all profile attributes
-    profile = UserProfile.objects.get (user = User.objects.get (username = username))
-
-    contextDict["picture"] = profile.picture
+    # Here I add the user object and user profile object of the page that the user is referring to
+    # I call the user object 'pageUser' as if I used user this would be confused by the client user
+    # in the template
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
 
     return render(request, "labShare/profile.html", contextDict)
+
 
 @login_required
 def profileRedirect (request):
     return HttpResponseRedirect (reverse ("profile", args=[request.user.username]))
 
+
 def labList(request, username):
     # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
     return render(request, "labShare/labList.html")
+
 
 def lab(request, course, labNumber):
     # This will be the template view for the specific lab page, not currently finished.

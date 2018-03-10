@@ -21,8 +21,9 @@ class UserProfile(models.Model):
     # Shared Tutor and Student attributes
     name = models.CharField(max_length = 128, default = "")
     picture = models.ImageField(upload_to='profile_images', default = "profile_images/user_image.png")
-    bio = models.CharField(max_length = 128)
-    degree = models.CharField(max_length = 128)
+    bio = models.CharField(max_length = 128, default = "")
+    degree = models.CharField(max_length = 128, default = "")
+    university = models.CharField(max_length = 128, default = "")
 
 
     ## Student Only attributes ## - will just end up being null for tutors
