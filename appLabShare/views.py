@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-
-from appLabShare.forms import UserProfileForm
-from appLabShare.models import UserProfile
 from django.contrib.auth.models import User
+
+from appLabShare.forms import UserProfileForm, EnrolForm
+from appLabShare.models import UserProfile, Course, Lab
 
 
 # The portal page that everyone should go to if they're not logged in
@@ -52,8 +52,42 @@ def lab(request, course, labNumber):
     return render(request, "labShare/lab.html")
 
 
+
+############# WORK IN PROGRESS #############
 def enrol (request):
-    return render (request, "labShare/enrol.html")
+    form = EnrolForm()
+
+    if (request.method == "POST"):
+        form = EnrolForm (request.POST)
+
+        # Getting the profile of the user to get whether they are a tutor or not
+        profile = UserProfile.objects.get (user = request.user)
+
+        # Here I am storing the function as a first class object so that it is used
+        # depending on whether the person is a tutor or not
+        if (profile.isStudent):
+            courseFn = Course.objects.get ()
+            labFn = Lab.objects.get ()
+        else:
+            courseFn = Course.objects.get_or_create ()
+            labFn = Lab.objects.get_or_create ()
+
+        
+        if (form.is_valid()):
+            course = courseFn (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
+            lab = labFn (course = course, labNumber = form.cleaned_data["labNumber"])
+
+            lab.peopleInLab.add (profile)
+
+            course.save()
+            lab.save()
+
+            return HttpResponse ("You enrolled!")
+        
+
+    contextDict = {"form": form}
+
+    return render (request, "labShare/enrol.html", contextDict)
 
 
 @login_required
