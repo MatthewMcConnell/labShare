@@ -15,12 +15,13 @@ class MyRegistrationView (RegistrationView):
 
 
 urlpatterns = [
-    # Blank URL goes to the intro page
+    # Blank labShare URL goes to the intro page
     url(r'^$', views.enter, name = "enter"),
     url(r'^profile/$', views.profileRedirect, name="profileRedirect"),
     url(r'^profile/(?P<username>\w+)/$', views.profile, name='profile'),
     url(r'^labList/(?P<username>\w+)/$', views.labList, name='labList'),
     url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.lab, name='lab'),
+    url(r'^enrol/$', views.enrol, name="enrol"),
 
     # patterns for registration-redux
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),

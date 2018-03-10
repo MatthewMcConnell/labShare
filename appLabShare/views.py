@@ -39,13 +39,21 @@ def profileRedirect (request):
 
 
 def labList(request, username):
-    # Perhaps here we need to obtain the username (i.e. the student/staff id) to pass as a context dict
-    return render(request, "labShare/labList.html")
+    contextDict = {}
+
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+
+    return render(request, "labShare/labList.html", contextDict)
 
 
 def lab(request, course, labNumber):
     # This will be the template view for the specific lab page, not currently finished.
     return render(request, "labShare/lab.html")
+
+
+def enrol (request):
+    return render (request, "labShare/enrol.html")
 
 
 @login_required
