@@ -3,7 +3,9 @@ body, html{
   margin: 0;
   padding: 0;
 }
-
+* {
+  z-index: .5;
+}
 html {
   background: url("backgrounds/htc_mountain_wallpaper.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -33,7 +35,7 @@ header
   margin-top: -12px;
   max-width: 35%;
   height: auto;
-
+  z-index: 1;
 }
 ul{
 width: auto;
@@ -43,6 +45,7 @@ margin-top: -2px;
 .navbar{
   list-style: none;
   padding: 20px 0px 20px 0px;
+  z-index: 1;
 }
 #link{
 
@@ -76,19 +79,19 @@ margin-top: -2px;
   background-color: rgba(38,40,49,0.9);
   border: none;
   border-radius: 25px 25px;
-  margin: 13% auto;
+  margin: 20% auto;
   clear: both;
-  margin-top: 135px;
+  margin-top: 300px;
 }
 
 .container img
 {
-
+  object-fit: cover;
   width: 240px;
-  height: 240;
-  margin-top: -120px;
+  height: 240px;
+  margin-top: -110px;
   margin-bottom: 30px;
-  border-radius: 50%;
+  border-radius: 999em;
 }
 .container img:hover
 {
@@ -199,29 +202,33 @@ margin-top: -2px;
   margin-top: 2%;
   margin-left: 20px;
 }
-
+#add{
+  font-size: 80px;
+}
 .box {
   justify-content: space-between;
-    color: white;
-    border-radius: 3%;
-    display: inline-block;
-    height: 300px;
-    width: 300px;
-    margin:6.3%;
-    font-size: 50px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 300px;
-    -webkit-transition: 0.2s ease-in-out;
-    -moz-transition: 0.2s ease-in-out;
-    -o-transition: 0.2s ease-in-out;
+  color: white;
+  border-radius: 3%;
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  margin:6.3%;
+  font-size: 50px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 300px;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  z-index;
 }
 .box:hover{
 
-        box-shadow: inset 0 0 0 5px white;
-        -webkit-transform: scale(1.15);
-        -ms-transform: scale(1.15);
-        transform: scale(1.15);
+  box-shadow: inset 0 0 0 5px white;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+
 }
 
 hr

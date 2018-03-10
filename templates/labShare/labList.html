@@ -7,15 +7,17 @@
 <div class="subject">
   <span class="text">Computing Science</span>
 
-  {% if user == pageUser %}
-    <a href="{% url 'enrol' %}">Enrol in a lab</a>
-  {% endif %}
+
 
   <div id="subject1">
         <!-- Below is an example of how I have made the lab url's dynamic -->
         <a href="{% url 'lab' 'CS' 1 %}"><div class="box">Lab 1</div></a>
         <a href="#"><div class="box">Lab 4</div></a>
         <a href="#"><div class="box">Lab 6</div></a>
+        {% if user == pageUser %}
+        <a href="{% url 'enrol' %}"><div class="box" id="add"> + </div></a>
+        {% endif %}
+
   </div>
 </div>
 <hr>
@@ -24,6 +26,10 @@
   <div id="subject2">
         <a href="#"><div class="box">Lab 2</div></a>
         <a href="#"><div class="box">Lab 7</div></a>
+        {% if user == pageUser %}
+        <a href="{% url 'enrol' %}"><div class="box" id="add"> + </div></a>
+        {% endif %}
+
   </div>
 </div>
 <hr>
@@ -32,8 +38,12 @@
 
   <div id="subject3">
         <a href="#"><div class="box">Lab 4</div></a>
+        {% if user == pageUser %}
+        <a href="{% url 'enrol' %}"><div class="box" id="add"> + </div></a>
+        {% endif %}
   </div>
 </div>
+
 <hr>
 
 {% endblock %}
