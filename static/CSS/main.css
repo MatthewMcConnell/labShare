@@ -280,3 +280,22 @@ label {
   colour: rgb(214, 0, 0)
   /* font-size: 10 */
 }
+
+.setup_profile{
+  width:25%;
+  padding:10px;
+}
+
+.setup_bio{
+  width:30%;
+  border-radius: 25px;
+  border: 2px solid #4d4d4d;
+  padding: 10px;
+}
+
+.setup_dropdown {
+  width: 10%;
+  border-radius: 25px;
+  border: 2px solid #4d4d4d;
+  height: 25px;
+}
