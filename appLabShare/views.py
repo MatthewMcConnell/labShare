@@ -35,7 +35,18 @@ def profile(request, username):
 
 @login_required
 def profileRedirect (request):
-    return HttpResponseRedirect (reverse ("profile", args=[request.user.username]))
+    # The code below will assign profile to None if the user did not make a profile
+    try:
+        profile = UserProfile.objects.get (user = request.user)
+    except UserProfile.DoesNotExist:
+        profile = None
+
+    # If we got a profile then we know they did set up a profile
+    # otherwise we redirect them to the the register-profile page
+    if profile:
+        return HttpResponseRedirect (reverse ("profile", args=[request.user.username]))
+    else:
+        return HttpResponseRedirect (reverse ("register-profile"))
 
 
 def labList(request, username):
