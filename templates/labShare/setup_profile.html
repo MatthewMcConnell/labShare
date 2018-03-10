@@ -10,7 +10,6 @@
     <form action="." method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <!--{{ form.as_p }}-->
-      <input type="hidden" name="csrfmiddlewaretoken" value="zK3oB0a7k9FYIh4jz682cDNM4pCVds8eBu9D8rImrgoDnQOUGWU11AB8XgzyhPED">
         <p>
           <label for="id_isStudent">Position:</label><br>
           <select class="setup_dropdown">
@@ -26,7 +25,7 @@
 
         <p>
           <label for="id_picture">Picture:</label>
-           <input type="file" name="picture" onchange="readURL(this);" id="id_picture"><br>
+           <input type="file" name="picture" onchange="previewFile()" id="id_picture"><br>
            <img id="blah" src="#" alt="your image" />
          </p>
 
