@@ -30,7 +30,7 @@
     <div class="container">
       <!-- NOTE: I have changed this to be dynamic so I can dynamically use profile pictures
                  Use the block in extending templates with the path to include a picture -->
-      <img src="/{% block picture %}{% endblock %}" draggable="false">
+      <img src="{% block picture %}{% endblock %}" draggable="false">
 
       <div class="elements">
         {% block body_block %}

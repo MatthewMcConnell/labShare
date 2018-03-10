@@ -20,7 +20,7 @@ class UserProfile(models.Model):
 
     # Shared Tutor and Student attributes
     name = models.CharField(max_length = 128, default = "")
-    picture = models.ImageField(upload_to='profile_images', default = "static/images/user_image.png")
+    picture = models.ImageField(upload_to='profile_images', default = "profile_images/user_image.png")
     bio = models.CharField(max_length = 128)
     degree = models.CharField(max_length = 128)
 
