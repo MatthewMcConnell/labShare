@@ -8,3 +8,16 @@ btn.onmousemove = function(e)
   btn.style.setProperty('--x', x + 'px')
   btn.style.setProperty('--y', y + 'px')
 }
+
+function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
