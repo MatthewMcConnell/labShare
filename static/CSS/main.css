@@ -81,7 +81,7 @@ margin-top: -2px;
   border-radius: 25px 25px;
   margin: 20% auto;
   clear: both;
-  margin-top: 300px;
+  margin-top: 18%;
 }
 
 .container img
@@ -305,4 +305,12 @@ label {
   border-radius: 25px;
   border: 2px solid #4d4d4d;
   height: 25px;
+}
+
+#blah {
+  margin: 0%;
+  width: 190px;
+  height: 190px;
+  align-self: center;
+  margin-top:20px;
 }

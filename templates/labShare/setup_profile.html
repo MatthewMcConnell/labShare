@@ -1,4 +1,5 @@
 {% extends "labShare/loggedInBase.html" %}
+{% load staticfiles %}
 
 {% block title %}
     Profile Information
@@ -24,9 +25,9 @@
          </p>
 
         <p>
-          <label for="id_picture">Picture:</label>
-           <input type="file" name="picture" onchange="previewFile()" id="id_picture"><br>
-           <img id="blah" src="#" alt="your image" />
+          <label for="id_picture">Picture:</label><br>
+           <input type="file" name="picture" onchange="previewFile()" id="id_picture" style="margin-top:10px;"><br>
+           <img id="blah" src="#" alt="your image" onerror="this.src='{% static "images/user_image.png" %}'"/>
          </p>
 
         <p>
