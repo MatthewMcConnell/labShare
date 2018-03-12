@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.views.generic.edit import UpdateView
 
 from appLabShare.forms import UserProfileForm, EnrolForm
-from appLabShare.models import UserProfile, Course, Lab
+from appLabShare.models import UserProfile, Course, Lab, Post
 
 
 # The portal page that everyone should go to if they're not logged in
@@ -57,11 +58,15 @@ def labList(request, username):
 
     return render(request, "labShare/labList.html", contextDict)
 
-
-def lab(request, course, labNumber):
+# Don't delete the comment below, just altered this so I can test the page
+#def lab(request, course, labNumber):
+def lab(request):
     # This will be the template view for the specific lab page, not currently finished.
     return render(request, "labShare/lab.html")
 
+def post_list(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'labShare/post_list.html', {'posts':posts})
 
 
 ############# WORK IN PROGRESS #############
@@ -83,7 +88,7 @@ def enrol (request):
             courseFn = Course.objects.get_or_create ()
             labFn = Lab.objects.get_or_create ()
 
-        
+
         if (form.is_valid()):
             course = courseFn (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
             lab = labFn (course = course, labNumber = form.cleaned_data["labNumber"])
@@ -94,7 +99,7 @@ def enrol (request):
             lab.save()
 
             return HttpResponse ("You enrolled!")
-        
+
 
     contextDict = {"form": form}
 
@@ -122,7 +127,17 @@ def register_profile (request):
 
     return render (request, "labShare/setup_profile.html", contextDict)
 
+def edit_profile (request, username):
+    contextDict = {}
 
+    #model = UserProfile
+    #fields = ['name','picture','bio','degree','university',]
+    #template_name_suffix = '_update_form'
+
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+
+    return render(request,"registration/edit_profile.html", contextDict)
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)
 # are dealt with the django-registration-redux package and so you should look there for those views

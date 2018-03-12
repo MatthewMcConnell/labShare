@@ -105,7 +105,8 @@ def addStudent (infoDict):
     s = UserProfile.objects.get_or_create (user = addUser(infoDict),
                                            picture = infoDict["picture"],
                                            bio = infoDict["bio"],
-                                           degree = infoDict["degree"])[0]
+                                           degree = infoDict["degree"],
+                                           isStudent = True)[0]
     s.courses.add (Course.objects.get (name = "Economics"))
     s.save()
     return s

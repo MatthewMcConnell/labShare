@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.utils import timezone
 
 class Course (models.Model):
     name = models.CharField(max_length = 128)
@@ -47,15 +47,18 @@ class Lab (models.Model):
         # "course :: labNum"
         return self.course.__str__() + " :: " + str(self.labNumber)
 
-
 class Post (models.Model):
     author = models.ForeignKey (UserProfile)
     postedIn = models.ForeignKey (Lab)
 
+    timePosted = models.DateTimeField(default=timezone.now)
+
     content = models.TextField ()
-    timePosted = models.DateTimeField ()
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
 
     def __str__ (self):
         # "author :: lab :: time"
-        return self.author.__str__() + " :: " + self.postedIn.__str__() + " :: " + self.timePosted.__str__()
-
+        return self.author.__str__() + " :: " + self.timePosted.__str__()

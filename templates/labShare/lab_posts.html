@@ -1,0 +1,26 @@
+{% extends "labShare/loggedInBase.html" %}
+
+{% block title %}
+    LabShare - Lab Posts
+{% endblock %}
+
+{% block body_block %}
+<!-- <div>
+  {% for post in Posts %}
+    <div class="container">
+        <div class="date">
+          {{ post.timePosted }}
+        </div>
+
+        <strong>{{ post.author }}</strong>
+
+        <p>{{ post.content }}</p>
+    {% empty %}
+      <p>No posts exist!</p>
+    {% endfor %}
+
+</div> -->
+
+{{ posts }}
+
+{% endblock %}

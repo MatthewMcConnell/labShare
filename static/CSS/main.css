@@ -82,7 +82,7 @@ margin-top: -2px;
   border-radius: 25px 25px;
   margin: 20% auto;
   clear: both;
-  margin-top: 300px;
+  margin-top: 18%;
 }
 
 .container img
@@ -161,6 +161,10 @@ margin-top: -2px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
   line-height: 1.4em;
+}
+
+.comment {
+  margin: 20px 0px 20px 20px;
 }
 
 #subject1 {
@@ -275,7 +279,7 @@ input {
 
 .registerList {
   text-align: center;
-  list-style-type: none;
+  /* list-style-type: none; */
   align-self: center;
   float: none;
 }
@@ -306,4 +310,12 @@ label {
   border-radius: 25px;
   border: 2px solid #4d4d4d;
   height: 25px;
+}
+
+#blah {
+  margin: 0%;
+  width: 190px;
+  height: 190px;
+  align-self: center;
+  margin-top:20px;
 }

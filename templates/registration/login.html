@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" href="{% static "CSS/login.css" %}">
+    <script type="text/javascript" src="{% static "javascript/script.js" %}"></script>
   </head>
   <div class="logo">
     <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
@@ -25,6 +26,13 @@
     {% else %}
         <div class="container">
           <img src="{% static "images/user_image.png" %}" draggable="false">
+          {% if form.non_field_errors %}
+            <ul class='form-errors' style="padding-right:25px;">
+          {% for error in form.non_field_errors %}
+            <li style="color:white; list-style-type:none;">{{ error }}</li>
+          {% endfor %}
+            </ul>
+          {% endif %}
           <form method="post" action=".">
             {% csrf_token %}
             <!--{{ form.as_p }}-->

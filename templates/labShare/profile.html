@@ -1,6 +1,6 @@
 {% extends "labShare/loggedInBase.html" %}
 
-{% block title %}
+{% block title_block %}
     My Profile
 {% endblock %}
 
@@ -25,6 +25,8 @@
       <li>lab10</li>
     </ul> -->
 
-    <a href="{% url 'labList' pageUser.username %}" id="link">{{ pageUser.username }}'s Labs</a>
+    <a href="{% url 'labList' pageUser.username %}" id="link">{{ pageUser.username }}'s Labs</a><br>
+    <a href="{% url 'edit_profile' %}" id="link">Edit Profile</a>
+
 
 {% endblock %}

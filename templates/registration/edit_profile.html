@@ -6,15 +6,9 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>Add some personal information for your profile!</h1>
-    {% if form.errors %}
-      <h4>Please ammend the following fields:</h4>
-      <ul class="form-errors" style="float:none;padding-right:25px;">
-    {% for error in form.errors %}
-        <li style="color:white; list-style-type:none;">{{ error }}</li>
-    {% endfor %}
-      </ul>
-    {% endif %}
+    <h1>Please enter any changes:</h1>
+    {{ pageUser.username }}
+
 
     <form action="." method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -29,7 +23,8 @@
 
         <p>
            <label for="id_name">Name:</label><br>
-           <input type="text" name="name" maxlength="128" required="" id="id_name" class="setup_profile">
+           <input type="text" name="name" maxlength="128" required="" id="id_name" class="setup_profile"
+           placeholder="{{ profile.name }}">
          </p>
 
         <p>
@@ -53,6 +48,6 @@
            <input type="text" name="university" maxlength="128" id="id_university" class="setup_profile">
          </p>
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Update">
     </form>
 {% endblock %}
