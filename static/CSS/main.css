@@ -319,3 +319,42 @@ label {
   align-self: center;
   margin-top:20px;
 }
+
+.purpleButton
+{
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #9b59b6;
+  border: none;
+  border-radius: 5px;
+
+}
+.purpleButton:hover
+{
+  box-shadow: inset 0 0 0 2px white;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+}
+.blueButton
+{
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #0EBFE9;
+  border: none;
+  border-radius: 5px;
+
+}
+.blueButton:hover
+{
+  box-shadow: inset 0 0 0 2px white;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+}

@@ -1,6 +1,6 @@
 from django import forms
 
-from appLabShare.models import UserProfile
+from appLabShare.models import UserProfile, Post
 
 
 class UserProfileForm (forms.ModelForm):
@@ -29,9 +29,9 @@ class EnrolForm (forms.Form):
 
 
 
-# class CommentForm(forms.ModelForm):
-#     message = forms.Textarea()
-#
-#     class Meta:
-#         model = Comment
-#         fields = ('author', 'text',)
+class PostForm(forms.ModelForm):
+    #message = forms.Textarea()
+
+    class Meta:
+        model = Post
+        fields = ('content',)

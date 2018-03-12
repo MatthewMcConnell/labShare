@@ -26,6 +26,7 @@ urlpatterns = [
 
     # THIS IS A TEST URL - DO NOT DELETE YET
     url(r'^lab/$', views.lab, name='lab'),
+    url(r'^lab_posts/$', views.post_list, name='lab_posts'),
 
     # patterns for registration-redux
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),

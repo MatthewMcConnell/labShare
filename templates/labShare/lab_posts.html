@@ -5,22 +5,26 @@
 {% endblock %}
 
 {% block body_block %}
-<!-- <div>
-  {% for post in Posts %}
-    <div class="container">
-        <div class="date">
-          {{ post.timePosted }}
-        </div>
 
-        <strong>{{ post.author }}</strong>
+  <H2>Create a new post</H2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit Post" class="blueButton">
+  </form>
 
-        <p>{{ post.content }}</p>
-    {% empty %}
-      <p>No posts exist!</p>
-    {% endfor %}
+  <div>
+    <h1>Posts</h1>
+  </div>
 
-</div> -->
+  <!-- Create css class "comment information" and "comment content" -->
+  {% for post in posts %}
+    <div>
+      <p>{{ post.author }} || {{ post.timePosted }}</p>
+      <h3>{{ post.content }}</h3>
+      <p>{{ post.text|linebreaksbr }}</p>
 
-{{ posts }}
+    </div>
+  {% endfor %}
 
 {% endblock %}
