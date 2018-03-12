@@ -24,6 +24,9 @@ urlpatterns = [
     url(r'^enrol/$', views.enrol, name="enrol"),
     url(r'^edit_profile/$', views.edit_profile, name="edit_profile"),
 
+    # THIS IS A TEST URL - DO NOT DELETE YET
+    url(r'^lab/$', views.lab, name='lab'),
+
     # patterns for registration-redux
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
     url(r'^accounts/', include ("registration.backends.simple.urls")),

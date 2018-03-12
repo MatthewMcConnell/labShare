@@ -58,8 +58,9 @@ def labList(request, username):
 
     return render(request, "labShare/labList.html", contextDict)
 
-
-def lab(request, course, labNumber):
+# Don't delete the comment below, just altered this so I can test the page
+#def lab(request, course, labNumber):
+def lab(request):
     # This will be the template view for the specific lab page, not currently finished.
     return render(request, "labShare/lab.html")
 
