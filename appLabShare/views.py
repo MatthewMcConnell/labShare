@@ -4,8 +4,9 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView
+from django.utils import timezone
 
-from appLabShare.forms import UserProfileForm, EnrolForm
+from appLabShare.forms import *
 from appLabShare.models import UserProfile, Course, Lab, Post
 
 
@@ -65,8 +66,14 @@ def lab(request):
     return render(request, "labShare/lab.html")
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'labShare/post_list.html', {'posts':posts})
+    posts = Post.objects.filter(timePosted__lte=timezone.now()).order_by('timePosted')
+    form = PostForm()
+
+    contextDict = {}
+    contextDict['form'] = form
+    contextDict['posts'] = posts
+
+    return render(request, 'labShare/lab_posts.html', contextDict)
 
 
 ############# WORK IN PROGRESS #############
@@ -140,7 +147,7 @@ def register_profile (request):
     return render (request, "labShare/setup_profile.html", contextDict)
 
 def edit_profile (request, username):
-    contextDict = {}
+    form = UserProfileForm()
 
     #model = UserProfile
     #fields = ['name','picture','bio','degree','university',]
@@ -148,8 +155,17 @@ def edit_profile (request, username):
 
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+    return render(request, "registration/edit_profile.html", contextDict)
 
-    return render(request,"registration/edit_profile.html", contextDict)
+class UserEdit(UpdateView):
+    model = UserProfile
+    fields = ['name', 'picture', 'bio', 'degree', 'university',]
+    template_name_suffix = '_update_form'
+
+@login_required
+def user_edit(request, user_pk):
+    profile = get_object_or_404(models.UserProfile, pk=user_pk)
+    
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)
 # are dealt with the django-registration-redux package and so you should look there for those views

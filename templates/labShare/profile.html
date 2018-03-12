@@ -26,7 +26,7 @@
     </ul> -->
 
     <a href="{% url 'labList' pageUser.username %}" id="link">{{ pageUser.username }}'s Labs</a><br>
-    <a href="{% url 'edit_profile' %}" id="link">Edit Profile</a>
+    <a href="{% url 'edit_profile' user.username %}" id="link">Edit Profile</a>
 
 
 {% endblock %}
