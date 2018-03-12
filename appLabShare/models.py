@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
     # Boolean flag to tell us if they are a student or tutor
-    isStudent = models.BooleanField()
+    status = models.CharField(max_length = 7, default = "Student")
 
     # Shared Tutor and Student attributes
     name = models.CharField(max_length = 128, default = "")

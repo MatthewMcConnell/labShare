@@ -81,24 +81,36 @@ def enrol (request):
 
         # Here I am storing the function as a first class object so that it is used
         # depending on whether the person is a tutor or not
+        print (profile.isStudent)
+
         if (profile.isStudent):
-            courseFn = Course.objects.get ()
-            labFn = Lab.objects.get ()
+            if (form.is_valid()):
+                print (form.cleaned_data["course"])
+                print (form.cleaned_data["level"])
+                print (form.cleaned_data["labNumber"])
+                course = Course.objects.get (name = form.cleaned_data["course"], level = form.cleaned_data["level"])[0]
+                lab = Lab.objects.get (course = course, labNumber = form.cleaned_data["labNumber"])[0]
+
+                lab.peopleInLab.add (profile)
+
+                course.save()
+                lab.save()
+
+                return HttpResponse ("You enrolled!")
         else:
-            courseFn = Course.objects.get_or_create ()
-            labFn = Lab.objects.get_or_create ()
+            if (form.is_valid()):
+                print (form.cleaned_data["course"])
+                print (form.cleaned_data["level"])
+                print (form.cleaned_data["labNumber"])
+                course = Course.objects.get_or_create (name = form.cleaned_data["course"], level = form.cleaned_data["level"])[0]
+                lab = Lab.objects.get_or_create (course = course, labNumber = form.cleaned_data["labNumber"])[0]
 
+                lab.peopleInLab.add (profile)
 
-        if (form.is_valid()):
-            course = courseFn (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
-            lab = labFn (course = course, labNumber = form.cleaned_data["labNumber"])
+                course.save()
+                lab.save()
 
-            lab.peopleInLab.add (profile)
-
-            course.save()
-            lab.save()
-
-            return HttpResponse ("You enrolled!")
+                return HttpResponse ("You enrolled!")
 
 
     contextDict = {"form": form}
