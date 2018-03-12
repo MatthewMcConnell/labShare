@@ -106,11 +106,7 @@ def register_profile (request):
     form = UserProfileForm()
 
     if request.method == "POST":
-        try:
-            user_exists = User.objects.get(username=request.POST['username'])
-            return HttpResponse("Username already taken")
-        except User.DoesNotExist:
-            form = UserProfileForm (request.POST, request.FILES)
+        form = UserProfileForm (request.POST, request.FILES)
 
         if form.is_valid():
             userProfile = form.save (commit = False)
