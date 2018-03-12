@@ -94,7 +94,10 @@ nav ul {
   float: right;
   display: inline-block;
   text-align: center;
-
+}
+nav ul li:not(:last-child)
+{
+  border-right: 2px dashed #d2d5e4;
 }
 .responsive-bar
 {
@@ -151,12 +154,19 @@ float:right;
   {
     float: none;
     display: block;
+    border: none;
+
+  }
+  nav ul li:not(:last-child)
+  {
+    border-right: 2px none #d2d5e4;
   }
   nav ul li
   {
     text-align: center;
     padding: 15px 20px;
     display: block;
+    border: none;
   }
   #linkRef
   {

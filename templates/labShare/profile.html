@@ -9,6 +9,8 @@
 {% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
 
 {% block body_block %}
+    <a href="{% url 'edit_profile' user.username %}"><button class="blueButton" name="editButton" style="float: left; padding: 2%; margin-top: -11%; margin-left: 1.5%;">Edit Profile</button></a>
+    <a href="{% url 'labList' pageUser.username %}"><button class="purpleButton" name="labsButton" style="float: right; padding: 2%;  margin-top: -11%; margin-right: 1.5%;">{{ pageUser.username }}'s Labs</button></a>
 
     <h1>{{ pageUser.username }} - {{ profile.name }}</h1>
     <br>
