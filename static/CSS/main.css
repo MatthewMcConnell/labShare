@@ -122,15 +122,15 @@ nav ul {
   text-transform: uppercase;
   cursor: pointer;
 }
-.menu
+.responsive-bar button
 {
-  text-align: center;
-  vertical-align: middle;
+float:right;
+ vertical-align: middle;
   margin: 0;
-  padding: 15px;
-  width: 75px;
-  height: 50px;
-  margin-top:50%;
+  /* padding: 15px; */
+  margin-top:45px;
+  margin-bottom:10px;
+
 }
 @media (max-width:900px)
 {
@@ -170,10 +170,7 @@ nav ul {
     display: none;
   }
 
-  .container
-  {
-    padding-top: 15%;
-  }
+
 }
 /* .nav > li{
   margin-top: 22px;
@@ -185,7 +182,7 @@ nav ul {
   color: #4cffff;
 }
 .container{
-  margin:200px 0 0;
+  margin:150px 0 0;
   width: 90%;
   height: auto;
   padding-bottom: 5%;
@@ -193,9 +190,9 @@ nav ul {
   background-color: rgba(38,40,49,0.9);
   border: none;
   border-radius: 25px 25px;
-  margin: 20% auto;
+  margin: 10% auto;
   clear: both;
-  margin-top: 18%;
+  margin-top: 200px;
 }
 
 .container img

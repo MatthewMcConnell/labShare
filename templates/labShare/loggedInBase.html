@@ -39,13 +39,13 @@
     </nav>
     <div class="responsive-bar">
       <img  src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="100">
-      <h3 class="menu">Menu</h3>
+      <button class="purpleButton">Menu</button>
       <div style="clear: both;"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-        $(".menu").click(function(){
+        $(".purpleButton").click(function(){
           $("nav").slideToggle(500);
         })
       })
