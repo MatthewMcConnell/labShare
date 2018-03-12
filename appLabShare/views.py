@@ -128,7 +128,7 @@ def register_profile (request):
     return render (request, "labShare/setup_profile.html", contextDict)
 
 def edit_profile (request, username):
-    contextDict = {}
+    form = UserProfileForm()
 
     #model = UserProfile
     #fields = ['name','picture','bio','degree','university',]
@@ -136,8 +136,17 @@ def edit_profile (request, username):
 
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+    return render(request, "registration/edit_profile.html", contextDict)
 
-    return render(request,"registration/edit_profile.html", contextDict)
+class UserEdit(UpdateView):
+    model = UserProfile
+    fields = ['name', 'picture', 'bio', 'degree', 'university',]
+    template_name_suffix = '_update_form'
+
+@login_required
+def user_edit(request, user_pk):
+    profile = get_object_or_404(models.UserProfile, pk=user_pk)
+    
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)
 # are dealt with the django-registration-redux package and so you should look there for those views
