@@ -83,7 +83,7 @@ def enrol (request):
             courseFn = Course.objects.get_or_create ()
             labFn = Lab.objects.get_or_create ()
 
-        
+
         if (form.is_valid()):
             course = courseFn (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
             lab = labFn (course = course, labNumber = form.cleaned_data["labNumber"])
@@ -94,7 +94,7 @@ def enrol (request):
             lab.save()
 
             return HttpResponse ("You enrolled!")
-        
+
 
     contextDict = {"form": form}
 
@@ -106,7 +106,11 @@ def register_profile (request):
     form = UserProfileForm()
 
     if request.method == "POST":
-        form = UserProfileForm (request.POST, request.FILES)
+        try:
+            user_exists = User.objects.get(username=request.POST['username'])
+            return HttpResponse("Username already taken")
+        except User.DoesNotExist:
+            form = UserProfileForm (request.POST, request.FILES)
 
         if form.is_valid():
             userProfile = form.save (commit = False)
