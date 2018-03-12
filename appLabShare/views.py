@@ -65,7 +65,8 @@ def lab(request):
     return render(request, "labShare/lab.html")
 
 def post_list(request):
-    return render(request, 'labShare/post_list.html', {})
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'labShare/post_list.html', {'posts':posts})
 
 
 ############# WORK IN PROGRESS #############
