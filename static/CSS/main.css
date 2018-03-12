@@ -162,6 +162,10 @@ margin-top: -2px;
   line-height: 1.4em;
 }
 
+.comment {
+  margin: 20px 0px 20px 20px;
+}
+
 #subject1 {
     width:100%;
     clear: both;
@@ -274,7 +278,7 @@ input {
 
 .registerList {
   text-align: center;
-  list-style-type: none;
+  /* list-style-type: none; */
   align-self: center;
   float: none;
 }

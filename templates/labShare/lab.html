@@ -7,19 +7,35 @@
 
 {% block body_block %}
 
-<section id="comments">
-  <div id="respond", class="container">
-    <form action="post_comment.php" method="post" id="commentform">
+<div>
+  {% for post in Posts %}
+    <div class="container">
+        <div class="date">
+          {{ post.timePosted }}
+        </div>
 
-  <label for="comment" class="required">Your message</label>
-    <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
+        <strong>{{ post.author }}</strong>
 
-  <!-- comment_post_ID value hard-coded as 1 -->
-  <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
-  <input name="submit" type="submit" value="Submit comment" />
+        <p>{{ post.content }}</p>
+    {% empty %}
+      <p>No posts exist!</p>
+    {% endfor %}
 
-    </form>
+</div>
+
+<hr>
+{% for comment in Comment %}
+  <div class="comment">
+      <div class="date">
+        {{ comment.timePosted }}
+      </div>
+
+      <strong>{{ comment.author }}</strong>
+      <p>{{ comment.text|linebreaks }}</p>
   </div>
-</section>
+
+{% empty %}
+  <p>Nobody has commented yet :(</p>
+{% endfor %}
 
 {% endblock %}

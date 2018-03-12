@@ -28,3 +28,10 @@ class EnrolForm (forms.Form):
     labNumber = forms.IntegerField (required = True, min_value=1, max_value=20)
 
 
+
+# class CommentForm(forms.ModelForm):
+#     message = forms.Textarea()
+#
+#     class Meta:
+#         model = Comment
+#         fields = ('author', 'text',)

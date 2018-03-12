@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView
 
 from appLabShare.forms import UserProfileForm, EnrolForm
-from appLabShare.models import UserProfile, Course, Lab
+from appLabShare.models import UserProfile, Course, Lab, Post
 
 
 # The portal page that everyone should go to if they're not logged in
@@ -64,6 +64,8 @@ def lab(request):
     # This will be the template view for the specific lab page, not currently finished.
     return render(request, "labShare/lab.html")
 
+def post_list(request):
+    return render(request, 'labShare/post_list.html', {})
 
 
 ############# WORK IN PROGRESS #############
