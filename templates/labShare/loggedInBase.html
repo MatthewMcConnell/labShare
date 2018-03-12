@@ -14,7 +14,7 @@
       {% endblock %}
     </title>
   </head>
-  <header>
+  <!-- <header>
     <div class="navbar">
     <img src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="225">
     {% if user.is_authenticated %}
@@ -25,8 +25,31 @@
       </ul>
     {% endif %}
     </div>
-  </header>
+  </header> -->
   <body>
+    <nav>
+      <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="100">
+      <ul>
+        <li id= "linkRef"><a href="{% url 'labList' user.username %}" id="link">My Labs</a></li>
+        <li id= "linkRef"><a href="{% url 'profile' user.username %}" id="link">My Profile</a></li>
+        <li id= "linkRef"><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
+      </ul>
+      <div style="clear:both;">
+      </div>
+    </nav>
+    <div class="responsive-bar">
+      <img  src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="100">
+      <h3 class="menu">Menu</h3>
+      <div style="clear: both;"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".menu").click(function(){
+          $("nav").slideToggle(500);
+        })
+      })
+    </script>
     <div class="container">
       <!-- NOTE: I have changed this to be dynamic so I can dynamically use profile pictures
                  Use the block in extending templates with the path to include a picture -->
