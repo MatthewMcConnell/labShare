@@ -180,6 +180,17 @@ float:right;
     display: none;
   }
 
+  @media (min-width:900px)
+  {
+    nav
+    {
+      display: flex;
+    }
+    .responsive-bar
+    {
+      display: none;
+    }
+  }
 
 }
 /* .nav > li{
