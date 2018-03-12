@@ -79,6 +79,7 @@ def post_list(request):
 ############# WORK IN PROGRESS #############
 def enrol (request):
     form = EnrolForm()
+    contextDict = {}
 
     if (request.method == "POST"):
         form = EnrolForm (request.POST)
@@ -86,29 +87,25 @@ def enrol (request):
         # Getting the profile of the user to get whether they are a tutor or not
         profile = UserProfile.objects.get (user = request.user)
 
-        # Here I am storing the function as a first class object so that it is used
-        # depending on whether the person is a tutor or not
-        print (profile.isStudent)
+        
+        if (form.is_valid()):
+            if (profile.status == "Student"):
+                try:
+                    course = Course.objects.get (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
+                    lab = Lab.objects.get (course = course, labNumber = form.cleaned_data["labNumber"])
+                    
+                    lab.peopleInLab.add (profile)
 
-        if (profile.isStudent):
-            if (form.is_valid()):
-                print (form.cleaned_data["course"])
-                print (form.cleaned_data["level"])
-                print (form.cleaned_data["labNumber"])
-                course = Course.objects.get (name = form.cleaned_data["course"], level = form.cleaned_data["level"])[0]
-                lab = Lab.objects.get (course = course, labNumber = form.cleaned_data["labNumber"])[0]
+                    course.save()
+                    lab.save()
 
-                lab.peopleInLab.add (profile)
+                    return redirect ('labList', request.user.username)
 
-                course.save()
-                lab.save()
-
-                return HttpResponse ("You enrolled!")
-        else:
-            if (form.is_valid()):
-                print (form.cleaned_data["course"])
-                print (form.cleaned_data["level"])
-                print (form.cleaned_data["labNumber"])
+                except Course.DoesNotExist:
+                    contextDict["error"] = "The course does not exist"
+                except Lab.DoesNotExist:
+                    contextDict["error"] = "The lab does not exist"
+            else:
                 course = Course.objects.get_or_create (name = form.cleaned_data["course"], level = form.cleaned_data["level"])[0]
                 lab = Lab.objects.get_or_create (course = course, labNumber = form.cleaned_data["labNumber"])[0]
 
@@ -117,10 +114,11 @@ def enrol (request):
                 course.save()
                 lab.save()
 
-                return HttpResponse ("You enrolled!")
+                return redirect ('labList', request.user.username)
+                
 
 
-    contextDict = {"form": form}
+    contextDict["form"] = form
 
     return render (request, "labShare/enrol.html", contextDict)
 
