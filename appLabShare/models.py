@@ -60,5 +60,4 @@ class Post (models.Model):
         self.save()
 
     def __str__ (self):
-        # "author :: lab :: time"
-        return self.author.__str__() + " :: " + self.timePosted.__str__()
+        return self.content.__str__()

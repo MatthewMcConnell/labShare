@@ -7,7 +7,7 @@ body, html{
   z-index: .5;
 }
 html {
-  background: url("backgrounds/htc_mountain_wallpaper.jpg") no-repeat center center fixed;
+  background: url("backgrounds/switzerand4k.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -43,6 +43,7 @@ float: right;
 margin-top: -2px;
 }
 .navbar{
+  width: 100%;
   list-style: none;
   padding: 20px 0px 20px 0px;
   z-index: 1;
@@ -317,4 +318,43 @@ label {
   height: 190px;
   align-self: center;
   margin-top:20px;
+}
+
+.purpleButton
+{
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #9b59b6;
+  border: none;
+  border-radius: 5px;
+
+}
+.purpleButton:hover
+{
+  box-shadow: inset 0 0 0 2px white;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+}
+.blueButton
+{
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #0EBFE9;
+  border: none;
+  border-radius: 5px;
+
+}
+.blueButton:hover
+{
+  box-shadow: inset 0 0 0 2px white;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
 }

@@ -4,8 +4,9 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView
+from django.utils import timezone
 
-from appLabShare.forms import UserProfileForm, EnrolForm
+from appLabShare.forms import *
 from appLabShare.models import UserProfile, Course, Lab, Post
 
 
@@ -65,8 +66,14 @@ def lab(request):
     return render(request, "labShare/lab.html")
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'labShare/post_list.html', {'posts':posts})
+    posts = Post.objects.filter(timePosted__lte=timezone.now()).order_by('timePosted')
+    form = PostForm()
+
+    contextDict = {}
+    contextDict['form'] = form
+    contextDict['posts'] = posts
+
+    return render(request, 'labShare/lab_posts.html', contextDict)
 
 
 ############# WORK IN PROGRESS #############
