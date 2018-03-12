@@ -20,8 +20,8 @@
         {% csrf_token %}
         <!--{{ form.as_p }}-->
         <p>
-          <label for="id_isStudent">Position:</label><br>
-          <select class="setup_dropdown">
+          <label for="id_status">Position:</label><br>
+          <select class="setup_dropdown" name="status">
             <option value="Student">Student</option>
             <option value="Tutor">Tutor</option>
           </select>
