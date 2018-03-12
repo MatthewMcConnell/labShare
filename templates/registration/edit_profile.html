@@ -1,0 +1,53 @@
+{% extends "labShare/loggedInBase.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Profile Information
+{% endblock %}
+
+{% block body_block %}
+    <h1>Please enter any changes:</h1>
+    {{ pageUser.username }}
+
+
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!--{{ form.as_p }}-->
+        <p>
+          <label for="id_isStudent">Position:</label><br>
+          <select class="setup_dropdown">
+            <option value="Student">Student</option>
+            <option value="Tutor">Tutor</option>
+          </select>
+        </p>
+
+        <p>
+           <label for="id_name">Name:</label><br>
+           <input type="text" name="name" maxlength="128" required="" id="id_name" class="setup_profile"
+           placeholder="{{ profile.name }}">
+         </p>
+
+        <p>
+          <label for="id_picture">Picture:</label><br>
+           <input type="file" name="picture" onchange="previewFile()" id="id_picture" style="margin-top:10px;"><br>
+           <img id="blah" src="#" alt="your image" onerror="this.src='{% static "images/user_image.png" %}'"/>
+         </p>
+
+        <p>
+          <label for="id_bio">Bio:</label><br>
+           <textarea name="bio" id="id_bio" class="setup_bio" rows="10" tabindex="4"></textarea>
+         </p>
+
+        <p>
+          <label for="id_degree">Degree:</label><br>
+           <input type="text" name="degree" maxlength="128" id="id_degree" class="setup_profile">
+         </p>
+
+        <p>
+          <label for="id_university">University:</label><br>
+           <input type="text" name="university" maxlength="128" id="id_university" class="setup_profile">
+         </p>
+
+        <input type="submit" value="Update">
+    </form>
+{% endblock %}

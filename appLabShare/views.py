@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.views.generic.edit import UpdateView
 
 from appLabShare.forms import UserProfileForm, EnrolForm
 from appLabShare.models import UserProfile, Course, Lab
@@ -122,7 +123,17 @@ def register_profile (request):
 
     return render (request, "labShare/setup_profile.html", contextDict)
 
+def edit_profile (request, username):
+    contextDict = {}
 
+    #model = UserProfile
+    #fields = ['name','picture','bio','degree','university',]
+    #template_name_suffix = '_update_form'
+
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+
+    return render(request,"registration/edit_profile.html", contextDict)
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)
 # are dealt with the django-registration-redux package and so you should look there for those views
