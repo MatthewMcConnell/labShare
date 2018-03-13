@@ -15,7 +15,7 @@ from appLabShare.models import UserProfile, Post, Course, Lab
 
 def populate():
     students = [
-        {"username": "1234567s", "password": "HelloWorld1", "name": "Allan McGuire","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "1234567m@student.gla.ac.uk", "university": "UOFG"},
+        {"username": "1234567z", "password": "HelloWorld1", "name": "Allan McGuire","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "1234567m@student.gla.ac.uk", "university": "UOFG"},
         {"username": "3624739y", "password": "HelloWorld2", "name": "David Mitchell","picture": "", "bio": "2nd year, Glasgow university", "degree": "Computing Science", "email": "3624739y@student.gla.ac.uk", "university": "UOFG"},
         {"username": "2253290t", "password": "HelloWorld3", "name": "Ted Smith","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "2253290t@student.gla.ac.uk", "university": "UOFG"},
         {"username": "3842353r", "password": "HelloWorld4", "name": "Oscar Stark","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "3842353r@student.gla.ac.uk", "university": "UOFG"},
@@ -23,7 +23,7 @@ def populate():
     ]
 
     tutors = [
-        {"username": "1234567t", "password": "HelloWorld1", "name": "Patricia Wallace", "email" : "patriciawallace@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i love to learn", "university": "UOFG"},
+        {"username": "1234567x", "password": "HelloWorld1", "name": "Patricia Wallace", "email" : "patriciawallace@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i love to learn", "university": "UOFG"},
         {"username": "5364377a", "password": "HelloWorld7", "name": "Joe Hart", "email" : "joehart@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i adore learning", "university": "UOFG"},
         {"username": "1232331b", "password": "HelloWorld8", "name": "Van der Sar", "email" : "vantheman@gmail.com", "degree" : "computing Science", "picture": "", "bio": "learning is cool", "university": "UOFG"}
     ]
@@ -95,7 +95,7 @@ def addTutor (infoDict):
 def addLab (infoDict):
     l = Lab.objects.get_or_create (labNumber = infoDict["number"],
                                    course = Course.objects.get (name = "EE1X"))[0]
-    l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "1234567t")))
+    l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "1234567x")))
     l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "1232331b")))
     l.save()
     return l
@@ -118,7 +118,7 @@ def addStudent (infoDict):
 def addPost (infoDict):
     p = Post.objects.get_or_create (content = infoDict["content"],
                                     timePosted = infoDict["timePosted"],
-                                    author = UserProfile.objects.get (user = User.objects.get (username = "1234567s")),
+                                    author = UserProfile.objects.get (user = User.objects.get (username = "1234567z")),
                                     postedIn = Lab.objects.get (labNumber = 8))[0]
     p.save()
     return p
