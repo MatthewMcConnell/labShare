@@ -28,18 +28,18 @@
     </div>
   </header> -->
   <body>
-    <nav>
-      <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="100">
-      {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
+      <nav>
+        <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="100">
         <ul>
           <li id= "linkRef"><a href="{% url 'labList' user.username %}" id="link">My Labs</a></li>
           <li id= "linkRef"><a href="{% url 'profile' user.username %}" id="link">My Profile</a></li>
           <li id= "linkRef"><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
         </ul>
-      {% endif %}
-      <div style="clear:both;">
-      </div>
-    </nav>
+        <div style="clear:both;">
+        </div>
+      </nav>
+    {% endif %}
     <div class="responsive-bar">
       <img  src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="100">
       <button class="purpleButton">Menu</button>

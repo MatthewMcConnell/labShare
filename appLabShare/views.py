@@ -87,13 +87,13 @@ def enrol (request):
         # Getting the profile of the user to get whether they are a tutor or not
         profile = UserProfile.objects.get (user = request.user)
 
-        
+
         if (form.is_valid()):
             if (profile.status == "Student"):
                 try:
                     course = Course.objects.get (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
                     lab = Lab.objects.get (course = course, labNumber = form.cleaned_data["labNumber"])
-                    
+
                     lab.peopleInLab.add (profile)
 
                     course.save()
@@ -115,7 +115,7 @@ def enrol (request):
                 lab.save()
 
                 return redirect ('labList', request.user.username)
-                
+
 
 
     contextDict["form"] = form
@@ -161,9 +161,12 @@ class UserEdit(UpdateView):
     template_name_suffix = '_update_form'
 
 @login_required
-def user_edit(request, user_pk):
-    profile = get_object_or_404(models.UserProfile, pk=user_pk)
-    
+def user_edit(request, username):
+    profile = UserProfile.objects.get (user = request.user)
+    form = UserProfileForm(instance = profile)
+
+    return render(request, "registration/edit_profile.html", {'form':form})
+
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)
 # are dealt with the django-registration-redux package and so you should look there for those views
