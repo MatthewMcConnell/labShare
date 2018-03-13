@@ -215,7 +215,7 @@ float:right;
   border: none;
   border-radius: 25px 25px;
   margin: 10% auto;
-  clear: both;
+  clear: all;
   margin-top: 140px;
 }
 
@@ -387,6 +387,118 @@ hr
   width: 90%;
 }
 
+.icons
+{
+  padding: 0;
+  margin: 0 auto;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  background: #fff;
+}
+
+.icons ul
+{
+  position: absolute;
+  top: 90%;
+  left: 40%;
+  bottom: 10%;
+  transform: translate(-55%, 100%);
+  margin: 10%;
+  padding: 0;
+  display: flex;
+}
+.icons ul li
+{
+  list-style: none;
+  margin: 10px 80px;
+}
+
+.icons ul li a #fa
+{
+  font-size: : 40px;
+  color: #fff;
+  line-height: 80px;
+  transition: .5s;
+}
+
+.icons ul li a
+{
+  float: left;
+  font-size: 60px;
+  position: absolute;
+  display: block;
+  width: 80px;
+  height:80px;
+  background: #fff;
+  text-align: center !important;
+  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0,0);
+  transition: .5s;
+  box-shadow: -20px 20px 10px rgba(0,0,0,0.5);
+}
+.icons ul li a:before
+{
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  height: 100%;
+  width: 20px;
+  background: #b1b1b1;
+  transition: .5s;
+  transform: rotate(0deg) skewY(-45deg);
+}
+.icons ul li a:after
+{
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -10px;
+  height: 20px;
+  width: 100%;
+  background: #b1b1b1;
+  transition: .5s;
+  transform: rotate(0deg) skewX(-45deg);
+}
+.icons ul li a:hover
+{
+  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px,-20px);
+  box-shadow: -50px 50px 50px rgba(0,0,0,0.5);
+}
+
+
+.icons ul li:nth-child(1) a
+{
+  color: #fff;
+  background: #3b5999;
+}
+
+.icons ul li:nth-child(1)::before a
+{
+  color: #fff;
+  background: #2e4a85;
+}
+
+.icons ul li:nth-child(1)::after a
+{
+  background: #4a69ad;
+}
+.icons ul li:nth-child(2) a
+{
+  background: #55acee;
+}
+.icons ul li:nth-child(3) a
+{
+  background: #dd4b39;
+}
+.icons ul li:nth-child(4) a
+{
+  background: #0077b5;
+}
+.icons ul li:nth-child(5) a
+{
+  background: #e4405f;
+}
 /* .hoverUnderLine{
   display: inline-block;
   text-align: center;
@@ -541,6 +653,7 @@ label {
 
 .gradient-text
 {
+  padding-top: 30px;
   font-size: 80px;
   font-family: "Maven";
 }

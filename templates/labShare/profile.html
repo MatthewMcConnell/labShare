@@ -31,6 +31,14 @@
 
     <a href="{% url 'labList' pageUser.username %}" id="link">{{ pageUser.username }}'s Labs</a><br>
     <a href="{% url 'edit_profile' username=user.username %}" id="link">Edit Profile</a>
-
+<div class="icons">
+    <ul>
+      <li><a href="#"><i id="fa" class="fab fa-facebook-f" style="color:#fff;" aria-hidden="true"></i></a> </li>
+      <li><a href="#"><i id="fa" class="fab fa-twitter" style="color:#fff;" aria-hidden="true"></i></a></a></li>
+      <li><a href="#"><i id="fa" class="fab fa-linkedin-in" style="color:#fff;" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i id="fa" class="fab fa-google-plus-g" style="color:#fff;" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i id="fa" class="fab fa-instagram" style="color:#fff;" aria-hidden="true"></i></a></li>
+    </ul>
+</div>
 
 {% endblock %}
