@@ -15,22 +15,22 @@ from appLabShare.models import UserProfile, Post, Course, Lab
 
 def populate():
     students = [
-        {"username": "1234567m", "password": "HelloWorld1", "first_name": "Allan" ,"last_name": "McGuire","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "1234567m@student.gla.ac.uk"},
-        {"username": "3624739y", "password": "HelloWorld2", "first_name": "David","last_name": "Mitchell","picture": "", "bio": "2nd year, Glasgow university", "degree": "Computing Science", "email": "3624739y@student.gla.ac.uk"},
-        {"username": "2253290t", "password": "HelloWorld3", "first_name": "Ted","last_name": "Smith","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "2253290t@student.gla.ac.uk"},
-        {"username": "3842353r", "password": "HelloWorld4", "first_name": "Oscar","last_name": "Stark","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "3842353r@student.gla.ac.uk"},
-        {"username": "2356847a", "password": "HelloWorld5", "first_name": "Daniel","last_name": "Tarry","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "2356847a@student.gla.ac.uk"}
+        {"username": "1234567z", "password": "HelloWorld1", "name": "Allan McGuire","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "1234567m@student.gla.ac.uk", "university": "UOFG"},
+        {"username": "3624739y", "password": "HelloWorld2", "name": "David Mitchell","picture": "", "bio": "2nd year, Glasgow university", "degree": "Computing Science", "email": "3624739y@student.gla.ac.uk", "university": "UOFG"},
+        {"username": "2253290t", "password": "HelloWorld3", "name": "Ted Smith","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "2253290t@student.gla.ac.uk", "university": "UOFG"},
+        {"username": "3842353r", "password": "HelloWorld4", "name": "Oscar Stark","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "3842353r@student.gla.ac.uk", "university": "UOFG"},
+        {"username": "2356847a", "password": "HelloWorld5", "name": "Daniel Tarry","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "2356847a@student.gla.ac.uk", "university": "UOFG"}
     ]
 
     tutors = [
-        {"username": "1232333", "password": "HelloWorld6", "first_name": "Patricia", "last_name": "Wallace", "email" : "patriciawallace@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i love to learn" },
-        {"username": "5364377", "password": "HelloWorld7", "first_name": "Joe", "last_name": "Hart", "email" : "joehart@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i adore learning" },
-        {"username": "1232331", "password": "HelloWorld8", "first_name": "Van", "last_name": "der Sar", "email" : "vantheman@gmail.com", "degree" : "computing Science", "picture": "", "bio": "leaning is cool" }
+        {"username": "1234567x", "password": "HelloWorld1", "name": "Patricia Wallace", "email" : "patriciawallace@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i love to learn", "university": "UOFG"},
+        {"username": "5364377a", "password": "HelloWorld7", "name": "Joe Hart", "email" : "joehart@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i adore learning", "university": "UOFG"},
+        {"username": "1232331b", "password": "HelloWorld8", "name": "Van der Sar", "email" : "vantheman@gmail.com", "degree" : "computing Science", "picture": "", "bio": "learning is cool", "university": "UOFG"}
     ]
 
     courses = [
-        {"name": "Computing Science", "level": 2},
-        {"name": "Economics", "level" : 2},
+        {"name": "CS1P", "level": 1},
+        {"name": "EE1X", "level" : 1},
 
     ]
 
@@ -86,16 +86,17 @@ def addTutor (infoDict):
                                            picture = infoDict["picture"],
                                            bio = infoDict["bio"],
                                            degree = infoDict["degree"],
-                                           isStudent = False)[0]
+                                           name = infoDict["name"],
+                                           status = "Tutor")[0]
     t.save()
     return t
 
 
 def addLab (infoDict):
     l = Lab.objects.get_or_create (labNumber = infoDict["number"],
-                                   course = Course.objects.get (name = "Economics"))[0]
-    l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "1232333")))
-    l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "1232331")))
+                                   course = Course.objects.get (name = "EE1X"))[0]
+    l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "1234567x")))
+    l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "1232331b")))
     l.save()
     return l
 
@@ -106,8 +107,9 @@ def addStudent (infoDict):
                                            picture = infoDict["picture"],
                                            bio = infoDict["bio"],
                                            degree = infoDict["degree"],
-                                           isStudent = True)[0]
-    s.courses.add (Course.objects.get (name = "Economics"))
+                                           name = infoDict["name"],
+                                           status = "Student")[0]
+    s.courses.add (Course.objects.get (name = "EE1X"))
     s.save()
     return s
 
@@ -116,7 +118,7 @@ def addStudent (infoDict):
 def addPost (infoDict):
     p = Post.objects.get_or_create (content = infoDict["content"],
                                     timePosted = infoDict["timePosted"],
-                                    author = UserProfile.objects.get (user = User.objects.get (username = "1234567m")),
+                                    author = UserProfile.objects.get (user = User.objects.get (username = "1234567z")),
                                     postedIn = Lab.objects.get (labNumber = 8))[0]
     p.save()
     return p
@@ -125,8 +127,6 @@ def addPost (infoDict):
 def addUser (infoDict):
     u = User.objects.get_or_create (username = infoDict["username"],
                                       password = infoDict["password"],
-                                      first_name = infoDict["first_name"],
-                                      last_name = infoDict["last_name"],
                                       email = infoDict["email"])[0]
     u.save()
     return u
