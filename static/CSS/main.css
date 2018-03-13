@@ -4,6 +4,8 @@ html{
   padding: 0;
 }
 * {
+  font-family: "Dosis";
+
   z-index: .5;
 }
 html {
@@ -342,6 +344,7 @@ float:right;
   font-size: 80px;
 }
 .box {
+  text-decoration: none;
   justify-content: space-between;
   color: white;
   border-radius: 3%;
@@ -357,14 +360,20 @@ float:right;
   -moz-transition: 0.2s ease-in-out;
   -o-transition: 0.2s ease-in-out;
   z-index;
+  padding: 0 1rem;
+  transition: opacity 0.5s;
 }
 .box:hover{
-
+  opacity: 1 !important;
   box-shadow: inset 0 0 0 5px white;
   -webkit-transform: scale(1.15);
   -ms-transform: scale(1.15);
   transform: scale(1.15);
 
+}
+.labListItems:hover .box:not(:hover)
+{
+  opacity: .7;
 }
 
 hr
@@ -489,3 +498,20 @@ label {
   -ms-transform: scale(1.15);
   transform: scale(1.15);
 }
+
+.gradient-text
+{
+  font-size: 80px;
+  font-family: "Maven";
+}
+
+/* span
+{
+  padding: 0 1rem;
+  transition: opacity 0.2s;
+}
+
+.labListItems:hover span:not(:hover)
+{
+  opacity: 0.5;
+} */

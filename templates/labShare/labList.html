@@ -3,47 +3,25 @@
 
 {% block body_block %}
 
-<span style="font-size: 60px;">My Labs</span>
-<div class="subject">
-  <span class="text">Computing Science</span>
-
-
-
-  <div id="subject1">
-        <!-- Below is an example of how I have made the lab url's dynamic -->
-        <a href="{% url 'lab' 'CS' 1 %}"><div class="box">Lab 1</div></a>
-        <a href="#"><div class="box">Lab 4</div></a>
-        <a href="#"><div class="box">Lab 6</div></a>
-        {% if user == pageUser %}
-        <a href="{% url 'enrol' %}"><div class="box" id="add"> + </div></a>
-        {% endif %}
-
-  </div>
-</div>
+<p class="gradient-text">{{profile.name}}'s Labs</p>
+<p class="text" style="margin-bottom:15px;">{{ profile.degree }}</p>
 <hr>
-<div class="subject">
-  <span class="text">Economics</span>
-  <div id="subject2">
-        <a href="#"><div class="box">Lab 2</div></a>
-        <a href="#"><div class="box">Lab 7</div></a>
+  <div class="labListItems">
+      <!-- Below is an example of how I have made the lab url's dynamic -->
+        <a href="{% url 'lab' 'CS' 1 %}"><span><div class="box" style="opacity: .7;">Lab 1</div><span></a>
+        <a href="#"><span><div class="box" style="opacity: .7;"><span>Lab 4</div><span></a>
+        <a href="#"><span><div class="box" style="opacity: .7;">Lab 6</div></span></a>
         {% if user == pageUser %}
-        <a href="{% url 'enrol' %}"><div class="box" id="add"> + </div></a>
+        <a href="{% url 'enrol' %}"><span><div class="box" id="add"> + </div></span></a>
         {% endif %}
-
   </div>
-</div>
 <hr>
-<div class="subject">
-  <span class="text">Physics</span>
-
-  <div id="subject3">
-        <a href="#"><div class="box">Lab 4</div></a>
-        {% if user == pageUser %}
-        <a href="{% url 'enrol' %}"><div class="box" id="add"> + </div></a>
-        {% endif %}
-  </div>
-</div>
-
+<!-- Colour randomiser from list -->
+<script type="text/javascript">
+var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
+var random_color = colors[Math.floor(Math.random() * colors.length)];
+$(".box").css('background-color', random_color);
+</script>
 <hr>
 
 {% endblock %}
