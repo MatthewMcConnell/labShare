@@ -15,17 +15,17 @@ from appLabShare.models import UserProfile, Post, Course, Lab
 
 def populate():
     students = [
-        {"username": "1234567z", "password": "HelloWorld1", "name": "Allan McGuire","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "1234567m@student.gla.ac.uk", "university": "UOFG"},
-        {"username": "3624739y", "password": "HelloWorld2", "name": "David Mitchell","picture": "", "bio": "2nd year, Glasgow university", "degree": "Computing Science", "email": "3624739y@student.gla.ac.uk", "university": "UOFG"},
-        {"username": "2253290t", "password": "HelloWorld3", "name": "Ted Smith","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "2253290t@student.gla.ac.uk", "university": "UOFG"},
-        {"username": "3842353r", "password": "HelloWorld4", "name": "Oscar Stark","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "3842353r@student.gla.ac.uk", "university": "UOFG"},
-        {"username": "2356847a", "password": "HelloWorld5", "name": "Daniel Tarry","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "2356847a@student.gla.ac.uk", "university": "UOFG"}
+        {"username": "2281654m", "password": "HelloWorld1", "first_name": "Allan" ,"last_name": "McGuire","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "1234567m@student.gla.ac.uk"},
+        {"username": "2266511m", "password": "HelloWorld2", "first_name": "David","last_name": "Mitchell","picture": "", "bio": "2nd year, Glasgow university", "degree": "Computing Science", "email": "3624739y@student.gla.ac.uk"},
+        {"username": "2253290s", "password": "HelloWorld3", "first_name": "Ted","last_name": "Smith","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "2253290t@student.gla.ac.uk"},
+        {"username": "2234512s", "password": "HelloWorld4", "first_name": "Oscar","last_name": "Stark","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "3842353r@student.gla.ac.uk"},
+        {"username": "2263546t", "password": "HelloWorld5", "first_name": "Daniel","last_name": "Tarry","picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "2356847a@student.gla.ac.uk"}
     ]
 
     tutors = [
-        {"username": "1234567x", "password": "HelloWorld1", "name": "Patricia Wallace", "email" : "patriciawallace@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i love to learn", "university": "UOFG"},
-        {"username": "5364377a", "password": "HelloWorld7", "name": "Joe Hart", "email" : "joehart@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i adore learning", "university": "UOFG"},
-        {"username": "1232331b", "password": "HelloWorld8", "name": "Van der Sar", "email" : "vantheman@gmail.com", "degree" : "computing Science", "picture": "", "bio": "learning is cool", "university": "UOFG"}
+        {"username": "11223344", "password": "HelloWorld6", "first_name": "Patricia", "last_name": "Wallace", "email" : "patriciawallace@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i love to learn" },
+        {"username": "99887766", "password": "HelloWorld7", "first_name": "Joe", "last_name": "Hart", "email" : "joehart@gmail.com", "degree" : "computing Science", "picture": "", "bio": "i adore learning" },
+        {"username": "12345678", "password": "HelloWorld8", "first_name": "Van", "last_name": "der Sar", "email" : "vantheman@gmail.com", "degree" : "computing Science", "picture": "", "bio": "leaning is cool" }
     ]
 
     courses = [
@@ -56,7 +56,7 @@ def populate():
         t = addTutor (tutor)
         print (t)
 
-    
+
     for lab in labs:
         l = addLab (lab)
         print (l)
@@ -66,7 +66,7 @@ def populate():
         s = addStudent (student)
         print (s)
 
-    
+
     for post in posts:
         p = addPost (post)
         print (p)
@@ -130,7 +130,7 @@ def addUser (infoDict):
                                       email = infoDict["email"])[0]
     u.save()
     return u
-    
+
 
 
 if __name__ == "__main__":

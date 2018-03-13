@@ -149,22 +149,6 @@ def register_profile (request):
 
     return render (request, "labShare/setup_profile.html", contextDict)
 
-def edit_profile (request, username):
-    form = UserProfileForm()
-
-    #model = UserProfile
-    #fields = ['name','picture','bio','degree','university',]
-    #template_name_suffix = '_update_form'
-
-    contextDict["pageUser"] = User.objects.get (username = username)
-    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
-    return render(request, "registration/edit_profile.html", contextDict)
-
-class UserEdit(UpdateView):
-    model = UserProfile
-    fields = ['name', 'picture', 'bio', 'degree', 'university',]
-    template_name_suffix = '_update_form'
-
 @login_required
 def user_edit(request, username):
     profile = UserProfile.objects.get (user = request.user)
