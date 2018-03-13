@@ -205,6 +205,7 @@ float:right;
   color: #4cffff;
 }
 .container{
+  min-width: 150px;
   margin:150px 0 0;
   width: 90%;
   height: auto;
@@ -349,19 +350,19 @@ float:right;
   color: white;
   border-radius: 3%;
   display: inline-block;
-  height: 300px;
-  width: 300px;
-  margin:6.3%;
+  height: 270px;;
+  width:  250px;
+  margin:6.7%;
   font-size: 50px;
   text-align: center;
   vertical-align: middle;
-  line-height: 300px;
+  line-height: 270px;
   -webkit-transition: 0.2s ease-in-out;
   -moz-transition: 0.2s ease-in-out;
   -o-transition: 0.2s ease-in-out;
   z-index;
   padding: 0 1rem;
-  transition: opacity 0.5s;
+  transition: opacity 1.2s;
 }
 .box:hover{
   opacity: 1 !important;
@@ -462,11 +463,24 @@ label {
 
 .purpleButton
 {
+  min-width: 48%;
+  min-height: 48%;
   padding: 15px 25px;
   color: #fff;
   background-color: #9b59b6;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
+
+}
+.purpleCornerButton
+{
+  min-width: 48%;
+  min-height: 48%;
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #9b59b6;
+  border: none;
+  border-radius: 25px;
 
 }
 .purpleButton:hover
@@ -481,11 +495,32 @@ label {
 }
 .blueButton
 {
+  min-width: 48%;
+  min-height: 48%;
   padding: 15px 25px;
   color: #fff;
   background-color: #0EBFE9;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
+
+}
+.blueCornerButton
+{
+  min-width: 48%;
+  min-height: 48%;
+  padding: 15px 25px;
+  color: #fff;
+  background-color: #0EBFE9;
+  border: none;
+  border-radius: 25px;
+
+}
+.blueCornerButton:hover{
+  box-shadow: inset 0 0 0 2px white;
+
+}
+.purpleCornerButton:hover{
+  box-shadow: inset 0 0 0 2px white;
 
 }
 .blueButton:hover
@@ -504,14 +539,16 @@ label {
   font-size: 80px;
   font-family: "Maven";
 }
-
-/* span
+.profilePicture
 {
-  padding: 0 1rem;
-  transition: opacity 0.2s;
+  position: fixed;
+  z-index: 999;
 }
-
-.labListItems:hover span:not(:hover)
+.labListItems .box
 {
-  opacity: 0.5;
-} */
+  margin: 0 auto;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+
+}
