@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^labList/(?P<username>\w+)/$', views.labList, name='labList'),
     url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.lab, name='lab'),
     url(r'^enrol/$', views.enrol, name="enrol"),
-    url(r'^edit_profile/(?P<username>\w+)/$', views.edit_profile, name="edit_profile"),
+    url(r'^edit_profile/(?P<username>\w+)/$', views.user_edit, name="edit_profile"),
 
     # THIS IS A TEST URL - DO NOT DELETE YET
     url(r'^lab/$', views.lab, name='lab'),
