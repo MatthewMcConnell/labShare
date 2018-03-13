@@ -30,8 +30,6 @@ class EnrolForm (forms.Form):
 
 
 class PostForm(forms.ModelForm):
-    #message = forms.Textarea()
-
     class Meta:
         model = Post
         fields = ('content',)
