@@ -7,7 +7,7 @@
 {% block body_block %}
     <form action="/labShare/enrol/" method="post">
         {% csrf_token %}
-        
+
         {{ form }}
 
         <input type="submit" value="Enrol" name="submit">
@@ -16,4 +16,22 @@
 
         {{ error }}
     </form>
+
+    <br>
+
+    <table>
+        <tr>
+            <th>Course Level</th>
+            <th>Course Name</th>
+            <th>Labs</th>
+        </tr>
+        {% for course in courses %}
+            <tr>
+                <td>{{ course.level }}</td>
+                <td>{{ course.name }}</td>
+                <td>{% Lab.objects.filter(course = course) %}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
 {% endblock %}
