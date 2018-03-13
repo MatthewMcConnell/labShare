@@ -119,6 +119,7 @@ def enrol (request):
 
 
     contextDict["form"] = form
+    contextDict["courses"] = Course.objects.order_by('level')
 
     return render (request, "labShare/enrol.html", contextDict)
 
