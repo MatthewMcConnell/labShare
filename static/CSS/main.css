@@ -243,6 +243,8 @@ float:right;
   font-family: "Arial";
   letter-spacing: 2px;
   color: white;
+  text-align: center;
+  align-items: center;
 }
 .labList
 {

@@ -153,7 +153,6 @@ def user_edit(request, username):
         form = UserProfileForm(instance=profile, data=request.POST)
         if form.is_valid():
             form.save()
-        #message.success(request)
             return redirect("profileRedirect")
 
     return render(request, "registration/edit_profile.html", {'form':form})
