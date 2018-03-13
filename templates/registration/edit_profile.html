@@ -6,10 +6,11 @@
 {% endblock %}
 
 {% block body_block %}
-    <form action="." method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+
+    <!--<form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}-->
         <!--{{ form.as_p }}-->
-        <p>
+        <!--<p>
           <label for="id_isStudent">Position:</label><br>
           <select class="setup_dropdown">
             <option value="Student">Student</option>
@@ -46,9 +47,10 @@
          </p>
 
         <input type="submit" value="Update">
-    </form>
-  
-    <form action="" method="post">{% csrf_token %}
+    </form>-->
+    <h1>Edit Proifile</h1>
+    <form action="" method="post">
+      {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="Update" />
     </form>
