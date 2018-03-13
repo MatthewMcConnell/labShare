@@ -50,9 +50,7 @@ class Lab (models.Model):
 class Post (models.Model):
     author = models.ForeignKey (UserProfile)
     postedIn = models.ForeignKey (Lab)
-
     timePosted = models.DateTimeField(default=timezone.now)
-
     content = models.TextField ()
 
     def publish(self):

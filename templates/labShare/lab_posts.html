@@ -18,9 +18,10 @@
   </div>
 
   <!-- Create css class "comment information" and "comment content" -->
+  <!-- The following displays all the "comments" in a discussion page -->
   {% for post in posts %}
     <div>
-      <p>{{ post.author }} || {{ post.timePosted }}</p>
+      <p>{{ post.author }} - {{ post.timePosted }}</p>
       <h3>{{ post.content }}</h3>
       <p>{{ post.text|linebreaksbr }}</p>
 

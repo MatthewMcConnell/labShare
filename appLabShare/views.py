@@ -65,13 +65,25 @@ def lab(request):
     # This will be the template view for the specific lab page, not currently finished.
     return render(request, "labShare/lab.html")
 
+@login_required
 def post_list(request):
-    posts = Post.objects.filter(timePosted__lte=timezone.now()).order_by('timePosted')
     form = PostForm()
 
-    contextDict = {}
-    contextDict['form'] = form
-    contextDict['posts'] = posts
+    if request.method == "POST":
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = UserProfile.objects.get(user=request.user)
+            post.timePosted = timezone.now()
+            post.postedIn = Lab.objects.get(labNumber = 8)
+            post.save()
+            return redirect('lab_posts')
+    else:
+        form = PostForm()
+
+    posts = Post.objects.order_by('-timePosted')[:9]
+    contextDict = {'form':form, 'posts':posts}
 
     return render(request, 'labShare/lab_posts.html', contextDict)
 
