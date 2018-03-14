@@ -329,6 +329,26 @@ float:right;
   columns: 150;
 }
 
+.enroll .commentSubmission {
+  display: inline-block;
+  min-width: 10%;
+  max-width: 100px;
+  height: auto;
+  padding: 1%;
+  margin: 5%;
+  /* Comment Text */
+  font-size: 20px;
+  text-align: justify;
+  color: white;
+  /* text-indent: 50px; */
+  /* Comment Box */
+  height: 10%;
+  background-color: rgba(38,40,49,0.9);
+  border: none;
+  border-radius: 10px 10px;
+  columns: 150;
+}
+
 .submitCommentButton {
   width: 150px;
   height: 50px;
@@ -693,7 +713,14 @@ label {
   -ms-transform: scale(1.15);
   transform: scale(1.15);
 }
-
+.section
+{
+  text-align: center;
+}
+.table{
+  font-size: 32px;
+  display: inline-table;
+}
 .gradient-text
 {
   padding-top: 30px;
@@ -712,4 +739,14 @@ label {
   margin-right: 10%;
   margin-top: 10%;
 
+}
+table
+
+{
+  text-align: center;
+}
+
+.row
+{
+  padding: 5px;
 }
