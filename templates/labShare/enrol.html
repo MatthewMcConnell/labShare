@@ -8,10 +8,11 @@
     <form action="/labShare/enrol/" method="post">
         {% csrf_token %}
 
-        {{ form }}
-
+        <!-- {{ form.as_table}}  -->
+        <p>
+          <input type="text" class="course" name="course" value="Course Name">
+        </p>
         <input type="submit" value="Enrol" name="submit">
-
         <br>
 
         {{ error }}
