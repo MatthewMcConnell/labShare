@@ -7,15 +7,17 @@
 {% block body_block %}
 
   <H2>Lab X - Discussion Page</H2>
+
+  <!-- Comment submission -->
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- https://stackoverflow.com/questions/5827590/css-styling-in-django-forms -->
     <!-- Using form.as_p -->
-    {{ form.as_p }}
+    <!-- {{ form.as_p }}
     <p><input type="submit" value="Submit Comment" class="submitCommentButton"></p> -->
 
     <!-- Using the form code to implement CSS properly -->
-    <!-- <p>
+    <p>
       <label for="id_content">Enter Comment:</label>
     </p>
     <!-- Comment text input -->
@@ -26,10 +28,11 @@
     <p>
       <label for="id_file">Upload File:</label>
       <input type="file" name="attachedFile" onchange="previewFile()" id="id_file" style="margin-top:10px;">
-    </p> -->
-    <!-- <p>
+    </p>
+    <!-- Submit Button -->
+    <p>
       <input type="submit" value="Submit Comment" class="submitCommentButton">
-    </p> -->
+    </p>
   </form>
 
 
@@ -40,9 +43,10 @@
   <!-- The following displays all the "comments" in a discussion page -->
   {% for post in posts %}
     <div class="comment">
-      <p style="color:#caa0db">{{ post.author }} - {{ post.timePosted }}</p>
+      <p style="color:#4cffff">{{ post.author.name }} • {{ post.author }} • {{ post.timePosted }}
+      </p>
       <h3>{{ post.content }}</h3>
-      <p>{{ post.attachedFile }}
+      <p>{{ post.attachedFile }}</p>
     </div>
   {% endfor %}
 
