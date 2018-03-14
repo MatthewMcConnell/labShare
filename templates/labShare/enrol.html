@@ -1,5 +1,7 @@
 {% extends "labShare/loggedInBase.html" %}
 
+{% load appLabShareTemplateTags %}
+
 {% block title_block %}
     Enrol
 {% endblock %}
@@ -25,11 +27,15 @@
             <th>Course Name</th>
             <th>Labs</th>
         </tr>
-        {% for course in courses %}
+        {% for courseLab in table %}
             <tr>
-                <td>{{ course.level }}</td>
-                <td>{{ course.name }}</td>
-                <td>1</td>
+                <td>{{ courseLab.0.level }}</td>
+                <td>{{ courseLab.0.name }}</td>
+                <td>
+                    {% for lab in courseLab.1 %}
+                        {{ lab.labNumber }} 
+                    {% endfor %}
+                </td>
             </tr>
         {% endfor %}
     </table>

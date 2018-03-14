@@ -138,11 +138,13 @@ def enrol (request):
 
 
     contextDict["form"] = form
-    contextDict["courses"] = Course.objects.order_by('level')
+    courseList = Course.objects.order_by('level')
+    labList = []
 
-    for course in contextDict["courses"]:
-        contextDict[course] = Lab.objects.filter(course = course)
-        print (contextDict[course])
+    for course in courseList:
+        labList.append(Lab.objects.filter(course = course).order_by("labNumber"))
+
+    contextDict["table"] = zip(courseList, labList)
 
     return render (request, "labShare/enrol.html", contextDict)
 
