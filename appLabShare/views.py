@@ -21,6 +21,12 @@ def enter (request):
 # def signUp(request):
 #     return render(request, "labShare/signup.html")
 
+def friendsList(request, username):
+    contextDict = {}
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+
+    return render(request, "labShare/friendsList.html", contextDict)
 
 @login_required
 def profile(request, username):
@@ -55,16 +61,6 @@ def labList(request, username):
 
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
-
-    return render(request, "labShare/labList.html", contextDict)
-
-
-def labList(request, username):
-    contextDict = {}
-
-    contextDict["pageUser"] = User.objects.get (username = username)
-    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
-
     return render(request, "labShare/labList.html", contextDict)
 
 # Don't delete the comment below, just altered this so I can test the page
@@ -78,19 +74,18 @@ def post_list(request):
     form = PostForm()
 
     if request.method == "POST":
-        form = PostForm(request.POST)
-
-        print ("hello")
-
+        form = PostForm(request.POST, request.FILES)
+        print ("##########################")
+        print ("form.is_valid():")
         print (form.is_valid())
+        print ("##########################")
 
         if form.is_valid():
             post = form.save(commit=False)
             post.author = UserProfile.objects.get(user=request.user)
             post.timePosted = timezone.now()
             post.postedIn = Lab.objects.get(labNumber = 8)
-            post.attachedFile = ''
-            print (form.cleaned_data["attachedFile"])
+            # post.attachedFile = 
             post.save()
             return redirect('lab_posts')
     else:

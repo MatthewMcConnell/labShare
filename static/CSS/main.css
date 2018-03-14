@@ -5,11 +5,14 @@ html{
 }
 * {
   font-family: "Dosis";
-
   z-index: .5;
 }
+p
+{
+  font-family: "Dosis";
+}
 html {
-  background: url("backgrounds/flat.jpg") no-repeat center center fixed;
+  background: url("backgrounds/mountains.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -276,6 +279,11 @@ float:right;
   position: static;
 }
 
+.name {
+  color: #4cffff;
+  font-size: 50px;
+}
+
 .comment {
   min-width: 150px;
   width: auto;
@@ -293,7 +301,7 @@ float:right;
   /* Comment Box */
   background-color: rgba(38,40,49,0.9);
   border: none;
-  border-radius: 30px 30px;
+  border-radius: 10px 10px;
   clear: both;
 }
 
