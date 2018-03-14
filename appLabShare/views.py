@@ -145,7 +145,7 @@ def enrol (request):
 
 
     contextDict["form"] = form
-    courseList = Course.objects.order_by('level')
+    courseList = Course.objects.order_by("level", "name")
     labList = []
 
     for course in courseList:
