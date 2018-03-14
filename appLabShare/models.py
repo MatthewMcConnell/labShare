@@ -53,7 +53,7 @@ class Post (models.Model):
     timePosted = models.DateTimeField(default=timezone.now)
     content = models.TextField ()
     # Attached files will be saved to /media/lab_files/
-    attachedFile = models.FileField (upload_to='lab_files', default='')
+    attachedFile = models.FileField (upload_to='lab_files/', default='', blank=True, null=True)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -61,3 +61,14 @@ class Post (models.Model):
 
     def __str__ (self):
         return self.content.__str__()
+
+# class friend (models.model):
+#     user = models.ManyToManyField(User)
+#     currentUser = models.ForeignKey(user, related_name='owner', null=)
+#
+#     @classmethod
+#     def makeFriend(cls, currentUser, newFriend):
+#         friend, created = cls.objects.get_or_create(
+#             currentUser = currentUser
+#         )
+#         friend.users.add(new_friend)

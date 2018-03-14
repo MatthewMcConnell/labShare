@@ -1,6 +1,8 @@
 {% extends 'labShare/loggedInBase.html' %}
 
-
+<div class="profilePicture">
+  {% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
+</div>
 {% block body_block %}
 
 <p class="gradient-text" style="font-family: "Dosis"">{{profile.name}}'s Labs</p>
