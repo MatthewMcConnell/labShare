@@ -97,7 +97,7 @@ def post_list(request):
     return render(request, 'labShare/lab_posts.html', contextDict)
 
 
-############# WORK IN PROGRESS #############
+
 def enrol (request):
     form = EnrolForm()
     contextDict = {}
@@ -140,11 +140,13 @@ def enrol (request):
 
 
     contextDict["form"] = form
-    contextDict["courses"] = Course.objects.order_by('level')
+    courseList = Course.objects.order_by("level", "name")
+    labList = []
 
-    for course in contextDict["courses"]:
-        contextDict[course] = Lab.objects.filter(course = course)
-        print (contextDict[course])
+    for course in courseList:
+        labList.append(Lab.objects.filter(course = course).order_by("labNumber"))
+
+    contextDict["table"] = zip(courseList, labList)
 
     return render (request, "labShare/enrol.html", contextDict)
 
@@ -170,6 +172,8 @@ def register_profile (request):
 
     return render (request, "labShare/setup_profile.html", contextDict)
 
+
+
 @login_required
 def user_edit(request, username):
     profile = UserProfile.objects.get (user = request.user)
@@ -177,14 +181,9 @@ def user_edit(request, username):
     contextDict = {}
 
     if request.method == 'POST':
-        form = UserProfileForm(instance=profile, data=request.POST)
+        form = UserProfileForm(instance = profile, data = request.POST, files = request.FILES)
         if form.is_valid():
-            if 'id_picture' in request.POST:
-                image = request.FILES['id_picture']
-                UserProfile.profile.picture = image
-
             userProfile = form.save(commit = False)
-            userProfile.user= request.user
             userProfile.save()
             return redirect("profileRedirect")
         else:
