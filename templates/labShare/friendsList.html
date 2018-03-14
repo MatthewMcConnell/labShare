@@ -6,4 +6,25 @@
 </div>
 {% block body_block %}
 
+<div class="bodyDiv">
+  <div class="col-sm-3">
+    <div class="cardImage">
+      <img src="{{MEDIA_URL}}{{profile.picture}}" alt="">
+    </div>
+    <div class="details">
+      <div class="center">
+        <h1>{{profile.name}} <br> <span> Student </span> </h1>
+        <p>{{profile.bio}}</p>
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
+          <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+
+      </div>
+    </div>
+    </div>
+  </div>
 {% endblock %}
