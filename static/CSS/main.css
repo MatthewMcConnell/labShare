@@ -748,20 +748,30 @@ table
 }
 .bodyDiv
 {
-  margin: 0;
+  margin:0;
   padding: 0;
-  background: #250008;
+  margin-top: 40px;
+  /* padding: 10px 10px; */
+  /* clear: both; */
+  /* background: #250008; */
 }
 .card
 {
-  position: absolute;
-  top: 50%;
+  position: relative;
+  justify-content: space-between;
+  /* display: inline-block; */
+  float: left;
+  margin: 40px 40px 0 55px;
+  /* border-radius: 20px; */
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 360px;
-  height: 480px;
-  background: #262626;
+  transform: translate(-50%, 0%); */
+  width: 270px;
+  height: 320px;
+  /* display: block; */
 }
+
+
 .card .cardImage
 {
   width: 100%;
@@ -780,9 +790,11 @@ table
 {
   opacity: .5;
   transform: translateX(30%);
+
 }
 .card .details
-{position: absolute;
+{
+position: absolute;
 top: 0;
 left: 0;
 width: 70%;
