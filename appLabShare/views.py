@@ -21,6 +21,7 @@ def enter (request):
 # def signUp(request):
 #     return render(request, "labShare/signup.html")
 
+@login_required
 def friendsList(request, username):
     contextDict = {}
     contextDict["pageUser"] = User.objects.get (username = username)
@@ -56,11 +57,15 @@ def profileRedirect (request):
     else:
         return HttpResponseRedirect (reverse ("register-profile"))
 
+
+@login_required
 def labList(request, username):
     contextDict = {}
 
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+    contextDict["labs"] = Lab.objects.filter(peopleInLab = contextDict["profile"])
+
     return render(request, "labShare/labList.html", contextDict)
 
 # Don't delete the comment below, just altered this so I can test the page
@@ -68,6 +73,8 @@ def labList(request, username):
 def lab(request):
     # This will be the template view for the specific lab page, not currently finished.
     return render(request, "labShare/lab.html")
+
+
 
 @login_required
 def post_list(request):
@@ -97,7 +104,7 @@ def post_list(request):
     return render(request, 'labShare/lab_posts.html', contextDict)
 
 
-
+@login_required
 def enrol (request):
     form = EnrolForm()
     contextDict = {}
