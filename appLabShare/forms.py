@@ -30,11 +30,9 @@ class EnrolForm (forms.Form):
 
 
 class PostForm(forms.ModelForm):
-    # attachedFile = form.FileField (required = False)
-
     class Meta:
         model = Post
-        fields = ('content', 'attachedFile')
+        fields = ['content', 'attachedFile']
         widgets = {
             'content' : forms.TextInput(attrs={'class' : 'commentSubmission', 'placeholder' : "Please enter a comment"}),
         }

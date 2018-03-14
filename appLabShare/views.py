@@ -56,12 +56,29 @@ def profileRedirect (request):
     else:
         return HttpResponseRedirect (reverse ("register-profile"))
 
+def labList(request, username):
+    contextDict = {}
+
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+
+    return render(request, "labShare/labList.html", contextDict)
+
 
 def labList(request, username):
     contextDict = {}
 
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+
+<<<<<<< HEAD
+def labList(request, username):
+    contextDict = {}
+
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+=======
+>>>>>>> f8c7679e230ca8852674926cae0c209db95d4ee5
     return render(request, "labShare/labList.html", contextDict)
 
 # Don't delete the comment below, just altered this so I can test the page
@@ -77,11 +94,17 @@ def post_list(request):
     if request.method == "POST":
         form = PostForm(request.POST)
 
+        print ("hello")
+
+        print (form.is_valid())
+
         if form.is_valid():
             post = form.save(commit=False)
             post.author = UserProfile.objects.get(user=request.user)
             post.timePosted = timezone.now()
             post.postedIn = Lab.objects.get(labNumber = 8)
+            post.attachedFile = ''
+            print (form.cleaned_data["attachedFile"])
             post.save()
             return redirect('lab_posts')
     else:
@@ -136,6 +159,11 @@ def enrol (request):
 
 
     contextDict["form"] = form
+    contextDict["courses"] = Course.objects.order_by('level')
+
+    for course in contextDict["courses"]:
+        contextDict[course] = Lab.objects.filter(course = course)
+        print (contextDict[course])
 
     return render (request, "labShare/enrol.html", contextDict)
 
@@ -165,14 +193,25 @@ def register_profile (request):
 def user_edit(request, username):
     profile = UserProfile.objects.get (user = request.user)
     form = UserProfileForm(instance = profile)
+    contextDict = {}
 
     if request.method == 'POST':
         form = UserProfileForm(instance=profile, data=request.POST)
         if form.is_valid():
-            form.save()
-            return redirect("profileRedirect")
+            if 'id_picture' in request.POST:
+                image = request.FILES['id_picture']
+                UserProfile.profile.picture = image
 
-    return render(request, "registration/edit_profile.html", {'form':form})
+            userProfile = form.save(commit = False)
+            userProfile.user= request.user
+            userProfile.save()
+            return redirect("profileRedirect")
+        else:
+            print (form.errors)
+
+    contextDict = {"form": form}
+
+    return render(request, "registration/edit_profile.html", contextDict)
 
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)
