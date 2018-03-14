@@ -1,11 +1,9 @@
 {% extends "labShare/loggedInBase.html" %}
 {% load staticfiles %}
 
-{% block body_block %}
-<div class="container">
-
 <div class="profilePicture">
 {% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
 </div>
-</div>
+{% block body_block %}
+
 {% endblock %}
