@@ -10,13 +10,14 @@
   <form method="POST">
     {% csrf_token %}
     <!-- https://stackoverflow.com/questions/5827590/css-styling-in-django-forms -->
-    <!-- {{ form.as_p }} -->
-      <input type="hidden" name="csrfmiddlewaretoken" value="Md12pAeMMYsnJK0fjvFcUhUvIIxvCQFTpPQF7gekqFgERuBmBvonecNtxoQTNHrx">
-      <p>
+    {{ form.as_p }}
+    <input type="submit" value="Submit Comment" class="submitComment">
+
+      <!-- <input type="hidden" name="csrfmiddlewaretoken" value="Md12pAeMMYsnJK0fjvFcUhUvIIxvCQFTpPQF7gekqFgERuBmBvonecNtxoQTNHrx"> -->
+      <!-- <p>
         <label for="id_content">Enter Comment:</label>
         <textarea name="content" cols="50" rows="2" required="" id="id_content" placeholder="Speak out your mind!" font-size=20px></textarea>
-        <input type="submit" value="Submit Comment" class="submitComment">
-      </p>
+      </p> -->
   </form>
 
 
