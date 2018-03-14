@@ -339,6 +339,16 @@ float:right;
   border-radius: 10px;
 }
 
+.submitCommentButton:hover {
+  box-shadow: inset 0 0 0 2px white;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+}
+
 #subject1 {
     width:100%;
     clear: both;
