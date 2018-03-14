@@ -50,20 +50,20 @@ def profileRedirect (request):
     else:
         return HttpResponseRedirect (reverse ("register-profile"))
 
+def labList(request, username):
+    contextDict = {}
 
-# def labList(request, username):
-#     contextDict = {}
-#
-#     contextDict["pageUser"] = User.objects.get (username = username)
-#     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
-#
-#     return render(request, "labShare/labList.html", contextDict)
-#
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+
+    return render(request, "labShare/labList.html", contextDict)
+
+
 # # Don't delete the comment below, just altered this so I can test the page
 # #def lab(request, course, labNumber):
-# def lab(request):
-#     # This will be the template view for the specific lab page, not currently finished.
-#     return render(request, "labShare/lab.html")
+def lab(request):
+    # This will be the template view for the specific lab page, not currently finished.
+    return render(request, "labShare/lab.html")
 
 @login_required
 def post_list(request):
@@ -77,6 +77,8 @@ def post_list(request):
             post.author = UserProfile.objects.get(user=request.user)
             post.timePosted = timezone.now()
             post.postedIn = Lab.objects.get(labNumber = 8)
+            post.attachedFile = ''
+            print (form.cleaned_data["attachedFile"])
             post.save()
             return redirect('lab_posts')
     else:

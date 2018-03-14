@@ -18,15 +18,16 @@
     <p>
       <label for="id_content">Enter Comment:</label>
     </p>
-
+    <!-- Comment text input -->
     <p>
       <textarea name="content" required="True" id="id_content" class="commentSubmission" placeholder='Please enter a comment'></textarea>
     </p>
-
+    <!-- File upload -->
     <p>
       <label for="id_file">Upload File:</label>
-      <input type="file" name="picture" onchange="previewFile()" id="id_file" style="margin-top:10px;">
+      <input type="file" name="attachedFile" required="" id="id_attachedFile">
     </p>
+    <!-- Submit button -->
     <p>
       <input type="submit" value="Submit Comment" class="submitCommentButton">
     </p>
