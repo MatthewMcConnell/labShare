@@ -35,8 +35,8 @@ def populate():
     ]
 
     posts = [
-        {"content" : "hello world", "timePosted" : datetime.now().replace(tzinfo=pytz.UTC), "attachedFile" : null, "name" : "Patricia Wallace"},
-        {"content" : "its ya boy dave the rave", "timePosted" : datetime.now().replace(tzinfo=pytz.UTC), "attachedFile" : null, "name" : "Joe Hart"}
+        {"content" : "hello world", "timePosted" : datetime.now().replace(tzinfo=pytz.UTC), "attachedFile" : '', "name" : "Patricia Wallace"},
+        {"content" : "its ya boy dave the rave", "timePosted" : datetime.now().replace(tzinfo=pytz.UTC), "attachedFile" : '', "name" : "Joe Hart"}
     ]
 
     labs = [
