@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body_block %}
-    <form action="/labShare/enrol/" method="post">
+    <!--<form action="/labShare/enrol/" method="post">
         {% csrf_token %}
 
         {{ form }}
@@ -15,6 +15,23 @@
         <br>
 
         {{ error }}
+    </form>-->
+
+    <form action="/labShare/enrol/" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="rHqfG14iPkWSCkDHOzF2dZGK8oHj9ySJcTucnMYuOJzVfQRKpTbIyRnHSqMpygiI">
+
+        <label for="id_course">Course:</label>
+        <input type="text" name="course" maxlength="128" required="" id="id_course">
+
+        <label for="id_level">Level:</label>
+        <input type="number" name="level" min="1" max="10" required="" id="id_level">
+
+        <label for="id_labNumber">Labnumber:</label>
+        <input type="number" name="labNumber" min="1" max="20" required="" id="id_labNumber">
+
+        <input type="submit" value="Enrol" name="submit">
+
+        <br>
     </form>
 
     <br>
