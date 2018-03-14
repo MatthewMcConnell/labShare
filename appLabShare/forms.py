@@ -30,8 +30,6 @@ class EnrolForm (forms.Form):
 
 
 class PostForm(forms.ModelForm):
-    # attachedFile = form.FileField (required = False)
-
     class Meta:
         model = Post
         fields = ['content', 'attachedFile']
