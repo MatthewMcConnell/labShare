@@ -52,6 +52,8 @@ class Post (models.Model):
     postedIn = models.ForeignKey (Lab)
     timePosted = models.DateTimeField(default=timezone.now)
     content = models.TextField ()
+    # Attached files will be saved to /media/lab_files/
+    attachedFile = models.FileField (upload_to='lab_files', default='')
 
     def publish(self):
         self.published_date = timezone.now()

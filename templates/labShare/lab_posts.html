@@ -7,35 +7,42 @@
 {% block body_block %}
 
   <H2>Lab X - Discussion Page</H2>
-  <form method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- https://stackoverflow.com/questions/5827590/css-styling-in-django-forms -->
-    {{ form.as_p }}
-    <input type="submit" value="Submit Comment" class="submitComment">
+    <!-- Using form.as_p -->
+    <!-- {{ form.as_p }}
+    <p><input type="submit" value="Submit Comment" class="submitCommentButton"></p> -->
 
-      <!-- <input type="hidden" name="csrfmiddlewaretoken" value="Md12pAeMMYsnJK0fjvFcUhUvIIxvCQFTpPQF7gekqFgERuBmBvonecNtxoQTNHrx"> -->
-      <!-- <p>
-        <label for="id_content">Enter Comment:</label>
-        <textarea name="content" cols="50" rows="2" required="" id="id_content" placeholder="Speak out your mind!" font-size=20px></textarea>
-      </p> -->
+    <!-- Using the form code to implement CSS properly -->
+    <p>
+      <label for="id_content">Enter Comment:</label>
+    </p>
+
+    <p>
+      <textarea name="content" required="True" id="id_content" class="commentSubmission" placeholder='Please enter a comment'></textarea>
+    </p>
+
+    <p>
+      <label for="id_file">Upload File:</label>
+      <input type="file" name="picture" onchange="previewFile()" id="id_file" style="margin-top:10px;">
+    </p>
+    <p>
+      <input type="submit" value="Submit Comment" class="submitCommentButton">
+    </p>
   </form>
-
-
-
 
 
   <div>
     <h1>All Comments</h1>
   </div>
 
-  <!-- Create css class "comment information" and "comment content" -->
   <!-- The following displays all the "comments" in a discussion page -->
   {% for post in posts %}
     <div class="comment">
       <p style="color:#caa0db">{{ post.author }} - {{ post.timePosted }}</p>
       <h3>{{ post.content }}</h3>
-      <!-- <p>{{ post.text|linebreaksbr }}</p> -->
-
+      <p>{{ post.attachedFile }}
     </div>
   {% endfor %}
 

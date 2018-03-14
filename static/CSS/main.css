@@ -286,6 +286,7 @@ float:right;
   /* Comment Text */
   font-size: 20px;
   text-align: justify;
+  color: white;
   /* text-indent: 50px; */
 
 
@@ -296,7 +297,31 @@ float:right;
   clear: both;
 }
 
-.submitComment {
+.commentSubmission {
+  display: inline-block;
+  min-width: 300px;
+  width: auto;
+  height: auto;
+  padding: 1%;
+  margin: 5%;
+
+  /* Comment Text */
+  font-size: 20px;
+  text-align: justify;
+  color: white;
+  /* text-indent: 50px; */
+
+  /* Comment Box */
+  height: 10%;
+  min-width: 50%;
+  background-color: rgba(38,40,49,0.9);
+  border: none;
+  border-radius: 10px 10px;
+  rows: 5;
+  columns: 150;
+}
+
+.submitCommentButton {
   width: 150px;
   height: 50px;
   padding: 15px 25px;
