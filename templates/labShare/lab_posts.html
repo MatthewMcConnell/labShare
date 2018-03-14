@@ -11,11 +11,11 @@
     {% csrf_token %}
     <!-- https://stackoverflow.com/questions/5827590/css-styling-in-django-forms -->
     <!-- Using form.as_p -->
-    <!-- {{ form.as_p }}
+    {{ form.as_p }}
     <p><input type="submit" value="Submit Comment" class="submitCommentButton"></p> -->
 
     <!-- Using the form code to implement CSS properly -->
-    <p>
+    <!-- <p>
       <label for="id_content">Enter Comment:</label>
     </p>
 
@@ -25,11 +25,11 @@
 
     <p>
       <label for="id_file">Upload File:</label>
-      <input type="file" name="picture" onchange="previewFile()" id="id_file" style="margin-top:10px;">
-    </p>
-    <p>
+      <input type="file" name="attachedFile" onchange="previewFile()" id="id_file" style="margin-top:10px;">
+    </p> -->
+    <!-- <p>
       <input type="submit" value="Submit Comment" class="submitCommentButton">
-    </p>
+    </p> -->
   </form>
 
 

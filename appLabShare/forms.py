@@ -34,7 +34,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('content', 'attachedFile')
+        fields = ['content', 'attachedFile']
         widgets = {
             'content' : forms.TextInput(attrs={'class' : 'commentSubmission', 'placeholder' : "Please enter a comment"}),
         }
