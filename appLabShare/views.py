@@ -21,6 +21,12 @@ def enter (request):
 # def signUp(request):
 #     return render(request, "labShare/signup.html")
 
+def friendsList(request, username):
+    contextDict = {}
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+
+    return render(request, "labShare/friendsList.html", contextDict)
 
 @login_required
 def profile(request, username):
@@ -65,6 +71,14 @@ def labList(request, username):
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
 
+<<<<<<< HEAD
+def labList(request, username):
+    contextDict = {}
+
+    contextDict["pageUser"] = User.objects.get (username = username)
+    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+=======
+>>>>>>> f8c7679e230ca8852674926cae0c209db95d4ee5
     return render(request, "labShare/labList.html", contextDict)
 
 # Don't delete the comment below, just altered this so I can test the page

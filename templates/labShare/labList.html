@@ -3,17 +3,25 @@
 
 {% block body_block %}
 
-<p class="gradient-text">{{profile.name}}'s Labs</p>
+<p class="gradient-text" style="font-family: "Dosis"">{{profile.name}}'s Labs</p>
 <p class="text" style="margin-bottom:15px; text-align:center; margin-right:7%;">{{ profile.degree }}</p>
+{% if profile.courses.all %}
+{% for course in profile.courses.all %}
+  <p>{{course}}</p>
+{% endfor %}
+{% endif %}
+
 <hr>
   <div class="labListItems">
       <!-- Below is an example of how I have made the lab url's dynamic -->
-        <a href="{% url 'lab' 'CS' 1 %}"><span><div class="box" style="opacity: .7;">Lab 1</div><span></a>
-        <a href="#"><span><div class="box" style="opacity: .7;"><span>Lab 4</div><span></a>
-        <a href="#"><span><div class="box" style="opacity: .7;">Lab 6</div></span></a>
-        {% if user == pageUser %}
-        <a href="{% url 'enrol' %}"><span><div class="box" id="add"> + </div></span></a>
+      {% if user == pageUser %}
+      {% if profile.courses.all %}
+        <a href="{% url 'lab' 'CS' 1 %}"><span><div class="box" style="opacity: .7;">{{courses}}</div><span></a>
+      {% endif %}
+      <p style="font-size: 40px;">You are not enrolled in any labs!</p>
+        <a href="{% url 'enrol' %}"><span><div class="box" style="opacity: .7;" id="add"> + </div></span></a>
         {% endif %}
+
   </div>
 <!-- Colour randomiser from list -->
 <script type="text/javascript">
@@ -21,6 +29,6 @@ var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
 var random_color = colors[Math.floor(Math.random() * colors.length)];
 $(".box").css('background-color', random_color);
 </script>
-<hr style="margin-top:10%; ">
+<hr style="margin-top:10%;">
 
 {% endblock %}

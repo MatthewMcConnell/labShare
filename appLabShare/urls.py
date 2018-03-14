@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^$', views.enter, name = "enter"),
     url(r'^profile/$', views.profileRedirect, name="profileRedirect"),
     url(r'^profile/(?P<username>\w+)/$', views.profile, name='profile'),
+    url(r'^profile/(?P<username>\w+)/friendsList$', views.friendsList, name='friendsList'),
     url(r'^labList/(?P<username>\w+)/$', views.labList, name='labList'),
     url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.lab, name='lab'),
     url(r'^enrol/$', views.enrol, name="enrol"),
