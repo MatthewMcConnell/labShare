@@ -5,11 +5,14 @@ html{
 }
 * {
   font-family: "Dosis";
-
   z-index: .5;
 }
+p
+{
+  font-family: "Dosis";
+}
 html {
-  background: url("backgrounds/flat.jpg") no-repeat center center fixed;
+  background: url("backgrounds/mountains.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
