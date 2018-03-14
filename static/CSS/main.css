@@ -306,27 +306,20 @@ float:right;
 }
 
 .commentSubmission {
-  display: inline-block;
-  min-width: 300px;
-  width: auto;
+  /* Comment Box */
+  min-width: 50%;
   height: auto;
+  background-color: rgba(38,40,49,0.9);
+  border: none;
+  border-radius: 10px 10px;
+  display: inline-block;
+  margin-left: 10%;
   padding: 1%;
-  margin: 5%;
 
   /* Comment Text */
   font-size: 20px;
   text-align: justify;
   color: white;
-  /* text-indent: 50px; */
-
-  /* Comment Box */
-  height: 10%;
-  min-width: 50%;
-  background-color: rgba(38,40,49,0.9);
-  border: none;
-  border-radius: 10px 10px;
-  rows: 5;
-  columns: 150;
 }
 
 .enroll .commentSubmission {
@@ -350,6 +343,7 @@ float:right;
 }
 
 .submitCommentButton {
+  float: right;
   width: 150px;
   height: 50px;
   padding: 15px 25px;
@@ -357,6 +351,9 @@ float:right;
   background-color: #0EBFE9;
   border: none;
   border-radius: 10px;
+  margin-right: 20%;
+  top: 50%;
+  right: 20%;
 }
 
 .submitCommentButton:hover {
@@ -369,38 +366,16 @@ float:right;
   transform: scale(1.15);
 }
 
+#id_file {
+  margin: 20px;
+  padding: 20px;
+}
+
 #subject1 {
     width:100%;
     clear: both;
     margin:0 auto;
     text-align:left;
-}
-
-#subject1 .box {
-  text-decoration:none;
-  background-color:#9e2842;
-}
-#subject2 {
-    width:100%;
-    clear: both;
-    margin:0 auto;
-    text-align:left;
-}
-
-#subject2 .box {
-  text-decoration:none;
-  background-color:#25876C;
-}
-#subject3 {
-    width:100%;
-    clear: both;
-    margin:0 auto;
-    text-align:left;
-}
-
-#subject3 .box {
-  text-decoration:none;
-  background-color:#90d1df;
 }
 
 .text{
@@ -732,6 +707,27 @@ label {
   position: fixed;
   z-index: 999;
 }
+
+.labPicture {
+  min-width: 150px;
+  width: auto;
+  height: auto;
+  padding: 1%;
+  margin: 5%;
+
+  /* Comment Text */
+  font-size: 20px;
+  text-align: justify;
+  color: white;
+  /* text-indent: 50px; */
+
+  /* Comment Box */
+  background-color: rgba(38,40,49,0.9);
+  border: none;
+  border-radius: 10px 10px;
+  clear: both;
+}
+
 .labListItems .box
 {
   margin: 0 auto;

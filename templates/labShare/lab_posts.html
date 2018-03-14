@@ -6,41 +6,37 @@
 
 {% block body_block %}
 
-  <H2>Lab X - Discussion Page</H2>
+  <div class="box" style="border-radius: 50%; transform: translate(0%, -70%); margin-bottom: 10%;">
+    Lab X
+  </div>
+  <script type="text/javascript">
+    var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
+    var random_color = colors[Math.floor(Math.random() * colors.length)];
+    $(".box").css('background-color', random_color);
+  </script>
+  <hr style="margin-top:-25%; width: 40%;">
 
   <!-- Comment submission -->
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <!-- https://stackoverflow.com/questions/5827590/css-styling-in-django-forms -->
-    <!-- Using form.as_p -->
-    <!-- {{ form.as_p }}
-    <p><input type="submit" value="Submit Comment" class="submitCommentButton"></p> -->
-
-    <!-- Using the form code to implement CSS properly -->
-    <p>
-      <label for="id_content">Enter Comment:</label>
-    </p>
     <!-- Comment text input -->
     <p>
       <textarea name="content" required="True" id="id_content" class="commentSubmission" placeholder='Please enter a comment'></textarea>
-    </p>
-    <!-- File upload -->
-    <p>
-      <label for="id_file">Upload File:</label>
-      <input type="file" name="attachedFile" onchange="previewFile()" id="id_file" style="margin-top:10px;">
-    </p>
     <!-- Submit Button -->
-    <p>
       <input type="submit" value="Submit Comment" class="submitCommentButton">
     </p>
+
+    <!-- File upload -->
+    <p style="margin-top:10px;">
+      <label for="id_file" id="id_file">Upload File:</label>
+      <input type="file" name="attachedFile" onchange="previewFile()" id="id_file">
+    </p>
+
   </form>
 
+  <hr style="margin-top:0%; width: 80%;">
 
-  <div>
-    <h1>All Comments</h1>
-  </div>
-
-  <!-- The following displays all the "comments" in a discussion page -->
+  <!-- The following displays all the comments in a discussion page -->
   {% for post in posts %}
     <div class="comment">
       <p style="color:#4cffff">{{ post.author.name }} • {{ post.author }} • {{ post.timePosted }}
