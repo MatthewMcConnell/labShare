@@ -10,9 +10,10 @@
 {% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
 </div>
 {% block body_block %}
+{% if user == pageUser %}
     <a href="{% url 'edit_profile' user.username %}"><button class="blueCornerButton" name="editButton" style="border-radius: 25px 0px 25px 0; float: left; padding: 2%; margin-top: -12.5%; margin-left: 0%;">Edit Profile</button></a>
     <a href="{% url 'labList' pageUser.username %}"><button class="purpleCornerButton" name="labsButton" style="border-radius: 0px 25px 0 25px;float: right; padding: 2%;  margin-top: -12.5%; margin-right: 0%;">{{ pageUser.username }}'s Labs</button></a>
-
+{% endif %}
     <h1>{{ pageUser.username }} - {{ profile.name }}</h1>
     <br>
     <h4>Bio: {{ profile.bio }}</h4>
@@ -30,6 +31,14 @@
 
     <a href="{% url 'labList' pageUser.username %}" id="link">{{ pageUser.username }}'s Labs</a><br>
     <a href="{% url 'edit_profile' username=user.username %}" id="link">Edit Profile</a>
-
+<div class="icons">
+    <ul>
+      <li><a href="#"><i id="fa" class="fab fa-facebook-f" style="color:#fff;" aria-hidden="true"></i></a> </li>
+      <li><a href="#"><i id="fa" class="fab fa-twitter" style="color:#fff;" aria-hidden="true"></i></a></a></li>
+      <li><a href="#"><i id="fa" class="fab fa-linkedin-in" style="color:#fff;" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i id="fa" class="fab fa-google-plus-g" style="color:#fff;" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i id="fa" class="fab fa-instagram" style="color:#fff;" aria-hidden="true"></i></a></li>
+    </ul>
+</div>
 
 {% endblock %}

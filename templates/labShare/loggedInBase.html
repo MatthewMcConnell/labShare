@@ -5,8 +5,9 @@
     <meta charset="utf-8" lang="en">
     <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.png" %}" sizes="16x2"/>
     <link rel="stylesheet" href="{% static "CSS/main.css" %}">
-    <link href="https://fonts.googleapis.com/css?family=Asap|Comfortaa|Dosis|Maven+Pro|Muli|Poppins|Quicksand|Rubik" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Asap|Comfortaa|Dosis|Maven+Pro|Muli|Poppins|Quicksand|Rubik" rel="stylesheet">
     <script type="text/javascript" src="{% static "javascript/script.js" %}"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <title>
       LabShare -
@@ -30,7 +31,7 @@
   <body>
     {% if user.is_authenticated %}
       <nav>
-        <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="100">
+        <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="330" height="100">
         <ul>
           <li id= "linkRef"><a href="{% url 'labList' user.username %}" id="link">My Labs</a></li>
           <li id= "linkRef"><a href="{% url 'profile' user.username %}" id="link">My Profile</a></li>
@@ -50,6 +51,8 @@
       $(document).ready(function(){
         $(".purpleButton").click(function(){
           $("nav").slideToggle(500);
+          $("icons").slideToggle(500);
+
         })
       })
     </script>

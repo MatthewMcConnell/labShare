@@ -6,24 +6,43 @@
 
 {% block body_block %}
 
-  <H2>Create a new post</H2>
-  <form method="POST">
+  <H2>Lab X - Discussion Page</H2>
+  <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit Post" class="blueButton">
+    <!-- https://stackoverflow.com/questions/5827590/css-styling-in-django-forms -->
+    <!-- Using form.as_p -->
+    <!-- {{ form.as_p }}
+    <p><input type="submit" value="Submit Comment" class="submitCommentButton"></p> -->
+
+    <!-- Using the form code to implement CSS properly -->
+    <p>
+      <label for="id_content">Enter Comment:</label>
+    </p>
+
+    <p>
+      <textarea name="content" required="True" id="id_content" class="commentSubmission" placeholder='Please enter a comment'></textarea>
+    </p>
+
+    <p>
+      <label for="id_file">Upload File:</label>
+      <input type="file" name="picture" onchange="previewFile()" id="id_file" style="margin-top:10px;">
+    </p>
+    <p>
+      <input type="submit" value="Submit Comment" class="submitCommentButton">
+    </p>
   </form>
 
+
   <div>
-    <h1>Posts</h1>
+    <h1>All Comments</h1>
   </div>
 
-  <!-- Create css class "comment information" and "comment content" -->
+  <!-- The following displays all the "comments" in a discussion page -->
   {% for post in posts %}
-    <div>
-      <p>{{ post.author }} || {{ post.timePosted }}</p>
+    <div class="comment">
+      <p style="color:#caa0db">{{ post.author }} - {{ post.timePosted }}</p>
       <h3>{{ post.content }}</h3>
-      <p>{{ post.text|linebreaksbr }}</p>
-
+      <p>{{ post.attachedFile }}
     </div>
   {% endfor %}
 

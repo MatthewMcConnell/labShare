@@ -3,3 +3,6 @@ db.sqlite3
 
 # Python
 *.pyc
+
+# Directories
+/media/profile_images
