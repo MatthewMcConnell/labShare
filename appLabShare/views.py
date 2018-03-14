@@ -172,14 +172,25 @@ def register_profile (request):
 def user_edit(request, username):
     profile = UserProfile.objects.get (user = request.user)
     form = UserProfileForm(instance = profile)
+    contextDict = {}
 
     if request.method == 'POST':
         form = UserProfileForm(instance=profile, data=request.POST)
         if form.is_valid():
-            form.save()
-            return redirect("profileRedirect")
+            if 'id_picture' in request.POST:
+                image = request.FILES['id_picture']
+                UserProfile.profile.picture = image
 
-    return render(request, "registration/edit_profile.html", {'form':form})
+            userProfile = form.save(commit = False)
+            userProfile.user= request.user
+            userProfile.save()
+            return redirect("profileRedirect")
+        else:
+            print (form.errors)
+
+    contextDict = {"form": form}
+
+    return render(request, "registration/edit_profile.html", contextDict)
 
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)

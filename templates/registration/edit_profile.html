@@ -8,52 +8,9 @@
 {% block body_block %}
     <h1 style="text-decoration:underline;">Edit Profile</h1>
 
-    <!--<form action="." method="post" enctype="multipart/form-data">
-        {% csrf_token %}-->
-        <!--{{ form.as_p }}-->
-        <!--<p>
-          <label for="id_isStudent">Position:</label><br>
-          <select class="setup_dropdown">
-            <option value="Student">Student</option>
-            <option value="Tutor">Tutor</option>
-          </select>
-        </p>
-
-        <p>
-           <label for="id_name">Name:</label><br>
-           <input type="text" name="name" maxlength="128" required="" id="id_name" class="setup_profile"
-           value="{{ profile.name }}">
-         </p>
-
-        <p>
-          <label for="id_picture">Picture:</label><br>
-           <input type="file" name="picture" onchange="previewFile()" id="id_picture" style="margin-top:10px;"><br>
-           <img id="blah" src="{{ MEDIA_URL }}{{ profile.picture }}" alt="your image"/>
-         </p>
-
-        <p>
-          <label for="id_bio">Bio:</label><br>
-           <textarea name="bio" id="id_bio" class="setup_bio" rows="10" tabindex="4">{{ profile.bio }}</textarea>
-         </p>
-
-        <p>
-          <label for="id_degree">Degree:</label><br>
-           <input type="text" name="degree" maxlength="128" id="id_degree" class="setup_profile" value="{{ profile.degree }}">
-         </p>
-
-        <p>
-          <label for="id_university">University:</label><br>
-           <input type="text" name="university" maxlength="128" id="id_university" class="setup_profile"
-           value="{{ profile.university }}">
-         </p>
-
-        <input type="submit" value="Update">
-    </form>-->
-
-    <h1>Edit Profile</h1>
     <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="Update" />
-    </form>
+
 {% endblock %}
