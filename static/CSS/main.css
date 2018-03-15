@@ -140,6 +140,7 @@ float:right;
   margin-bottom:10px;
 
 }
+
 @media (max-width:1000px)
 {
   nav
@@ -184,7 +185,6 @@ float:right;
   {
     display: none;
   }
-
   @media (min-width:1000px)
   {
     nav
