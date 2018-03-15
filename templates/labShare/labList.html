@@ -4,8 +4,10 @@
   {% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
 </div>
 {% block body_block %}
+<div class="name">
+<h3 class="gradient-text" style="font-family: "Dosis"">{{profile.name}}'s Labs</h3>
+</div>
 
-<p class="gradient-text" style="font-family: "Dosis"">{{profile.name}}'s Labs</p>
 <p class="text" style="margin-bottom:15px; text-align:center; margin-right:7%;">{{ profile.degree }}</p>
 
 

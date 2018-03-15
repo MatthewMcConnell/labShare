@@ -77,32 +77,37 @@ def lab(request):
 
 
 @login_required
-def post_list(request):
+def discussion_page(request, Lab):
+    contextDict = {}
     form = PostForm()
+
+    # The issue I'm having: I'm trying to pass through the number of people
+    # in the lab, although I can only get this through using Lab.peopleInLab.
+    # Now, when you visit the URL you pass it a course and a labNumber, NOT
+    # a lab instance right? Unsure how to go about fixing this.
+    
+    course = Lab.course
+    peopleInLab = Lab.peopleInLab
+    labNumber = Lab.labNumber
 
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
-        print ("##########################")
-        print ("form.is_valid():")
-        print (form.is_valid())
-        print ("##########################")
 
         if form.is_valid():
             post = form.save(commit=False)
             post.author = UserProfile.objects.get(user=request.user)
             post.timePosted = timezone.now()
-            post.postedIn = Lab.objects.get(labNumber = 8)
-            # post.attachedFile = 
+            post.postedIn = Lab.objects.get(labNumber = Lab.labNumber)
             post.save()
-            return redirect('lab_posts')
+            return redirect('discussion_page')
     else:
         form = PostForm()
 
-    posts = Post.objects.order_by('-timePosted')[:9]
-    contextDict = {'form':form, 'posts':posts}
+    contextDict["form"] = form
+    contextDict["posts"] = Post.objects.order_by('-timePosted')[:9]
+    contextDict["users"] = Lab.peopleInLab
 
-    return render(request, 'labShare/lab_posts.html', contextDict)
-
+    return render(request, 'labShare/discussion_page.html', contextDict)
 
 @login_required
 def enrol (request):

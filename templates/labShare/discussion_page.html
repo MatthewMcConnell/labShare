@@ -1,22 +1,32 @@
 {% extends "labShare/loggedInBase.html" %}
 
 {% block title %}
-    LabShare - Lab Posts
+{% endblock %}
+
+<!-- People in Labs - Sidebar -->
+{% block sidebar_block %}
+  {% for user in users %}
+    <h3>{{ user }}</h3>
+  {% endfor %}
 {% endblock %}
 
 {% block body_block %}
-
-  <div class="box" style="border-radius: 50%; transform: translate(0%, -70%); margin-bottom: 10%;">
+  <!-- <div class="box" style="margin-top: -120px; border-radius:50%">
     Lab X
-  </div>
+  </div> -->
+
+  <!-- Javascript for the "Lab X" circle -->
   <script type="text/javascript">
-    var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
-    var random_color = colors[Math.floor(Math.random() * colors.length)];
-    $(".box").css('background-color', random_color);
+  var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
+  var random_color = colors[Math.floor(Math.random() * colors.length)];
+  $(".box").css('background-color', random_color);
   </script>
-  <hr style="margin-top:-25%; width: 40%;">
 
   <!-- Comment submission -->
+  <div class="grid">
+    <div class="mainSection">
+    <!-- Visual line break -->
+    <hr style="margin-top:-25%; width: 40%;">
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- Comment text input -->
@@ -34,7 +44,11 @@
 
   </form>
 
+  <!-- Visual line break between comment submission and comments -->
   <hr style="margin-top:0%; width: 80%;">
+  </div>
+</div>
+
 
   <!-- The following displays all the comments in a discussion page -->
   {% for post in posts %}
