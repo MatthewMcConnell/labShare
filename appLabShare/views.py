@@ -77,7 +77,7 @@ def lab(request):
 
 
 @login_required
-def discussion_page(request, Lab):
+def discussion_page(request, course, labNumber):
     contextDict = {}
     form = PostForm()
 
@@ -86,9 +86,10 @@ def discussion_page(request, Lab):
     # Now, when you visit the URL you pass it a course and a labNumber, NOT
     # a lab instance right? Unsure how to go about fixing this.
     
-    course = Lab.course
-    peopleInLab = Lab.peopleInLab
-    labNumber = Lab.labNumber
+    # Answer: look below (fyi the variables you pass the url are params you need to have in this view
+    # like above :) ).
+    lab = Lab.objects.get (course = Course.objects.get (name = course), labNumber = labNumber)
+    contextDict["lab"] = lab
 
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -104,8 +105,7 @@ def discussion_page(request, Lab):
         form = PostForm()
 
     contextDict["form"] = form
-    contextDict["posts"] = Post.objects.order_by('-timePosted')[:9]
-    contextDict["users"] = Lab.peopleInLab
+    contextDict["posts"] = Post.objects.filter(postedIn = lab).order_by('-timePosted')[:9]
 
     return render(request, 'labShare/discussion_page.html', contextDict)
 

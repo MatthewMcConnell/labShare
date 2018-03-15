@@ -15,7 +15,7 @@
   <div class="labListItems">
       <!-- Below is an example of how I have made the lab url's dynamic -->
       {% for lab in labs %}
-        <a href="{% url 'lab' lab.course.name lab.labNumber %}"><span><div class="box" style="opacity: .7;">{{ lab.course.name }} - {{ lab.labNumber }}</div><span></a>
+        <a href="{% url 'discussion_page' lab.course.name lab.labNumber %}"><span><div class="box" style="opacity: .7;">{{ lab.course.name }} - {{ lab.labNumber }}</div><span></a>
       {% endfor %}
 
       {% if not labs %}

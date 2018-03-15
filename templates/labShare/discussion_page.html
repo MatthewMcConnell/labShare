@@ -5,7 +5,7 @@
 
 <!-- People in Labs - Sidebar -->
 {% block sidebar_block %}
-  {% for user in users %}
+  {% for user in lab.peopleInLab.all %}
     <h3>{{ user }}</h3>
   {% endfor %}
 {% endblock %}
