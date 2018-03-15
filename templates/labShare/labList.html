@@ -7,22 +7,22 @@
 
 <p class="gradient-text" style="font-family: "Dosis"">{{profile.name}}'s Labs</p>
 <p class="text" style="margin-bottom:15px; text-align:center; margin-right:7%;">{{ profile.degree }}</p>
-{% if profile.courses.all %}
-{% for course in profile.courses.all %}
-  <p>{{course}}</p>
-{% endfor %}
-{% endif %}
+
 
 <hr>
   <div class="labListItems">
       <!-- Below is an example of how I have made the lab url's dynamic -->
-      {% if user == pageUser %}
-      {% if profile.courses.all %}
-        <a href="{% url 'lab' 'CS' 1 %}"><span><div class="box" style="opacity: .7;">{{courses}}</div><span></a>
+      {% for lab in labs %}
+        <a href="{% url 'lab' lab.course.name lab.labNumber %}"><span><div class="box" style="opacity: .7;">{{ lab.course.name }} - {{ lab.labNumber }}</div><span></a>
+      {% endfor %}
+
+      {% if not labs %}
+        <p style="font-size: 40px;">This user is not enrolled in any labs!</p>
       {% endif %}
-      <p style="font-size: 40px; margin-bottom: -25px;">You are not enrolled in any labs!</p>
+
+      {% if user == pageUser %}
         <a href="{% url 'enrol' %}"><span><div class="box" style="opacity: .7;" id="add"> + </div></span></a>
-        {% endif %}
+      {% endif %}
 
   </div>
 <!-- Colour randomiser from list -->

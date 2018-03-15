@@ -56,26 +56,26 @@
   <div class="friendsSection">
     <div class="friends"> <span> Friends List </span> </div>
     <ul>
-      <li>Ewan McGregor</li>
-      <li>Ewan McGregor</li>
-      <li>Ewan McGregor</li>
-      <li>Ewan McGregor</li>
-      <li>Ewan McGregor</li>
-
-
-
+      {% if not profile.friends.all %}
+        <li>This user does not have any friends!</li>
+      {% endif %}
+      {% for friend in profile.friends.all %}
+        <li>{{ friend.user.username }} - {{ friend.name }}</li>
+      {% endfor %}
     </ul>
     <div class="friendsButton">
       <a href="{% url 'friendsList' user.username %}"> <button class="btn" type="button" name="button">    <i class="fas fa-users"></i> Friends </button> </a>
     </div>
   </div>
   <div class="labsSection">
-    <div class="labs"> <span> Lab List </span> </div>
+    <div class="labs"> <span> Courses </span> </div>
     <ul>
-      <li>CS1P Lab 3 </li>
-      <li>ADS2 Lab 9 </li>
-      <li>WAD2 Lab 8 </li>
-      <li>OOSE Lab 4 </li>
+      {% if not profile.courses.all %}
+        <li>This user is not enrolled in any courses!</li>
+      {% endif %}
+      {% for course in profile.courses.all %}
+        <li>{{ course.name }}</li>
+      {% endfor %}
     </ul>
     <div class="labsButton">
       <a href="{% url 'labList' pageUser.username %}"> <button class="btn" type="button" name="button"><i class="fas fa-flask" class="labsButton"></i> Labs </button> </a>
