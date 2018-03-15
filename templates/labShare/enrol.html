@@ -18,7 +18,7 @@
     </form> -->
 
 <div class="box" style="margin-top: -120px; border-radius:50%">
-  Enroll
+  Enrol
 </div>
 
 <script type="text/javascript">
@@ -31,7 +31,6 @@ $(".box").css('background-color', random_color);
 
     <form action="/labShare/enrol/" method="post">
         {% csrf_token %}
-        <input type="hidden" name="csrfmiddlewaretoken" value="rHqfG14iPkWSCkDHOzF2dZGK8oHj9ySJcTucnMYuOJzVfQRKpTbIyRnHSqMpygiI">
 
         <label for="id_course">Course:</label>
         <input type="text" class="commentSubmission" name="course" style="margin: 5%; padding: 15px;"maxlength="128" required="" id="id_course" placeholder="Course Name">

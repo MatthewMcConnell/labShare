@@ -122,16 +122,21 @@ def enrol (request):
         # Getting the profile of the user to get whether they are a tutor or not
         profile = UserProfile.objects.get (user = request.user)
 
-
         if (form.is_valid()):
+            print(form.cleaned_data)
             if (profile.status == "Student"):
                 try:
                     course = Course.objects.get (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
                     lab = Lab.objects.get (course = course, labNumber = form.cleaned_data["labNumber"])
 
+                    if (course in profile.courses.all()):
+                        labEnrolledIn = Lab.objects.get (course = course, peopleInLab = profile)
+                        labEnrolledIn.peopleInLab.remove (profile)
+                    else:
+                        profile.courses.add (course)
+
                     lab.peopleInLab.add (profile)
 
-                    course.save()
                     lab.save()
 
                     return redirect ('labList', request.user.username)
@@ -144,6 +149,10 @@ def enrol (request):
                 course = Course.objects.get_or_create (name = form.cleaned_data["course"], level = form.cleaned_data["level"])[0]
                 lab = Lab.objects.get_or_create (course = course, labNumber = form.cleaned_data["labNumber"])[0]
 
+                # I believe that the add function will not add duplicates since it is a set (hopefully)
+                # So even if the tutor is taking one lab in a course they can still take another lab in
+                # the same course, hopefully the first line below will not cause duplicates
+                profile.courses.add (course)
                 lab.peopleInLab.add (profile)
 
                 course.save()
