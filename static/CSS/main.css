@@ -1038,3 +1038,11 @@ transform: perspective(2000px) rotateY(-90deg);
 }
 .socialMediaSection ul li a:hover
 {color: #fff;}
+
+.sidebar-users {
+  margin-top: 1px;
+  margin-left: 0%;
+  text-align: left;
+  padding: 0;
+  list-style: none;
+}

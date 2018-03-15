@@ -21,13 +21,14 @@ urlpatterns = [
     url(r'^profile/(?P<username>\w+)/$', views.profile, name='profile'),
     url(r'^profile/(?P<username>\w+)/friendsList$', views.friendsList, name='friendsList'),
     url(r'^labList/(?P<username>\w+)/$', views.labList, name='labList'),
-    url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.lab, name='lab'),
+    url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.discussion_page, name='discussion_page'),
     url(r'^enrol/$', views.enrol, name="enrol"),
     url(r'^edit_profile/(?P<username>\w+)/$', views.user_edit, name="edit_profile"),
 
+
     # THIS IS A TEST URL - DO NOT DELETE YET
     url(r'^lab/$', views.lab, name='lab'),
-    url(r'^lab_posts/$', views.post_list, name='lab_posts'),
+    url(r'^lab_posts/$', views.discussion_page, name='discussion_page'),
 
     # patterns for registration-redux
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='register'),
