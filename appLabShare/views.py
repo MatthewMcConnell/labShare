@@ -75,17 +75,13 @@ def post_list(request):
 
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
-        print ("##########################")
-        print ("form.is_valid():")
-        print (form.is_valid())
-        print ("##########################")
 
         if form.is_valid():
             post = form.save(commit=False)
             post.author = UserProfile.objects.get(user=request.user)
             post.timePosted = timezone.now()
             post.postedIn = Lab.objects.get(labNumber = 8)
-            # post.attachedFile = 
+            # post.attachedFile =
             post.save()
             return redirect('lab_posts')
     else:

@@ -26,9 +26,11 @@
 var random_color = colors[Math.floor(Math.random() * colors.length)];
 $(".box").css('background-color', random_color);
 </script>
+
 <div class="enroll">
 
     <form action="/labShare/enrol/" method="post">
+        {% csrf_token %}
         <input type="hidden" name="csrfmiddlewaretoken" value="rHqfG14iPkWSCkDHOzF2dZGK8oHj9ySJcTucnMYuOJzVfQRKpTbIyRnHSqMpygiI">
 
         <label for="id_course">Course:</label>
