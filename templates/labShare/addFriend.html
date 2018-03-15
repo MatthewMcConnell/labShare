@@ -1,0 +1,14 @@
+{% extends "labShare/loggedInBase.html" %}
+
+{% block title_block %}
+    Add a Friend!
+{% endblock %}
+
+{% block body_block %}
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Add Friend" name="submit">
+    </form>
+    {{ error }}
+{% endblock %}

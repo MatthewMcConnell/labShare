@@ -46,3 +46,8 @@ class PostForm(forms.ModelForm):
         widgets = {
             'content' : forms.TextInput(attrs={'class' : 'commentSubmission', 'placeholder' : "Please enter a comment"}),
         }
+
+
+
+class AddFriendForm (forms.Form):
+    friend = forms.CharField (required = True)

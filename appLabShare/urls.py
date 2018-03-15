@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.lab, name='lab'),
     url(r'^enrol/$', views.enrol, name="enrol"),
     url(r'^edit_profile/(?P<username>\w+)/$', views.user_edit, name="edit_profile"),
+    url(r'^addFriend/$', views.addFriend, name="addFriend"),
 
     # THIS IS A TEST URL - DO NOT DELETE YET
     url(r'^lab/$', views.lab, name='lab'),

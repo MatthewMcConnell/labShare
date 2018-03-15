@@ -38,7 +38,6 @@ def profile(request, username):
     # in the template
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
-    contextDict["courses"] = contextDict["profile"].courses.all()
 
     return render(request, "labShare/profile.html", contextDict)
 
@@ -200,6 +199,30 @@ def user_edit(request, username):
     contextDict = {"form": form}
 
     return render(request, "registration/edit_profile.html", contextDict)
+
+
+@login_required
+def addFriend (request):
+    contextDict = {}
+
+    form = AddFriendForm()
+
+    if (request.method == "POST"):
+        if (form.is_valid()):
+            user = UserProfile.objects.get (user = request.user)
+            try:
+                friend = UserProfile.objects.get (user = User.objects.get (username = form.cleaned_data["friend"]))
+                user.friends.add (friend)
+
+                redirect ("friendsList", request.user.username)
+            except User.DoesNotExist:
+                contextDict["error"] = "The user you entered does not exist!"
+
+
+    contextDict["form"] = form
+
+    return render (request, "labShare/addFriend.html", contextDict)
+
 
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)

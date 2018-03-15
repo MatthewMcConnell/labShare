@@ -61,4 +61,11 @@
       </div>
     </div>
 </div>
+
+{% if pageUser == user %}
+  <a href="{% url 'addFriend' %}">
+    <h3>Add a friend</h3>
+  </a>
+{% endif %}
+
 {% endblock %}
