@@ -109,6 +109,8 @@ def discussion_page(request, course, labNumber):
 
     return render(request, 'labShare/discussion_page.html', contextDict)
 
+
+
 @login_required
 def enrol (request):
     form = EnrolForm()
@@ -213,6 +215,8 @@ def addFriend (request):
     form = AddFriendForm()
 
     if (request.method == "POST"):
+        form = AddFriendForm (request.POST)
+
         if (form.is_valid()):
             user = UserProfile.objects.get (user = request.user)
             try:
