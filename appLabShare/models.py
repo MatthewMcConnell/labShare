@@ -61,3 +61,14 @@ class Post (models.Model):
 
     def __str__ (self):
         return self.content.__str__()
+
+# class friend (models.model):
+#     user = models.ManyToManyField(User)
+#     currentUser = models.ForeignKey(user, related_name='owner', null=)
+#
+#     @classmethod
+#     def makeFriend(cls, currentUser, newFriend):
+#         friend, created = cls.objects.get_or_create(
+#             currentUser = currentUser
+#         )
+#         friend.users.add(new_friend)

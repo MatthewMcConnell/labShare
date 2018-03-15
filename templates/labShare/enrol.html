@@ -5,21 +5,80 @@
 {% endblock %}
 
 {% block body_block %}
-    <form action="/labShare/enrol/" method="post">
+    <!--<form action="/labShare/enrol/" method="post">
         {% csrf_token %}
 
-        {{ form }}
-
-        <input type="submit" value="Enrol" name="submit">
-
+       {{ form.as_table}}
+        <p>
+          <input type="text" class="course" name="course" value="Course Name">
+        </p>
         <br>
 
         {{ error }}
+    </form> -->
+
+<div class="box" style="margin-top: -120px; border-radius:50%">
+  Enroll
+</div>
+
+<script type="text/javascript">
+ var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
+var random_color = colors[Math.floor(Math.random() * colors.length)];
+$(".box").css('background-color', random_color);
+</script>
+<div class="enroll">
+
+    <form action="/labShare/enrol/" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="rHqfG14iPkWSCkDHOzF2dZGK8oHj9ySJcTucnMYuOJzVfQRKpTbIyRnHSqMpygiI">
+
+        <label for="id_course">Course:</label>
+        <input type="text" class="commentSubmission" name="course" style="margin: 5%; padding: 15px;"maxlength="128" required="" id="id_course" placeholder="Course Name">
+
+        <label for="id_level">Level:</label>
+        <input type="number" class="commentSubmission"style="margin: 5%; padding: 15px;"name="level" min="1" max="10" required="" id="id_level" placeholder = "Course Level">
+
+        <label for="id_labNumber">Labnumber:</label>
+        <input type="number" class="commentSubmission" name="labNumber" style="margin: 5%; padding: 15px;"min="1" max="20" required="" id="id_labNumber"placeholder="Lab Number">
+
+        <hr style="width: 60%;">
+
+        <input type="submit" style="margin-top: 10px;"class="submitCommentButton" value="Enrol" name="submit">
+
+        <br>
     </form>
+  </div>
+
 
     <br>
+    <div class="section">
 
-    <table>
+    <div class="table" style="overflow-x:auto;">
+      <table cellpadding = "20">
+        <tr class="row">
+          <th class="column">  Course Level</th>
+          <th class="column">  Course Name</th>
+          <th class="column">  Lab Numbers</th>
+
+        </tr>
+
+
+        {% for courseLab in table %}
+            <tr>
+
+                <td>{{ courseLab.0.level }}</td>
+                <td>{{ courseLab.0.name }}</td>
+                <td>
+                    {% for lab in courseLab.1 %}
+                        {{ lab.labNumber }}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+    <!-- <table>
         <tr>
             <th>Course Level</th>
             <th>Course Name</th>
@@ -31,11 +90,11 @@
                 <td>{{ courseLab.0.name }}</td>
                 <td>
                     {% for lab in courseLab.1 %}
-                        {{ lab.labNumber }} 
+                        {{ lab.labNumber }}
                     {% endfor %}
                 </td>
             </tr>
         {% endfor %}
-    </table>
+    </table> -->
 
 {% endblock %}

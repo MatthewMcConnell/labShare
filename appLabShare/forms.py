@@ -1,6 +1,6 @@
 from django import forms
 
-from appLabShare.models import UserProfile, Post
+from appLabShare.models import UserProfile, Post, Course
 
 
 class UserProfileForm (forms.ModelForm):
@@ -23,9 +23,19 @@ class UserProfileForm (forms.ModelForm):
 
 
 class EnrolForm (forms.Form):
-    course = forms.CharField (required = True, max_length=128)
-    level = forms.IntegerField (required = True, min_value=1, max_value=10)
-    labNumber = forms.IntegerField (required = True, min_value=1, max_value=20)
+    # course = forms.CharField (required = True, max_length=128)
+    # level = forms.IntegerField (required = True, min_value=1, max_value=10)
+    # labNumber = forms.IntegerField (required = True, min_value=1, max_value=20)
+    class Meta:
+        model = Course
+        fields = ['course', 'level', 'labNumber']
+        widgets = {
+            'course' : forms.TextInput(attrs={'class' : 'course', 'placeholder' : "Course Name"}),
+            'level' : forms.TextInput(attrs={'class' : 'level', 'placeholder' : "Course Level"}),
+            'labNumber' : forms.TextInput(attrs={'class' : 'labNumber', 'placeholder' : "Lab Number"}),
+
+        }
+
 
 
 

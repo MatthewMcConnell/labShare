@@ -38,6 +38,7 @@ def profile(request, username):
     # in the template
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+    contextDict["courses"] = contextDict["profile"].courses.all()
 
     return render(request, "labShare/profile.html", contextDict)
 
