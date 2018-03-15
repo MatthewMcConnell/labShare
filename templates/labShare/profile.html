@@ -1,5 +1,4 @@
 {% extends "labShare/loggedInBase.html" %}
-
 {% block title_block %}
     My Profile
 {% endblock %}
@@ -9,8 +8,9 @@
 <div class="profilePicture">
 {% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
 </div>
+
 {% block body_block %}
-{% if user == pageUser %}
+<!-- {% if user == pageUser %}
     <a href="{% url 'edit_profile' user.username %}"><button class="blueCornerButton" name="editButton" style="border-radius: 25px 0px 25px 0; float: left; padding: 2%; margin-top: -12.5%; margin-left: 0%;">Edit Profile</button></a>
     <a href="{% url 'labList' pageUser.username %}"><button class="purpleCornerButton" name="labsButton" style="border-radius: 0px 25px 0 25px;float: right; padding: 2%;  margin-top: -12.5%; margin-right: 0%;">{{ pageUser.username }}'s Labs</button></a>
 {% endif %}
@@ -21,13 +21,13 @@
     <h4>University: {{ profile.university }}</h4>
     <h4>Major: {{ profile.degree }}</h4>
     <br>
-    <!-- <h4 class="labList">lab Groups:</h4>
+    <h4 class="labList">lab Groups:</h4>
 
     <ul class="listItems">
       <li>lab3</li>
       <li>lab8</li>
       <li>lab10</li>
-    </ul> -->
+    </ul>
 
     <a href="{% url 'labList' pageUser.username %}" id="link">{{ pageUser.username }}'s Labs</a><br>
     <a href="{% url 'edit_profile' username=user.username %}" id="link">Edit Profile</a>
@@ -41,6 +41,64 @@
       <li><a href="#"><i id="fa" class="fab fa-google-plus-g" style="color:#fff;" aria-hidden="true"></i></a></li>
       <li><a href="#"><i id="fa" class="fab fa-instagram" style="color:#fff;" aria-hidden="true"></i></a></li>
     </ul>
+</div> -->
+
+<div class="grid">
+  <div class="mainSection">
+    <div class="name">{{profile.name}}</div>
+    <div class="bio"><p>{{profile.bio}}</p></div>
+    <div class="degree"> <p>{{profile.degree}}</p></div>
+    <div class="uni"> <p>{{profile.university}}</p></div>
+    <div class="editProfileButton">
+      <a href="{% url 'edit_profile' username=user.username %}"> <button class="btn" type="button" name="button">  <i class="fas fa-edit"></i> Edit Profile </button> </a>
+    </div>
+  </div>
+  <div class="friendsSection">
+    <div class="friends"> <span> Friends List </span> </div>
+    <ul>
+      <li>Ewan McGregor</li>
+      <li>Ewan McGregor</li>
+      <li>Ewan McGregor</li>
+      <li>Ewan McGregor</li>
+      <li>Ewan McGregor</li>
+
+
+
+    </ul>
+    <div class="friendsButton">
+      <a href="{% url 'friendsList' user.username %}"> <button class="btn" type="button" name="button">    <i class="fas fa-users"></i> Friends </button> </a>
+    </div>
+  </div>
+  <div class="labsSection">
+    <div class="labs"> <span> Lab List </span> </div>
+    <ul>
+      <li>CS1P Lab 3 </li>
+      <li>ADS2 Lab 9 </li>
+      <li>WAD2 Lab 8 </li>
+      <li>OOSE Lab 4 </li>
+    </ul>
+    <div class="labsButton">
+      <a href="{% url 'labList' pageUser.username %}"> <button class="btn" type="button" name="button"><i class="fas fa-flask" class="labsButton"></i> Labs </button> </a>
+    </div>
+  </div>
+
+
+  <div class="socialMediaSection">
+    <span>Links</span>
+    <br>
+    <br>
+
+    <ul>
+      <li id="facebook"><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+      <li id="twitter" ><a href="#"><i class= "fab fa-twitter" aria-hidden="true"></i></a></li>
+      <li id="linkedin" ><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+      <li id="google" ><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>
+      <li id="instagram" ><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+    </ul>
+
+    </div>
+  </div>
+
 </div>
 
 {% endblock %}

@@ -20,7 +20,7 @@
       {% if profile.courses.all %}
         <a href="{% url 'lab' 'CS' 1 %}"><span><div class="box" style="opacity: .7;">{{courses}}</div><span></a>
       {% endif %}
-      <p style="font-size: 40px;">You are not enrolled in any labs!</p>
+      <p style="font-size: 40px; margin-bottom: -25px;">You are not enrolled in any labs!</p>
         <a href="{% url 'enrol' %}"><span><div class="box" style="opacity: .7;" id="add"> + </div></span></a>
         {% endif %}
 
