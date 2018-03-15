@@ -36,7 +36,31 @@
       </div>
     </a>
   </div>
-{% endfor %}
+
+  <div class="bodyDiv">
+    <a href="{% url 'profile' friend.user.username %}">
+      <div class="card">
+        <div class="cardImage">
+          <img src="{{ MEDIA_URL }}{{ friend.picture }}" alt="{{ friend.name }}'s picture">
+        </div>
+        <div class="details">
+          <div class="center">
+            <h1>{{ friend.name }} <br> <span> {{ friend.status }} </span> </h1>
+            <p>{{ friend.bio }}</p>
+            <ul>
+              <!-- I do not know how the external social media works so I haven't put this in yet -->
+              <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
+              <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
+              <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
 
 
 <!-- Keeping this here as to see that the css still works and as a dummy example -->
