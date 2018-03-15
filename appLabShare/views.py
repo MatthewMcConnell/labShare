@@ -85,7 +85,7 @@ def discussion_page(request, course, labNumber):
     # in the lab, although I can only get this through using Lab.peopleInLab.
     # Now, when you visit the URL you pass it a course and a labNumber, NOT
     # a lab instance right? Unsure how to go about fixing this.
-    
+
     # Answer: look below (fyi the variables you pass the url are params you need to have in this view
     # like above :) ).
     lab = Lab.objects.get (course = Course.objects.get (name = course), labNumber = labNumber)
@@ -98,7 +98,7 @@ def discussion_page(request, course, labNumber):
             post = form.save(commit=False)
             post.author = UserProfile.objects.get(user=request.user)
             post.timePosted = timezone.now()
-            post.postedIn = Lab.objects.get(labNumber = Lab.labNumber)
+            post.postedIn = Lab.objects.get(labNumber = labNumber)
             post.save()
             return redirect('discussion_page')
     else:

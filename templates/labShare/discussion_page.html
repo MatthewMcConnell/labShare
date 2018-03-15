@@ -4,16 +4,12 @@
 {% endblock %}
 
 <!-- People in Labs - Sidebar -->
-{% block sidebar_block %}
-  {% for user in lab.peopleInLab.all %}
-    <h3>{{ user }}</h3>
-  {% endfor %}
-{% endblock %}
+
 
 {% block body_block %}
-  <!-- <div class="box" style="margin-top: -120px; border-radius:50%">
+  <div class="box" style="margin-top: -120px; border-radius:50%">
     Lab X
-  </div> -->
+  </div>
 
   <!-- Javascript for the "Lab X" circle -->
   <script type="text/javascript">
@@ -23,10 +19,6 @@
   </script>
 
   <!-- Comment submission -->
-  <div class="grid">
-    <div class="mainSection">
-    <!-- Visual line break -->
-    <hr style="margin-top:-25%; width: 40%;">
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- Comment text input -->
@@ -45,9 +37,7 @@
   </form>
 
   <!-- Visual line break between comment submission and comments -->
-  <hr style="margin-top:0%; width: 80%;">
-  </div>
-</div>
+  <!-- <hr style="margin-top:0%; width: 80%;"> -->
 
 
   <!-- The following displays all the comments in a discussion page -->
