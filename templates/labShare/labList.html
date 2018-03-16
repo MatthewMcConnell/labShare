@@ -3,36 +3,36 @@
 <div class="profilePicture">
   {% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
 </div>
+
 {% block body_block %}
-<div class="name">
-<h3 class="gradient-text" style="font-family: "Dosis"">{{profile.name}}'s Labs</h3>
-</div>
-
-<p class="text" style="margin-bottom:15px; text-align:center; margin-right:7%;">{{ profile.degree }}</p>
-
-
-<hr>
-  <div class="labListItems">
-      <!-- Below is an example of how I have made the lab url's dynamic -->
-      {% for lab in labs %}
-        <a href="{% url 'lab' lab.course.name lab.labNumber %}"><span><div class="box" style="opacity: .7;">{{ lab.course.name }} - {{ lab.labNumber }}</div><span></a>
-      {% endfor %}
-
-      {% if not labs %}
-        <p style="font-size: 40px;">This user is not enrolled in any labs!</p>
-      {% endif %}
-
-      {% if user == pageUser %}
-        <a href="{% url 'enrol' %}"><span><div class="box" style="opacity: .7;" id="add"> + </div></span></a>
-      {% endif %}
-
+  <div class="name">
+    <h3 class="gradient-text" style="font-family: "Dosis"">{{profile.name}}'s Labs</h3>
   </div>
-<!-- Colour randomiser from list -->
-<script type="text/javascript">
-var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
-var random_color = colors[Math.floor(Math.random() * colors.length)];
-$(".box").css('background-color', random_color);
-</script>
-<hr style="margin-top:10%;">
+
+  <p class="text" style="margin-bottom:15px; text-align:center;">{{ profile.degree }}</p>
+
+  <hr>
+
+    <div class="labListItems">
+        {% for lab in labs %}
+          <a href="{% url 'lab' lab.course.name lab.labNumber %}"><span><div class="box" style="opacity: .7;">{{ lab.course.name }} - {{ lab.labNumber }}</div><span></a>
+        {% endfor %}
+
+        {% if not labs %}
+          <p style="font-size: 40px;">This user is not enrolled in any labs!</p>
+        {% endif %}
+
+        {% if user == pageUser %}
+          <a href="{% url 'enrol' %}"><span><div class="box" style="opacity: .7;" id="add"> + </div></span></a>
+        {% endif %}
+    </div>
+  <!-- Colour randomiser from list -->
+  <script type="text/javascript">
+  var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
+  var random_color = colors[Math.floor(Math.random() * colors.length)];
+  $(".box").css('background-color', random_color);
+  </script>
+
+  <hr style="margin-top:10%;">
 
 {% endblock %}
