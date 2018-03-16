@@ -75,8 +75,13 @@ def lab (request, course, labNumber):
     contextDict = {}
     form = PostForm()
 
+    user = request.user
     lab = Lab.objects.get (course = Course.objects.get (name = course), labNumber = labNumber)
     contextDict["lab"] = lab
+
+    if not UserProfile.objects.get(user = user) in lab.peopleInLab.all():
+        contextDict["error"] = "You are not enrolled in this lab!"
+        return render(request, 'labList', contextDict)
 
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -231,7 +236,6 @@ def addFriend (request):
     contextDict["form"] = form
 
     return render (request, "labShare/addFriend.html", contextDict)
-
 
 
 # Just a reminder that a lot of the user related views (e.g. login, registration etc.)
