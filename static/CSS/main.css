@@ -247,6 +247,7 @@ float:right;
     height: 100px;
     margin-top: 0px;
     margin-bottom: 0px;
+    margin-right: 25px;
 }
 
 .elements
@@ -304,8 +305,6 @@ float:right;
   font-size: 20px;
   text-align: justify;
   color: white;
-  text-indent: 10%;
-
 
   /* Comment Box */
   background-color: rgba(38,40,49,0.9);
@@ -331,9 +330,9 @@ float:right;
   color: white;
 }
 
-.enroll .commentSubmission {
+.commentSubmission #enrollButtons {
   display: inline-block;
-  min-width: 10%;
+  min-width: 20px;
   max-width: 100px;
   height: auto;
   padding: 1%;
@@ -342,7 +341,6 @@ float:right;
   font-size: 20px;
   text-align: justify;
   color: white;
-  /* text-indent: 50px; */
   /* Comment Box */
   height: 10%;
   background-color: rgba(38,40,49,0.9);

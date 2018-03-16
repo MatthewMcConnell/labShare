@@ -81,7 +81,10 @@ def lab (request, course, labNumber):
 
     if not UserProfile.objects.get(user = user) in lab.peopleInLab.all():
         contextDict["error"] = "You are not enrolled in this lab!"
-        return render(request, 'labList', contextDict)
+        return render(request, 'labShare/enrol.html', contextDict)
+    else:
+        contextDict["error"] = None
+
 
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -137,6 +140,9 @@ def enrol (request):
 
                     return redirect ('labList', request.user.username)
 
+                # Trying to get it so that if the course exists, but the level isn't correct, display the correct error message
+                # except Course.level.DoesNotExist:
+                #     contextDict["error"] = "The course exists, but you have not entered the correct level"
                 except Course.DoesNotExist:
                     contextDict["error"] = "The course does not exist"
                 except Lab.DoesNotExist:
@@ -154,10 +160,10 @@ def enrol (request):
                         lab = Lab.objects.get (course = course, labNumber = form.cleaned_data["labNumber"])
 
                         lab.peopleInLab.remove (profile)
-                        
+
                         if not Lab.objects.get (peopleInLab = profile, course = course):
                             profile.courses.remove (course)
-                
+
                 except Course.DoesNotExist:
                     contextDict["error"] = "The course does not exist"
                 except Lab.DoesNotExist:
@@ -242,7 +248,7 @@ def addFriend (request):
             user = UserProfile.objects.get (user = request.user)
             try:
                 friend = UserProfile.objects.get (user = User.objects.get (username = form.cleaned_data["friend"]))
-                
+
                 if (request.POST.get ("AddFriend")):
                     user.friends.add (friend)
                 else:

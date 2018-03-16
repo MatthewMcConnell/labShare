@@ -14,3 +14,6 @@ Lab 8 Team D - WAD2 Team Project - LabShare - A platform to share the labs you a
  * Main menu bar, when pressed, removes the nav bar once removed from screen frame
  * Details on friends list card is bigger than image
  * Profile social CSS has disappeared
+ * Registration page bullet points
+ * CSS for enrol page
+ * Enrol page doesn't display correct error message if the level doesn't exist (views.py)

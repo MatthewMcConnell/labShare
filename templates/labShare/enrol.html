@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body_block %}
-  <div class="box" style="margin-top: -120px; border-radius:50%">
+  <div class="box" style="margin-top: -120px; margin-bottom: 10px; border-radius:50%">
   Enrol
   </div>
 
@@ -15,24 +15,35 @@
   $(".box").css('background-color', random_color);
   </script>
 
+  <p>{{ error }}</p>
+
+
   <div class="enroll">
     <form action="/labShare/enrol/" method="post">
         {% csrf_token %}
 
-        <label for="id_course">Course:</label>
-        <input type="text" class="commentSubmission" name="course" style="margin: 5%; padding: 15px;"maxlength="128" required="" id="id_course" placeholder="Course Name">
+        <p style="display: inline-block;">
+        Course:
+        <input type="text" class="commentSubmission" name="course" style="margin: 5%; padding: 15px;"maxlength="128" required="" id="enrollButtons" placeholder="Course Name">
+        </p>
 
-        <label for="id_level">Level:</label>
-        <input type="number" class="commentSubmission"style="margin: 5%; padding: 15px;"name="level" min="1" max="10" required="" id="id_level" placeholder = "Course Level">
+        <p style="display: inline-block;">
+        Level:
+        <input type="number" class="commentSubmission" name="level" style="margin: 5%; padding: 15px;" min="1" max="5" required="" id="enrollButtons" placeholder = "Level">
+        </p>
 
-        <label for="id_labNumber">Labnumber:</label>
-        <input type="number" class="commentSubmission" name="labNumber" style="margin: 5%; padding: 15px;"min="1" max="20" required="" id="id_labNumber"placeholder="Lab Number">
-
-        <hr style="width: 60%;">
-
-        <input type="submit" style="margin-top: 10px;"class="submitCommentButton" value="Enrol" name="enrol">
-        <input type="submit" style="margin-top: 10px;"class="submitCommentButton" value="Unenrol" name="unenrol">
+        <p style="display: inline-block;">
+        Lab Number:
+        <input type="number" class="commentSubmission" name="labNumber" style="margin: 5%; padding: 15px;"min="1" max="20" required="" id="enrollButtons"placeholder="Lab Number">
+        </p>
         <br>
+
+        <!-- Enrol/Unenrol buttons -->
+        <input type="submit" style="display: inline-block; margin-top: 10px;"class="submitCommentButton" value="Unenrol" name="unenrol">
+        <input type="submit" style="display: inline-block; margin-top: 10px; margin-right: 20px;"class="submitCommentButton" value="Enrol" name="enrol">
+        <br>
+
+        <hr style="margin-top:10%; width: 60%;">
     </form>
   </div>
 
