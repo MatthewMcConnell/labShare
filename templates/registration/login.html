@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 {% load staticfiles %}
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,21 +9,19 @@
     <link rel="stylesheet" href="{% static "CSS/login.css" %}">
     <script type="text/javascript" src="{% static "javascript/script.js" %}"></script>
   </head>
+
   <div class="logo">
     <img src="{% static "images/logo.png" %}" class="logo" alt="logo" draggable="false">
   </div>
-  <body>
 
+  <body>
     {% if user.is_authenticated %}
       <div class="containerLoggedIn">
-
         <div>
           <h2 class="containerElements"> You're already logged in<br> Get back to your labs!<h2><br>
-          <!-- perhaps add a redirect link to the welcome/dashboard/profile page from here -->
           <a href="{% url 'profileRedirect' %}" class = "alreadyLoggedIn"><input type="button" name="profileLink" value="Go to Profile" class="purpleButton"></a>
           <br>
           <a href="{% url 'auth_logout' %}?next=/labShare/"  class="signOut"><input type="button" name="signout" value="Sign Out :(" class="blueButton"></a>
-
         </div>
     {% else %}
         <div class="container">
@@ -35,23 +35,23 @@
           {% endif %}
           <form method="post" action=".">
             {% csrf_token %}
-            <!--{{ form.as_p }}-->
+
             <p>
               <input type="text" name="username" autofocus="" maxlength="254" required="" id="id_username"
               placeholder="Matric Number">
             </p>
+
             <p>
               <input type="password" name="password" required="" id="id_password"placeholder="Password">
             </p>
 
             <input type="submit" name="submit" value="LOGIN" class="purpleButton">
+
             <p style="font-family: "Dosis";">New to labshare?</p>
           </form>
           <a href="{% url 'registration_register' %}" class = "sign-up"><input type="submit" name="signup" value="SIGN UP" class="blueButton"></a>
         </div>
-
       </div>
-
     {% endif %}
   </body>
 </html>

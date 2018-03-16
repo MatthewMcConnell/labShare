@@ -70,16 +70,8 @@ def labList(request, username):
 
 
 
-# Don't delete the comment below, just altered this so I can test the page
-#def lab(request, course, labNumber):
-def lab(request):
-    # This will be the template view for the specific lab page, not currently finished.
-    return render(request, "labShare/lab.html")
-
-
-
 @login_required
-def discussion_page(request, course, labNumber):
+def lab (request, course, labNumber):
     contextDict = {}
     form = PostForm()
 
@@ -195,7 +187,7 @@ def register_profile (request):
 
 
 @login_required
-def user_edit(request):
+def editProfile(request):
     profile = UserProfile.objects.get (user = request.user)
     form = UserProfileForm(instance = profile)
     contextDict = {}

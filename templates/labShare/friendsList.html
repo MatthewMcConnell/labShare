@@ -13,12 +13,13 @@
 {% endif %}
 
 <div class="bodyDiv">
-{% for friend in profile.friends.all %}
+  {% for friend in profile.friends.all %}
     <a href="{% url 'profile' friend.user.username %}">
       <div class="card">
         <div class="cardImage">
           <img src="{{ MEDIA_URL }}{{ friend.picture }}" alt="{{ friend.name }}'s picture">
         </div>
+
         <div class="details">
           <div class="center">
             <h1>{{ friend.name }} <br> <span> {{ friend.status }} </span> </h1>
@@ -35,32 +36,10 @@
         </div>
       </div>
     </a>
-
-  <!-- <div class="bodyDiv">
-    <a href="{% url 'profile' friend.user.username %}">
-      <div class="card">
-        <div class="cardImage">
-          <img src="{{ MEDIA_URL }}{{ friend.picture }}" alt="{{ friend.name }}'s picture">
-        </div>
-        <div class="details">
-          <div class="center">
-            <h1>{{ friend.name }} <br> <span> {{ friend.status }} </span> </h1>
-            <p>{{ friend.bio }}</p>
-            <ul>-->
-              <!-- I do not know how the external social media works so I haven't put this in yet -->
-              <!--
-              <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-              <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
-              <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div> -->
   {% endfor %}
+
+  <!-- Dummy for CSS purposes only -->
+
   <div class="card">
     <div class="cardImage">
       <img src="{{MEDIA_URL}}{{profile.picture}}" alt="">
@@ -81,34 +60,10 @@
   </div>
 </div>
 
-
-<!-- Keeping this here as to see that the css still works and as a dummy example -->
-<!--
-<div class="bodyDiv">
-    <div class="card">
-      <div class="cardImage">
-        <img src="{{MEDIA_URL}}{{profile.picture}}" alt="">
-      </div>
-      <div class="details">
-        <div class="center">
-          <h1>{{profile.name}} <br> <span> Student </span> </h1>
-          <p>{{profile.bio}}</p>
-          <ul>
-            <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-            <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
-            <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-</div>-->
-
-{% if pageUser == user %}
-  <a href="{% url 'addFriend' %}">
-    <h3>Add a friend</h3>
-  </a>
-{% endif %}
+  {% if pageUser == user %}
+    <a href="{% url 'addFriend' %}">
+      <h3>Add a friend</h3>
+    </a>
+  {% endif %}
 
 {% endblock %}
