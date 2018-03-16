@@ -15,3 +15,4 @@ Lab 8 Team D - WAD2 Team Project - LabShare - A platform to share the labs you a
  * Details on friends list card is bigger than image
  * Profile pictures on lab page is big and will not scale
  * Enter page, (login page?) has Times New Roman fonts
+ * Lab page: "Upload File" is separate from the upload element

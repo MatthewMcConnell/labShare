@@ -87,14 +87,14 @@ def lab (request, course, labNumber):
             post.timePosted = timezone.now()
             post.postedIn = Lab.objects.get(labNumber = labNumber)
             post.save()
-            return redirect('discussion_page', course, labNumber)
+            return redirect('lab', course, labNumber)
     else:
         form = PostForm()
 
     contextDict["form"] = form
     contextDict["posts"] = Post.objects.filter(postedIn = lab).order_by('-timePosted')[:9]
 
-    return render(request, 'labShare/discussion_page.html', contextDict)
+    return render(request, 'labShare/lab.html', contextDict)
 
 
 
