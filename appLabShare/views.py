@@ -11,23 +11,21 @@ from appLabShare.models import UserProfile, Course, Lab, Post
 
 
 # The portal page that everyone should go to if they're not logged in
-# If they are logged in then shouldn't we just redirect them to their profile straight away?
 def enter (request):
     return render(request,"labShare/enter.html")
 
-# def login(request):
-#     return render(request, "registration/login.html")
 
-# def signUp(request):
-#     return render(request, "labShare/signup.html")
 
 @login_required
 def friendsList(request, username):
     contextDict = {}
+
     contextDict["pageUser"] = User.objects.get (username = username)
     contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
 
     return render(request, "labShare/friendsList.html", contextDict)
+
+
 
 @login_required
 def profile(request, username):
@@ -42,9 +40,10 @@ def profile(request, username):
     return render(request, "labShare/profile.html", contextDict)
 
 
+
 @login_required
 def profileRedirect (request):
-    # The code below will assign profile to None if the user did not make a profile
+    # This will assign profile to None if the user did not make a profile
     try:
         profile = UserProfile.objects.get (user = request.user)
     except UserProfile.DoesNotExist:
@@ -58,6 +57,7 @@ def profileRedirect (request):
         return HttpResponseRedirect (reverse ("register-profile"))
 
 
+
 @login_required
 def labList(request, username):
     contextDict = {}
@@ -67,6 +67,8 @@ def labList(request, username):
     contextDict["labs"] = Lab.objects.filter(peopleInLab = contextDict["profile"])
 
     return render(request, "labShare/labList.html", contextDict)
+
+
 
 # Don't delete the comment below, just altered this so I can test the page
 #def lab(request, course, labNumber):
@@ -81,13 +83,6 @@ def discussion_page(request, course, labNumber):
     contextDict = {}
     form = PostForm()
 
-    # The issue I'm having: I'm trying to pass through the number of people
-    # in the lab, although I can only get this through using Lab.peopleInLab.
-    # Now, when you visit the URL you pass it a course and a labNumber, NOT
-    # a lab instance right? Unsure how to go about fixing this.
-
-    # Answer: look below (fyi the variables you pass the url are params you need to have in this view
-    # like above :) ).
     lab = Lab.objects.get (course = Course.objects.get (name = course), labNumber = labNumber)
     contextDict["lab"] = lab
 
@@ -119,11 +114,13 @@ def enrol (request):
     if (request.method == "POST"):
         form = EnrolForm (request.POST)
 
-        # Getting the profile of the user to get whether they are a tutor or not
+        # Getting the profile of the user to see whether they are a tutor or not
         profile = UserProfile.objects.get (user = request.user)
 
         if (form.is_valid()):
-            print(form.cleaned_data)
+            # If the user is a student then they cannot create a lab and course and they can only be
+            # enrolled in 1 lab per course, whereas a tutor can be in as many labs as they want
+            # and can create labs and courses
             if (profile.status == "Student"):
                 try:
                     course = Course.objects.get (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
@@ -136,8 +133,6 @@ def enrol (request):
                         profile.courses.add (course)
 
                     lab.peopleInLab.add (profile)
-
-                    lab.save()
 
                     return redirect ('labList', request.user.username)
 
@@ -161,17 +156,19 @@ def enrol (request):
                 return redirect ('labList', request.user.username)
 
 
-
     contextDict["form"] = form
     courseList = Course.objects.order_by("level", "name")
     labList = []
 
+    # I zip the course and their labs together here so I can easily access and iterate through them
+    # in the template
     for course in courseList:
         labList.append(Lab.objects.filter(course = course).order_by("labNumber"))
 
     contextDict["table"] = zip(courseList, labList)
 
     return render (request, "labShare/enrol.html", contextDict)
+
 
 
 @login_required
@@ -215,6 +212,7 @@ def user_edit(request, username):
     contextDict = {"form": form}
 
     return render(request, "registration/edit_profile.html", contextDict)
+
 
 
 @login_required
