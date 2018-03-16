@@ -7,11 +7,12 @@ from datetime import datetime
 import pytz
 
 import django
-django.setup()
-
 from django.contrib.auth.models import User
 
 from appLabShare.models import UserProfile, Post, Course, Lab
+
+
+django.setup()
 
 def populate():
     students = [
@@ -31,7 +32,6 @@ def populate():
     courses = [
         {"name": "CS1P", "level": 1},
         {"name": "EE1X", "level" : 1},
-
     ]
 
     posts = [
@@ -94,8 +94,10 @@ def addTutor (infoDict):
 def addLab (infoDict):
     l = Lab.objects.get_or_create (labNumber = infoDict["number"],
                                    course = Course.objects.get (name = "EE1X"))[0]
-    l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "2281654m")))
-    l.peopleInLab.add (UserProfile.objects.get (user = User.objects.get (username = "2253290s")))
+    profile1 = UserProfile.objects.get (user = User.objects.get (username = "2253290s"))
+    profile2 = UserProfile.objects.get (user = User.objects.get (username = "2281654m"))
+    l.peopleInLab.add (profile1)
+    l.peopleInLab.add (profile2)
     l.save()
     return l
 

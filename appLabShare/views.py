@@ -123,13 +123,17 @@ def enrol (request):
                     course = Course.objects.get (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
                     lab = Lab.objects.get (course = course, labNumber = form.cleaned_data["labNumber"])
 
-                    if (course in profile.courses.all()):
-                        labEnrolledIn = Lab.objects.get (course = course, peopleInLab = profile)
-                        labEnrolledIn.peopleInLab.remove (profile)
-                    else:
-                        profile.courses.add (course)
+                    if (request.POST.get ("enrol")):
+                        if (course in profile.courses.all()):
+                            labEnrolledIn = Lab.objects.get (course = course, peopleInLab = profile)
+                            labEnrolledIn.peopleInLab.remove (profile)
+                        else:
+                            profile.courses.add (course)
 
-                    lab.peopleInLab.add (profile)
+                        lab.peopleInLab.add (profile)
+                    else:
+                        lab.peopleInLab.remove (profile)
+                        profile.courses.remove (course)
 
                     return redirect ('labList', request.user.username)
 
@@ -138,14 +142,26 @@ def enrol (request):
                 except Lab.DoesNotExist:
                     contextDict["error"] = "The lab does not exist"
             else:
-                course = Course.objects.get_or_create (name = form.cleaned_data["course"], level = form.cleaned_data["level"])[0]
-                lab = Lab.objects.get_or_create (course = course, labNumber = form.cleaned_data["labNumber"])[0]
+                try:
+                    if (request.POST.get ("enrol")):
+                        course = Course.objects.get_or_create (name = form.cleaned_data["course"], level = form.cleaned_data["level"])[0]
+                        lab = Lab.objects.get_or_create (course = course, labNumber = form.cleaned_data["labNumber"])[0]
 
-                # I believe that the add function will not add duplicates since it is a set (hopefully)
-                # So even if the tutor is taking one lab in a course they can still take another lab in
-                # the same course, hopefully the first line below will not cause duplicates
-                profile.courses.add (course)
-                lab.peopleInLab.add (profile)
+                        profile.courses.add (course)
+                        lab.peopleInLab.add (profile)
+                    else:
+                        course = Course.objects.get (name = form.cleaned_data["course"], level = form.cleaned_data["level"])
+                        lab = Lab.objects.get (course = course, labNumber = form.cleaned_data["labNumber"])
+
+                        lab.peopleInLab.remove (profile)
+                        
+                        if not Lab.objects.get (peopleInLab = profile, course = course):
+                            profile.courses.remove (course)
+                
+                except Course.DoesNotExist:
+                    contextDict["error"] = "The course does not exist"
+                except Lab.DoesNotExist:
+                    contextDict["error"] = "The lab does not exist"
 
                 course.save()
                 lab.save()
@@ -226,7 +242,11 @@ def addFriend (request):
             user = UserProfile.objects.get (user = request.user)
             try:
                 friend = UserProfile.objects.get (user = User.objects.get (username = form.cleaned_data["friend"]))
-                user.friends.add (friend)
+                
+                if (request.POST.get ("AddFriend")):
+                    user.friends.add (friend)
+                else:
+                    user.friends.remove (friend)
 
                 return redirect ("friendsList", request.user.username)
             except User.DoesNotExist:
