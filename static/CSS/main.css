@@ -248,6 +248,7 @@ float:right;
   color: white;
   text-align: center;
   align-items: center;
+  height: auto;
 }
 .labList
 {
@@ -768,6 +769,7 @@ table
   align-items: left;
   margin:0;
   padding: 0;
+  height: auto;
   /* margin-top: 40px; */
   margin: 40px;
   padding: 40px;
@@ -780,7 +782,7 @@ table
 .card
 {
   /* display: inline-block; */
-  position: absolute;
+  position: relative;
   justify-content: space-between;
   /* display: inline-block; */
   /* float: left; */
@@ -803,7 +805,6 @@ table
 }
 .card .cardImage img
 {
-  position: relative;
   margin-top: 0px;
   border-radius: 0;
   width: 360px;

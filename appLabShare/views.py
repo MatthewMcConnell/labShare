@@ -95,7 +95,7 @@ def discussion_page(request, course, labNumber):
             post.timePosted = timezone.now()
             post.postedIn = Lab.objects.get(labNumber = labNumber)
             post.save()
-            return redirect('discussion_page')
+            return redirect('discussion_page', course, labNumber)
     else:
         form = PostForm()
 
