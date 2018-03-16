@@ -10,39 +10,6 @@
 </div>
 
 {% block body_block %}
-<!-- {% if user == pageUser %}
-    <a href="{% url 'edit_profile' user.username %}"><button class="blueCornerButton" name="editButton" style="border-radius: 25px 0px 25px 0; float: left; padding: 2%; margin-top: -12.5%; margin-left: 0%;">Edit Profile</button></a>
-    <a href="{% url 'labList' pageUser.username %}"><button class="purpleCornerButton" name="labsButton" style="border-radius: 0px 25px 0 25px;float: right; padding: 2%;  margin-top: -12.5%; margin-right: 0%;">{{ pageUser.username }}'s Labs</button></a>
-{% endif %}
-    <h1>{{ pageUser.username }} - {{ profile.name }}</h1>
-    <br>
-    <h4>Bio: {{ profile.bio }}</h4>
-    <br>
-    <h4>University: {{ profile.university }}</h4>
-    <h4>Major: {{ profile.degree }}</h4>
-    <br>
-    <h4 class="labList">lab Groups:</h4>
-
-    <ul class="listItems">
-      <li>lab3</li>
-      <li>lab8</li>
-      <li>lab10</li>
-    </ul>
-
-    <a href="{% url 'labList' pageUser.username %}" id="link">{{ pageUser.username }}'s Labs</a><br>
-    <a href="{% url 'edit_profile' username=user.username %}" id="link">Edit Profile</a>
-    <a href="{% url 'friendsList' user.username %}"><button class="purpleCornerButton" name="labsButton">{{ pageUser.username }}'s Friends</button></a>
-
-<div class="icons">
-    <ul>
-      <li><a href="#"><i id="fa" class="fab fa-facebook-f" style="color:#fff;" aria-hidden="true"></i></a> </li>
-      <li><a href="#"><i id="fa" class="fab fa-twitter" style="color:#fff;" aria-hidden="true"></i></a></a></li>
-      <li><a href="#"><i id="fa" class="fab fa-linkedin-in" style="color:#fff;" aria-hidden="true"></i></a></li>
-      <li><a href="#"><i id="fa" class="fab fa-google-plus-g" style="color:#fff;" aria-hidden="true"></i></a></li>
-      <li><a href="#"><i id="fa" class="fab fa-instagram" style="color:#fff;" aria-hidden="true"></i></a></li>
-    </ul>
-</div> -->
-
 <div class="grid">
   <div class="mainSection">
     <div class="name">{{profile.name}}</div>
@@ -50,7 +17,7 @@
     <div class="degree"> <p>{{profile.degree}}</p></div>
     <div class="uni"> <p>{{profile.university}}</p></div>
     <div class="editProfileButton">
-      <a href="{% url 'edit_profile' username=user.username %}"> <button class="btn" type="button" name="button">  <i class="fas fa-edit"></i> Edit Profile </button> </a>
+      <a href="{% url 'edit_profile' %}"> <button class="btn" type="button" name="button">  <i class="fas fa-edit"></i> Edit Profile </button> </a>
     </div>
   </div>
   <div class="friendsSection">
@@ -64,7 +31,7 @@
       {% endfor %}
     </ul>
     <div class="friendsButton">
-      <a href="{% url 'friendsList' user.username %}"> <button class="btn" type="button" name="button">    <i class="fas fa-users"></i> Friends </button> </a>
+      <a href="{% url 'friendsList' pageUser.username %}"> <button class="btn" type="button" name="button">    <i class="fas fa-users"></i> Friends </button> </a>
     </div>
   </div>
   <div class="labsSection">

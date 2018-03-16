@@ -195,7 +195,7 @@ def register_profile (request):
 
 
 @login_required
-def user_edit(request, username):
+def user_edit(request):
     profile = UserProfile.objects.get (user = request.user)
     form = UserProfileForm(instance = profile)
     contextDict = {}

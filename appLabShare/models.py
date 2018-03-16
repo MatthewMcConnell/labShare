@@ -2,12 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+
 class Course (models.Model):
     name = models.CharField(max_length = 128)
     level = models.PositiveSmallIntegerField ()
 
     def __str__ (self):
         return self.name
+
 
 
 class UserProfile(models.Model):
@@ -25,15 +27,13 @@ class UserProfile(models.Model):
     degree = models.CharField(max_length = 128, default = "")
     university = models.CharField(max_length = 128, default = "")
 
-
-    ## Student Only attributes ## - will just end up being null for tutors
-
     # The symmetrical set to false as we do not want adding friends to add both ways
     friends = models.ManyToManyField ("self", symmetrical=False)
     courses = models.ManyToManyField (Course)
 
     def __str__(self):
         return self.user.username
+
 
 
 class Lab (models.Model):
@@ -46,6 +46,8 @@ class Lab (models.Model):
     def __str__ (self):
         # "course :: labNum"
         return self.course.__str__() + " :: " + str(self.labNumber)
+
+
 
 class Post (models.Model):
     author = models.ForeignKey (UserProfile)
@@ -62,13 +64,4 @@ class Post (models.Model):
     def __str__ (self):
         return self.content.__str__()
 
-# class friend (models.model):
-#     user = models.ManyToManyField(User)
-#     currentUser = models.ForeignKey(user, related_name='owner', null=)
-#
-#     @classmethod
-#     def makeFriend(cls, currentUser, newFriend):
-#         friend, created = cls.objects.get_or_create(
-#             currentUser = currentUser
-#         )
-#         friend.users.add(new_friend)
+

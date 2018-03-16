@@ -19,11 +19,11 @@ urlpatterns = [
     url(r'^$', views.enter, name = "enter"),
     url(r'^profile/$', views.profileRedirect, name="profileRedirect"),
     url(r'^profile/(?P<username>\w+)/$', views.profile, name='profile'),
-    url(r'^profile/(?P<username>\w+)/friendsList$', views.friendsList, name='friendsList'),
+    url(r'^friendsList/(?P<username>\w+)/$', views.friendsList, name='friendsList'),
     url(r'^labList/(?P<username>\w+)/$', views.labList, name='labList'),
     url(r'^(?P<course>\w+)/lab(?P<labNumber>\d)/$', views.discussion_page, name='discussion_page'),
     url(r'^enrol/$', views.enrol, name="enrol"),
-    url(r'^edit_profile/(?P<username>\w+)/$', views.user_edit, name="edit_profile"),
+    url(r'^edit_profile/$', views.user_edit, name="edit_profile"),
     url(r'^addFriend/$', views.addFriend, name="addFriend"),
 
 
