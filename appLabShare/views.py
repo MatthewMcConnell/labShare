@@ -222,7 +222,7 @@ def addFriend (request):
                 friend = UserProfile.objects.get (user = User.objects.get (username = form.cleaned_data["friend"]))
                 user.friends.add (friend)
 
-                redirect ("friendsList", request.user.username)
+                return redirect ("friendsList", request.user.username)
             except User.DoesNotExist:
                 contextDict["error"] = "The user you entered does not exist!"
 

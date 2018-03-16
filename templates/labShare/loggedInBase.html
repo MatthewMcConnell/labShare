@@ -3,12 +3,15 @@
 <html>
   <head>
     <meta charset="utf-8" lang="en">
+
     <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.png" %}" sizes="16x2"/>
     <link rel="stylesheet" href="{% static "CSS/main.css" %}">
     <link href="https://fonts.googleapis.com/css?family=Asap|Comfortaa|Dosis|Maven+Pro|Muli|Poppins|Quicksand|Rubik" rel="stylesheet">
+
     <script type="text/javascript" src="{% static "javascript/script.js" %}"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
     <title>
       LabShare -
       {% block title_block %}
@@ -16,48 +19,37 @@
       {% endblock %}
     </title>
   </head>
-  <!-- <header>
-    <div class="navbar">
-    <img src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="300" height="225">
-    {% if user.is_authenticated %}
-      <ul class="nav">
-        <li class="hoverUnderLine"><a href="{% url 'labList' user.username %}" id="link">My Labs</a></li>
-        <li class="hoverUnderLine"><a href="{% url 'profile' user.username %}" id="link">My Profile</a></li>
-        <li class="hoverUnderLine"><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
-      </ul>
-    {% endif %}
-    </div>
-  </header> -->
+
   <body>
-      <nav>
-        <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="330" height="100">
-        {% if user.is_authenticated %}
+    <nav>
+      <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="330" height="100">
+
+      {% if user.is_authenticated %}
         <ul>
           <li id= "linkRef"><a href="{% url 'labList' user.username %}" id="link">My Labs</a></li>
           <li id= "linkRef"><a href="{% url 'profile' user.username %}" id="link">My Profile</a></li>
           <li id= "linkRef"><a href="{% url 'friendsList' user.username %}" id="link">My Friends</a></li>
           <li id= "linkRef"><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
         </ul>
-        {% endif %}
-        <div style="clear:both;">
-        </div>
-      </nav>
+      {% endif %}
+      <div style="clear:both;"></div>
+    </nav>
+
     <div class="responsive-bar">
       <img  src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="330" height="100">
-      <button class="purpleButton"><i class="fa fa-bars" aria-hidden="true"> </i>
-</button>
+      <button class="purpleButton"><i class="fa fa-bars" aria-hidden="true"> </i></button>
       <div style="clear: both;"></div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
     <script type="text/javascript">
       $(document).ready(function(){
         $(".purpleButton").click(function(){
           $("nav").slideToggle(500);
           $("icons").slideToggle(500);
-
         })
       })
     </script>
+
     <div class="container">
       <!-- NOTE: I have changed this to be dynamic so I can dynamically use profile pictures
                  Use the block in extending templates with the path to include a picture -->
@@ -77,7 +69,6 @@
         {% block body_block %}
         {% endblock %}
       </div>
-
     </div>
   </body>
 
