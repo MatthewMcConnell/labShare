@@ -26,6 +26,10 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length = 128, default = "")
     degree = models.CharField(max_length = 128, default = "")
     university = models.CharField(max_length = 128, default = "")
+    facebook = models.URLField(max_length = 300, default = "")
+    instagram = models.URLField(max_length = 300, default = "")
+    twitter = models.URLField(max_length = 300, default = "")
+    linkedIn = models.URLField(max_length = 300, default = "")
 
     # The symmetrical set to false as we do not want adding friends to add both ways
     friends = models.ManyToManyField ("self", symmetrical=False)
@@ -63,5 +67,3 @@ class Post (models.Model):
 
     def __str__ (self):
         return self.content.__str__()
-
-
