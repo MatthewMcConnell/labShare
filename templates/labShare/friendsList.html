@@ -12,8 +12,8 @@
   <h2>This user has no friends!</h2>
 {% endif %}
 
+<div class="bodyDiv">
 {% for friend in profile.friends.all %}
-  <div class="bodyDiv">
     <a href="{% url 'profile' friend.user.username %}">
       <div class="card">
         <div class="cardImage">
@@ -35,9 +35,8 @@
         </div>
       </div>
     </a>
-  </div>
 
-  <div class="bodyDiv">
+  <!-- <div class="bodyDiv">
     <a href="{% url 'profile' friend.user.username %}">
       <div class="card">
         <div class="cardImage">
@@ -47,8 +46,9 @@
           <div class="center">
             <h1>{{ friend.name }} <br> <span> {{ friend.status }} </span> </h1>
             <p>{{ friend.bio }}</p>
-            <ul>
+            <ul>-->
               <!-- I do not know how the external social media works so I haven't put this in yet -->
+              <!--
               <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
               <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
               <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
@@ -59,12 +59,31 @@
         </div>
       </div>
     </a>
-  </div>
+  </div> -->
   {% endfor %}
+  <div class="card">
+    <div class="cardImage">
+      <img src="{{MEDIA_URL}}{{profile.picture}}" alt="">
+    </div>
+    <div class="details">
+      <div class="center">
+        <h1>{{profile.name}} <br> <span> Student </span> </h1>
+        <p>{{profile.bio}}</p>
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
+          <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Keeping this here as to see that the css still works and as a dummy example -->
-
+<!--
 <div class="bodyDiv">
     <div class="card">
       <div class="cardImage">
@@ -84,7 +103,7 @@
         </div>
       </div>
     </div>
-</div>
+</div>-->
 
 {% if pageUser == user %}
   <a href="{% url 'addFriend' %}">
