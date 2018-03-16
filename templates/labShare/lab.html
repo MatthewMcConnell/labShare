@@ -36,7 +36,7 @@
 
     <!-- File upload -->
     <p style="margin-top:10px;">
-      <label for="id_file" class="id_file">Upload File:</label>
+      Upload File:
       <input type="file" name="attachedFile" onchange="previewFile()" id="id_file">
     </p>
 
@@ -49,7 +49,7 @@
   <!-- The following displays all the comments in a discussion page -->
   {% for post in posts %}
     <div class="comment">
-      <img class="commentUserImage" src="{{ MEDIA_URL }}{{ post.author.picture }}" alt="User Image"/>
+      <img id="commentUserImage" src="{{ MEDIA_URL }}{{ post.author.picture }}" alt="User Image"/>
       <p style="color:#4cffff">{{ post.author.name }} • {{ post.author }} • {{ post.timePosted }}</p>
       <h3>{{ post.content }}</h3>
       <p><a href="{{ MEDIA_URL }}{{ post.attachedFile }}" style="color: #5e9bff">{{ post.attachedFile }}</a></p>

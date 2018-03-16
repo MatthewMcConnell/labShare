@@ -240,6 +240,14 @@ float:right;
   -ms-transform: scale(1.15);
   transform: scale(1.15);
 }
+#commentUserImage {
+    float: left;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 
 .elements
 {
@@ -365,12 +373,6 @@ float:right;
   -webkit-transform: scale(1.15);
   -ms-transform: scale(1.15);
   transform: scale(1.15);
-}
-
-.commentUserImage {
-  float: left;
-  max-width: 30%;
-  max-height: 30%;
 }
 
 .sidebar-users {
