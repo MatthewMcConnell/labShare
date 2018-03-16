@@ -202,6 +202,7 @@ def editProfile(request):
             print (form.errors)
 
     contextDict = {"form": form}
+    contextDict["profile"] = UserProfile.objects.get (user = request.user)
 
     return render(request, "registration/edit_profile.html", contextDict)
 

@@ -5,17 +5,30 @@
 {% endblock %}
 
 {% block body_block %}
-  <div class="box" style="margin-top: -120px; border-radius:50%">
+    <!--<form action="/labShare/enrol/" method="post">
+        {% csrf_token %}
+
+       {{ form.as_table}}
+        <p>
+          <input type="text" class="course" name="course" value="Course Name">
+        </p>
+        <br>
+
+        {{ error }}
+    </form> -->
+
+<div class="box" style="margin-top: -120px; border-radius:50%">
   Enrol
-  </div>
+</div>
 
-  <script type="text/javascript">
-  var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
-  var random_color = colors[Math.floor(Math.random() * colors.length)];
-  $(".box").css('background-color', random_color);
-  </script>
+<script type="text/javascript">
+ var colors = ['#90d1df', '#f4d30f', '#fd9900', '#805DA1', '#25876c'];
+var random_color = colors[Math.floor(Math.random() * colors.length)];
+$(".box").css('background-color', random_color);
+</script>
 
-  <div class="enroll">
+<div class="enroll">
+
     <form action="/labShare/enrol/" method="post">
         {% csrf_token %}
 
@@ -46,20 +59,43 @@
           <th class="column">  Course Level</th>
           <th class="column">  Course Name</th>
           <th class="column">  Lab Numbers</th>
+
         </tr>
 
+
         {% for courseLab in table %}
-          <tr>
-            <td>{{ courseLab.0.level }}</td>
-            <td>{{ courseLab.0.name }}</td>
-            <td>
-              {% for lab in courseLab.1 %}
-                {{ lab.labNumber }}
-              {% endfor %}
-            </td>
-          </tr>
+            <tr>
+
+                <td>{{ courseLab.0.level }}</td>
+                <td>{{ courseLab.0.name }}</td>
+                <td>
+                    {% for lab in courseLab.1 %}
+                        {{ lab.labNumber }}
+                    {% endfor %}
+                </td>
+            </tr>
         {% endfor %}
       </table>
     </div>
   </div>
+
+    <!-- <table>
+        <tr>
+            <th>Course Level</th>
+            <th>Course Name</th>
+            <th>Labs</th>
+        </tr>
+        {% for courseLab in table %}
+            <tr>
+                <td>{{ courseLab.0.level }}</td>
+                <td>{{ courseLab.0.name }}</td>
+                <td>
+                    {% for lab in courseLab.1 %}
+                        {{ lab.labNumber }}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table> -->
+
 {% endblock %}

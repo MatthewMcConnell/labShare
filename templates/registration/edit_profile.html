@@ -8,9 +8,60 @@
 {% block body_block %}
     <h1 style="text-decoration:underline;">Edit Profile</h1>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <!-- <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="Update" />
+    </form> -->
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="csrfmiddlewaretoken" value="KJFdHQGCO7FELjYjax8mMRJ2hAPOmDGH478yyq48tSiPp2E0GXyCM2APCLbKSHev">
+        <p>
+            <label for="id_status">Status:</label><br>
+            <input type="text" name="status" value="{{ profile.status }}" maxlength="7" required="" class="setup_profile" id="id_status">
+        </p>
+        <p>
+            <label for="id_name">Name:</label><br>
+            <input type="text" name="name" value="{{ profile.name }}" maxlength="128" required="" class="setup_profile" id="id_name">
+        </p>
+        <p>
+            <label for="id_picture">Picture Currently:</label>
+            <a href="{{ MEDIA_URL }}{{ profile.picture }}">profile_images/media_209689_en_QB9Ectt.jpg</a>
+            <input type="checkbox" name="picture-clear" id="picture-clear_id">
+            <label for="picture-clear_id">Clear</label><br>
+            Change:
+            <input type="file" name="picture" id="id_picture">
+        </p>
+        <p>
+            <label for="id_bio">Bio:</label><br>
+            <input type="text" name="bio" value="{{ profile.bio }}" maxlength="128" class="setup_profile" id="id_bio">
+        </p>
+        <p>
+            <label for="id_degree">Degree:</label><br>
+            <input type="text" name="degree" value="{{ profile.degree }}" maxlength="128" class="setup_profile" id="id_degree">
+        </p>
+        <p>
+            <label for="id_university">University:</label><br>
+            <input type="text" name="university" value="{{ profile.university }}" maxlength="128" class="setup_profile" id="id_university">
+        </p>
+        <h2>If you want to include any social media links do so below!</h2>
+        <p>
+            <label for="id_facebook">Facebook:</label><br>
+            <input type="text" name="facebook" value="{{ profile.facebook }}" maxlength="300" required="" class="setup_profile" id="id_facebook">
+        </p>
+        <p>
+            <label for="id_instagram">Instagram:</label><br>
+            <input type="text" name="instagram" value="{{ profile.instagram }}" maxlength="300" required="" class="setup_profile" id="id_instagram">
+        </p>
+        <p>
+            <label for="id_twitter">Twitter:</label><br>
+            <input type="text" name="twitter" value="{{ profile.twitter }}" maxlength="300" required="" class="setup_profile" id="id_twitter">
+        </p>
+        <p>
+            <label for="id_linkedIn">LinkedIn:</label><br>
+            <input type="text" name="linkedIn" value="{{ profile.linkedIn }}" maxlength="300" required="" class="setup_profile" id="id_linkedIn">
+        </p>
+
+      <input type="submit" value="Update">
     </form>
 {% endblock %}
