@@ -766,7 +766,7 @@ table
 }
 .bodyDiv
 {
-  align-items: left;
+  /*align-items: left;*/
   margin:0;
   padding: 0;
   height: auto;
@@ -774,7 +774,7 @@ table
   margin: 40px;
   padding: 40px;
   justify-self: center;
-  display: block;
+  display: inline-grid;
   /* padding: 10px 10px; */
   clear: all;
   /* background: #250008; */
