@@ -13,6 +13,10 @@ class UserProfileForm (forms.ModelForm):
     degree = forms.CharField (required = False, max_length = 128)
     picture = forms.ImageField (required = False)
     bio = forms.CharField (required = False, max_length = 128)
+    facebook = forms.URLField(required = False, max_length = 300)
+    instagram = forms.URLField(required = False, max_length = 300)
+    twitter = forms.URLField(required = False, max_length = 300)
+    linkedIn = forms.URLField(required = False, max_length = 300)
 
 
     class Meta:
@@ -43,5 +47,3 @@ class AddFriendForm (forms.Form):
 
     # Note: this form does not need a meta class (it actually breaks the form) as we are not creating
     # a model object! Simply adding to a field!
-
-
