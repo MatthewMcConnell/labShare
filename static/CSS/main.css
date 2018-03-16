@@ -295,13 +295,13 @@ float:right;
   font-size: 20px;
   text-align: justify;
   color: white;
-  /* text-indent: 50px; */
+  text-indent: 10%;
 
 
   /* Comment Box */
   background-color: rgba(38,40,49,0.9);
-  border: none;
-  border-radius: 10px 10px;
+  /* border: none; */
+  border-radius: 50px 10px;
   clear: both;
 }
 
@@ -366,9 +366,26 @@ float:right;
   transform: scale(1.15);
 }
 
-#id_file {
-  margin: 20px;
-  padding: 20px;
+.commentUserImage {
+  float: left;
+  max-width: 30%;
+  max-height: 30%;
+}
+
+.sidebar-users {
+  float: left;
+  margin-top: 1px;
+  margin-left: 0%;
+  text-align: left;
+  padding: none;
+  list-style: none;
+}
+
+.id_file {
+  font-size: 20px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10%;
 }
 
 #subject1 {
@@ -1049,13 +1066,6 @@ transform: perspective(2000px) rotateY(-90deg);
 .socialMediaSection ul li a:hover
 {color: #fff;}
 
-.sidebar-users {
-  margin-top: 1px;
-  margin-left: 0%;
-  text-align: left;
-  padding: 0;
-  list-style: none;
-}
 .name h3 {
   font-family: "Dosis";
   margin: 0;

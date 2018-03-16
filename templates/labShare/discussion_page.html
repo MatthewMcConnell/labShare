@@ -4,11 +4,15 @@
 {% endblock %}
 
 <!-- People in Labs - Sidebar -->
-
+{% block sidebar_block %}
+  {% for user in lab.peopleInLab.all %}
+    <!-- <h1>{{ user }}</h1> -->
+  {% endfor %}
+{% endblock %}
 
 {% block body_block %}
   <div class="box" style="margin-top: -120px; border-radius:50%">
-    Lab X
+    Lab {{ lab.labNumber }}
   </div>
 
   <!-- Javascript for the "Lab X" circle -->
@@ -30,23 +34,23 @@
 
     <!-- File upload -->
     <p style="margin-top:10px;">
-      <label for="id_file" id="id_file">Upload File:</label>
+      <label for="id_file" class="id_file">Upload File:</label>
       <input type="file" name="attachedFile" onchange="previewFile()" id="id_file">
     </p>
 
   </form>
 
   <!-- Visual line break between comment submission and comments -->
-  <!-- <hr style="margin-top:0%; width: 80%;"> -->
+  <hr style="margin-top:0%; width: 80%;">
 
 
   <!-- The following displays all the comments in a discussion page -->
   {% for post in posts %}
     <div class="comment">
-      <p style="color:#4cffff">{{ post.author.name }} • {{ post.author }} • {{ post.timePosted }}
-      </p>
+      <img class="commentUserImage" src="{{ MEDIA_URL }}{{ post.author.picture }}" alt="User Image"/>
+      <p style="color:#4cffff">{{ post.author.name }} • {{ post.author }} • {{ post.timePosted }}</p>
       <h3>{{ post.content }}</h3>
-      <p>{{ post.attachedFile }}</p>
+      <p><a href="{{ MEDIA_URL }}{{ post.attachedFile }}" style="color: #5e9bff">{{ post.attachedFile }}</a></p>
     </div>
   {% endfor %}
 
