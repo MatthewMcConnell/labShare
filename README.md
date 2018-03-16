@@ -9,3 +9,8 @@ Lab 8 Team D - WAD2 Team Project - LabShare - A platform to share the labs you a
  * pillow :: latest :: 'pip install pillow' :: VE
  * django-registration-redux :: latest :: 'pip install django-registration-redux' :: VE
  * python :: 3.5+ :: see python website :: anywhere
+
+ ## Issues
+ * Main menu bar, when pressed, removes the nav bar once removed from screen frame
+ * Details on friends list card is bigger than image
+ * Profile pictures on lab page is big and will not scale
