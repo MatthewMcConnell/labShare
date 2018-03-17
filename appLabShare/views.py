@@ -80,11 +80,7 @@ def lab (request, course, labNumber):
     contextDict["lab"] = lab
 
     if not UserProfile.objects.get(user = user) in lab.peopleInLab.all():
-        contextDict["error"] = "You are not enrolled in this lab!"
-        return render(request, 'labShare/enrol.html', contextDict)
-    else:
-        contextDict["error"] = None
-
+        return redirect ('enrol')
 
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
