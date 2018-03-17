@@ -1,3 +1,10 @@
+""" NOTE: while this population script creates users I have not been able to figure out
+          how to get django-registration-redux to recognise them. Thus you are unable to
+          login as one of these users but you can still do everything else, such as add
+          them as friends 
+"""
+
+
 import os
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
@@ -11,6 +18,9 @@ django.setup()
 
 from django.contrib.auth.models import User
 from django.core.files import File
+# from django.http import HttpRequest, SimpleCookie
+
+from registration.signals import user_registered, user_activated
 
 from appLabShare.models import UserProfile, Post, Course, Lab
 
@@ -18,19 +28,19 @@ def populate():
     # Any pictures with an empty "" should automatically assign it the picture called user_image.png in the media/profile_images folder
     # for both students and tutors
 
-    # students = [
-    #     {"username": "2281654m", "password": "HelloWorld1", "name": "Allan McGuire", "picture": "populationScriptFiles/coolAppa.jpg", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "1234567m@student.gla.ac.uk"},
-    #     {"username": "2266511m", "password": "HelloWorld2", "name": "David Mitchell", "picture": "populationScriptFiles/studentProfilePic.jpg", "bio": "2nd year, Glasgow university", "degree": "Computing Science", "email": "3624739y@student.gla.ac.uk"},
-    #     {"username": "2253290s", "password": "HelloWorld3", "name": "Ted Smith", "picture": "populationScriptFiles/coolAppa.jpg", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "2253290t@student.gla.ac.uk"},
-    #     {"username": "2234512s", "password": "HelloWorld4", "name": "Oscar Stark", "picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "3842353r@student.gla.ac.uk"},
-    #     {"username": "2263546t", "password": "HelloWorld5", "name": "Daniel Tarry", "picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "2356847a@student.gla.ac.uk"}
-    # ]
+    students = [
+        {"username": "2281654m", "password": "HelloWorld1", "name": "Allan McGuire", "picture": "populationScriptFiles/coolAppa.jpg", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "1234567m@student.gla.ac.uk"},
+        {"username": "2266511m", "password": "HelloWorld2", "name": "David Mitchell", "picture": "populationScriptFiles/studentProfilePic.jpg", "bio": "2nd year, Glasgow university", "degree": "Computing Science", "email": "3624739y@student.gla.ac.uk"},
+        {"username": "2253290s", "password": "HelloWorld3", "name": "Ted Smith", "picture": "populationScriptFiles/coolAppa.jpg", "bio": "2nd year, Uni of Glasgow", "degree": "Computing Science", "email": "2253290t@student.gla.ac.uk"},
+        {"username": "2234512s", "password": "HelloWorld4", "name": "Oscar Stark", "picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "3842353r@student.gla.ac.uk"},
+        {"username": "2263546t", "password": "HelloWorld5", "name": "Daniel Tarry", "picture": "", "bio": "2nd year, Uni of Glasgow", "degree": "Economics", "email": "2356847a@student.gla.ac.uk"}
+    ]
 
-    # tutors = [
-    #     {"username": "11223344", "password": "HelloWorld6", "name": "Patricia Wallace", "email" : "patriciawallace@gmail.com", "degree" : "computing Science", "picture": "populationScriptFiles/tutorProfilePic.jpg", "bio": "i love to learn" },
-    #     {"username": "99887766", "password": "HelloWorld7", "name": "Joe Hart", "email" : "joehart@gmail.com", "degree" : "computing Science", "picture": "populationScriptFiles/tutorProfilePic.jpg", "bio": "i adore learning" },
-    #     {"username": "12345678", "password": "HelloWorld8", "name": "Van der Sar", "email" : "vantheman@gmail.com", "degree" : "computing Science", "picture": "", "bio": "leaning is cool" }
-    # ]
+    tutors = [
+        {"username": "11223344", "password": "HelloWorld6", "name": "Patricia Wallace", "email" : "patriciawallace@gmail.com", "degree" : "computing Science", "picture": "populationScriptFiles/tutorProfilePic.jpg", "bio": "i love to learn" },
+        {"username": "99887766", "password": "HelloWorld7", "name": "Joe Hart", "email" : "joehart@gmail.com", "degree" : "computing Science", "picture": "populationScriptFiles/tutorProfilePic.jpg", "bio": "i adore learning" },
+        {"username": "12345678", "password": "HelloWorld8", "name": "Van der Sar", "email" : "vantheman@gmail.com", "degree" : "computing Science", "picture": "", "bio": "leaning is cool" }
+    ]
 
     courses = [
         {"name": "CS1P", "level": 1},
@@ -42,11 +52,11 @@ def populate():
         {"name": "CS4021", "level": 4},
     ]
 
-    # posts = [
-    #     {"content" : "hello world", "timePosted" : datetime.now().replace(tzinfo=pytz.UTC), "attachedFile" : "populationScriptFiles/lab1Tips.txt", "name" : "Patricia Wallace"},
-    #     {"content" : "its ya boy dave the rave", "timePosted" : datetime.now().replace(tzinfo=pytz.UTC), "attachedFile" : "", "name" : "Joe Hart"},
-    #     {"content" : "Hey guys I'm a student!", "timePosted": datetime.now().replace(tzinfo=pytz.UTC), "attachedFile": "populationScriptFiles/lab2Tips.txt", "name": "Oscar Stark"},
-    # ]
+    posts = [
+        {"content" : "hello world", "timePosted" : datetime.now().replace(tzinfo=pytz.UTC), "attachedFile" : "populationScriptFiles/lab1Tips.txt", "name" : "Patricia Wallace"},
+        {"content" : "its ya boy dave the rave", "timePosted" : datetime.now().replace(tzinfo=pytz.UTC), "attachedFile" : "", "name" : "Joe Hart"},
+        {"content" : "Hey guys I'm a student!", "timePosted": datetime.now().replace(tzinfo=pytz.UTC), "attachedFile": "populationScriptFiles/lab2Tips.txt", "name": "Oscar Stark"},
+    ]
 
 
     print ("Courses:")
@@ -54,32 +64,32 @@ def populate():
         addCourseAndLabs (course)
 
 
-    # print ("Tutors:")
-    # for tutor in tutors:
-    #     addUserAndProfile (tutor, "Tutor")
+    print ("Tutors:")
+    for tutor in tutors:
+        addUserAndProfile (tutor, "Tutor")
 
 
-    # print ("Students:")
-    # for student in students:
-    #     addUserAndProfile (student, "Student")
+    print ("Students:")
+    for student in students:
+        addUserAndProfile (student, "Student")
 
 
-    # print ("Enrolling tutors:")
-    # enrolTutors ()
+    print ("Enrolling tutors:")
+    enrolTutors ()
 
 
-    # print ("Enrolling students:")
-    # enrolStudents ()
+    print ("Enrolling students:")
+    enrolStudents ()
 
 
-    # print ("Posts:")
-    # for post in posts:
-    #     p = addPost (post)
-    #     print (p)
+    print ("Posts:")
+    for post in posts:
+        p = addPost (post)
+        print (p)
 
 
-    # print ("Making friends:")
-    # makeFriends ()
+    print ("Making friends:")
+    makeFriends ()
 
 
     print ()
@@ -128,6 +138,14 @@ def addUserAndProfile (infoDict, status):
                                        password = infoDict["password"],
                                        email = infoDict["email"])[0]
     user.save()
+
+
+    # Note: I tried to get django registration redux to recognise the users but kept running into
+    # errors. 
+
+    # request = HttpRequest()
+    # user_registered.send (sender = User, user = user)
+    # user_activated.send (sender = User, user = user, request = request)
 
     profile = UserProfile.objects.get_or_create (user = user,
                                                  bio = infoDict["bio"],

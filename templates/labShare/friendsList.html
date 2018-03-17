@@ -38,32 +38,13 @@
       </a>
     {% endfor %}
 
-    <!-- Dummy for CSS purposes only -->
-
-    <div class="card">
-      <div class="cardImage">
-        <img src="{{MEDIA_URL}}{{profile.picture}}" alt="">
+    {% if pageUser == user %}
+      <div class="card">
+        <a href="{% url 'addFriend' %}">
+          <h3><font color="FFFFFF">Add or delete a friend</font></h3>
+        </a>
       </div>
-      <div class="details">
-        <div class="center">
-          <h1>{{profile.name}} <br> <span> Student </span> </h1>
-          <p>{{profile.bio}}</p>
-          <ul>
-            <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-            <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
-            <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    {% endif %}
+    
   </div>
-
-  {% if pageUser == user %}
-    <a href="{% url 'addFriend' %}">
-      <h3>Add or delete a friend</h3>
-    </a>
-  {% endif %}
-
 {% endblock %}
