@@ -93,7 +93,7 @@ def lab (request, course, labNumber):
             post = form.save(commit=False)
             post.author = UserProfile.objects.get(user=request.user)
             post.timePosted = timezone.now()
-            post.postedIn = Lab.objects.get(labNumber = labNumber)
+            post.postedIn = Lab.objects.get(labNumber = labNumber, course = Course.objects.get (name = course))
             post.save()
             return redirect('lab', course, labNumber)
     else:
