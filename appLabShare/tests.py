@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 
-
 from populate import *
 
 from appLabShare.models import *
@@ -95,8 +94,7 @@ class ModelTests (TestCase):
         posts = Post.objects.all()
         self.assertEqual (len(posts), 1, "Not only 1 post was made")
         p = posts[0]
-        self.assertEqual (postfrom django.core.urlresolvers import reverse
-, p, "The queried post was not equal")
+        self.assertEqual (post, p, "The queried post was not equal")
 
 
 
@@ -168,18 +166,64 @@ class PopulationScriptTests (TestCase):
 
 
 
-# NOTE: I have been unable to figure out how to get django registration redux to recognise that
-#       I've made a user here in python, thus login will not work with these users and so since
-#       everything requires a user to be logged in on our page then none of these tests will work
 class ViewTests (TestCase):
-    def create_user ():
-        user = User.objects.get_or_create (username = "1234567t", password = "HelloWorld1")
+    def create_user (self, username, password, name):
+        user = User.objects.get_or_create (username = username, password = password)[0]
         user.set_password (user.password)
         user.save()
-        userProfile = UserProfile.objects.get_or_create (user = user, name = "Matthew")
 
-        return userProfile
+        userProfile = UserProfile.objects.get_or_create (user = user, name = name)[0]
+        userProfile.save()
+
+        return user, userProfile, {"username": username, "password": password}
+
+
+    def loginUser (self, userDict):
+        self.client.post (reverse ("auth_login"), userDict)
+
+
+    def test_enter_page_has_link_to_login (self):
+        try:
+            response = self.client.get (reverse ("enter"))
+        except:
+            return False
+
+        self.assertIn ("/labShare/accounts/login/", response.content.decode ("ascii"))
+
+
     def test_login_shows_go_to_profile_link_when_already_logged_in (self):
-        user = None
+        user, userProfile, userDict = self.create_user ("1234567s", "HelloWorld1", "Matt")
+
+        try:
+            # login
+            self.loginUser (userDict)
+
+            # Getting the login page again
+            response = self.client.get (reverse ("auth_login"))
+        except:
+            return False
+
+        self.assertIn ("/labShare/profile/", response.content.decode('ascii'))
+
+
+    def test_profileRedirect_redirects_to_profileSetup_when_user_does_not_have_profile (self):
+        try:
+            self.loginUser (self.create_user("1234567s", "HelloWorld1", "Matt")[2])
+
+            response = self.client.get (reverse ("profileRedirect"))
+        except:
+            return False
+
+        self.assertRedirects (response, reverse ("register-profile"))
+
+
+
+        
+
+        return True
+
+
+
+            
 
 
