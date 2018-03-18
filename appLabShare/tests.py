@@ -1,9 +1,10 @@
 from django.test import TestCase
+from django.core.urlresolvers import reverse
+
 
 from populate import *
 
 from appLabShare.models import *
-
 
 
 class ModelTests (TestCase):
@@ -94,22 +95,13 @@ class ModelTests (TestCase):
         posts = Post.objects.all()
         self.assertEqual (len(posts), 1, "Not only 1 post was made")
         p = posts[0]
-        self.assertEqual (post, p, "The queried post was not equal")
+        self.assertEqual (postfrom django.core.urlresolvers import reverse
+, p, "The queried post was not equal")
 
 
 
 
 class PopulationScriptTests (TestCase):
-    def getCourseAndLabs (self):
-        infoDict = {"name": "CS1P", "level": 1}
-
-        addCourseAndLabs (infoDict)
-
-        c = Course.objects.filter (name = infoDict["name"], level = infoDict["level"])
-
-        return c
-
-
     def test_addCourseAndLabs_createsCategory (self):
         infoDict = {"name": "CS1P", "level": 1}
 
@@ -176,9 +168,18 @@ class PopulationScriptTests (TestCase):
 
 
 
-
+# NOTE: I have been unable to figure out how to get django registration redux to recognise that
+#       I've made a user here in python, thus login will not work with these users and so since
+#       everything requires a user to be logged in on our page then none of these tests will work
 class ViewTests (TestCase):
+    def create_user ():
+        user = User.objects.get_or_create (username = "1234567t", password = "HelloWorld1")
+        user.set_password (user.password)
+        user.save()
+        userProfile = UserProfile.objects.get_or_create (user = user, name = "Matthew")
 
-    
+        return userProfile
+    def test_login_shows_go_to_profile_link_when_already_logged_in (self):
+        user = None
 
 

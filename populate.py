@@ -1,10 +1,3 @@
-""" NOTE: while this population script creates users I have not been able to figure out
-          how to get django-registration-redux to recognise them. Thus you are unable to
-          login as one of these users but you can still do everything else, such as add
-          them as friends 
-"""
-
-
 import os
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
@@ -18,7 +11,6 @@ django.setup()
 
 from django.contrib.auth.models import User
 from django.core.files import File
-# from django.http import HttpRequest, SimpleCookie
 
 from registration.signals import user_registered, user_activated
 
@@ -137,15 +129,8 @@ def addUserAndProfile (infoDict, status):
     user = User.objects.get_or_create (username = infoDict["username"],
                                        password = infoDict["password"],
                                        email = infoDict["email"])[0]
+    user.set_password (user.password)
     user.save()
-
-
-    # Note: I tried to get django registration redux to recognise the users but kept running into
-    # errors. 
-
-    # request = HttpRequest()
-    # user_registered.send (sender = User, user = user)
-    # user_activated.send (sender = User, user = user, request = request)
 
     profile = UserProfile.objects.get_or_create (user = user,
                                                  bio = infoDict["bio"],
