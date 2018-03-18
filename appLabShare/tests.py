@@ -167,6 +167,8 @@ class PopulationScriptTests (TestCase):
 
 
 class ViewTests (TestCase):
+    # HELPER METHODS #
+
     def create_user (self, username, password, name):
         user = User.objects.get_or_create (username = username, password = password)[0]
         user.set_password (user.password)
@@ -182,14 +184,18 @@ class ViewTests (TestCase):
         self.client.post (reverse ("auth_login"), userDict)
 
 
+    # ENTER VIEW #
+
     def test_enter_page_has_link_to_login (self):
         try:
             response = self.client.get (reverse ("enter"))
         except:
             return False
 
-        self.assertIn ("/labShare/accounts/login/", response.content.decode ("ascii"))
+        self.assertIn (reverse ("auth_login"), response.content.decode ("ascii"))
 
+
+    # LOGIN VIEW #
 
     def test_login_shows_go_to_profile_link_when_already_logged_in (self):
         user, userProfile, userDict = self.create_user ("1234567s", "HelloWorld1", "Matt")
@@ -203,12 +209,18 @@ class ViewTests (TestCase):
         except:
             return False
 
-        self.assertIn ("/labShare/profile/", response.content.decode('ascii'))
+        self.assertIn (reverse ("profileRedirect"), response.content.decode('ascii'))
 
+
+    # PROFILE REDIRECT VIEW #
 
     def test_profileRedirect_redirects_to_profileSetup_when_user_does_not_have_profile (self):
         try:
-            self.loginUser (self.create_user("1234567s", "HelloWorld1", "Matt")[2])
+            user = User.objects.get_or_create (username = "1234567s", password = "HelloWorld1")
+            user.set_password (user.password)
+            user.save()
+
+            self.loginUser ({"username": "1234567s", "password": "HelloWorld1"})
 
             response = self.client.get (reverse ("profileRedirect"))
         except:
@@ -217,13 +229,183 @@ class ViewTests (TestCase):
         self.assertRedirects (response, reverse ("register-profile"))
 
 
+    def test_profileRedirect_redirects_to_profile_when_user_has_profile (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
 
+            response = self.client.get (reverse ("profileRedirect"))
+        except:
+            return False
         
-
-        return True
-
+        self.assertRedirects (response, reverse ("profile", args=["1234567s"]))
 
 
+    # SIGN OUT VIEW #
+
+    def test_signOut_redirects_to_enter_page (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            response = self.client.get (reverse ("auth_logout"))
+        except:
+            return False
+
+        self.assertRedirects (response, reverse ("enter"))
+
+
+    # PROFILE VIEW #
+
+    def test_profile_page_has_nav_links (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            response = self.client.get (reverse ("profile"))
+
+            cdResponse = response.content.decode ("ascii")
+        except:
+            return False
+
+        self.assertIn (reverse ("profile" ,"1234567s"), cdResponse, "There was no my profile link")
+        self.assertIn (reverse ("labList", "1234567s"), cdResponse, "There was no my labs link")
+        self.assertIn (reverse ("friendsList", "1234567s"), cdResponse, "There was no my friends link")
+        self.assertIn (reverse ("auth_logout"), cdResponse, "There was no sign out link")
+
+
+    def test_profile_shows_edit_profile_when_user_is_viewing_own_profile (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            response = self.client.get (reverse ("profile", "1234567s"))
+        except:
+            return False
+
+        self.assertIn (reverse ("edit_profile"), response.content.decode ("ascii"))
+
+
+    def test_profile_does_not_show_edit_profile_when_user_is_viewing_others_profile (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            self.create_user ("1234567t", "HelloWorld1", "Matt")
+
+            response = self.client.get (reverse ("profile", "1234567t"))
+        except:
+            return False
+
+        self.assertNotIn (reverse ("edit_profile"), response.content.decode ("ascii"))
+
+
+
+    # FRIENDS LIST VIEW #
+
+    def test_friendsList_shows_friends (self):
+        try:
+            user, userProfile, userDict = self.create_user ("1234567s", "HelloWorld1", "Matt")
+
+            self.loginUser (userDict)
+
+            userProfile.friends.add (self.create_user ("1234567t", "HelloWorld1", "Matty")[1])
+
+            response = self.client.get (reverse ("friendsList", "1234567s"))
+        except:
+            return False
+
+        self.assertIn ("1234567t", response.content.decode ("ascii"))
+
+
+    def test_friendsList_shows_noFriendsMessage (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            response = self.client.get (reverse ("friendsList", "1234567s"))
+        except:
+            return False
+
+        self.assertIn ("This user has no friends!".lower(), response.content.decode ("ascii").lower())
+
+
+    def test_friendsList_shows_add_link_when_user_is_viewing_their_own_friendsList (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            response = self.client.get (reverse ("friendsList", "1234567s"))
+        except:
+            return False
+
+        self.assertIn (reverse ("addFriend"), response.content.decode ("ascii"))
+
+
+    def test_friendsList_does_not_show_add_link_when_user_is_viewing_others_friendsList (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            self.create_user ("1234567t", "HelloWorld1", "Matt")
+
+            response = self.client.get (reverse ("friendsList", "1234567t"))
+        except:
+            return False
+
+        self.assertNotIn (reverse ("addFriend"), response.content.decode ("ascii"))
+
+
+    # LAB LIST VIEW #
+
+    def test_labList_shows_noLabsMessage (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            response = self.client.get (reverse ("labList", "1234567s"))
+        except:
+            return False
+
+        self.assertIn ("This user is not enrolled in any labs!".lower(), response.content.decode ("ascii").lower())
             
+
+    def test_labList_shows_labs_enrolled_in (self):
+        try:
+            user, userProfile, userDict = self.create_user ("1234567s", "HelloWorld1", "Matt")
+
+            self.loginUser (userDict)
+
+            course = Course.objects.get_or_create (name = "CS1CT", level = 1)
+            lab = Lab.objects.get_or_create (course = course, labNumber = 1)
+            lab.peopleInLab.add (userProfile)
+
+            response = self.client.get (reverse ("labList", "1234567s"))
+        except:
+            return False
+
+        self.assertIn ("CS1CT - 1", response.content.decode ("ascii"))
+
+
+    def test_labList_shows_enrol_link_when_user_is_viewing_their_own_labList (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            response = self.client.get (reverse ("labList", "1234567s"))
+        except:
+            return False
+
+        self.assertIn (reverse ("enrol"), response.content.decode ("ascii"))
+
+
+    def test_labList_does_not_show_enrol_link_when_user_is_viewing_others_labList (self):
+        try:
+            self.loginUser (self.create_user ("1234567s", "HelloWorld1", "Matt")[2])
+
+            self.create_user ("1234567t", "HelloWorld1", "Matt")
+
+            response = self.client.get (reverse ("labList", "1234567t"))
+        except:
+            return False
+
+        self.assertNotIn (reverse ("enrol"), response.content.decode ("ascii"))
+
+
+    
+
+
+
+
 
 
