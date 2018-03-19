@@ -811,8 +811,8 @@ table
 {
   margin-top: 0px;
   border-radius: 0;
-  width: 360px;
-  height: 480px;
+  width: 270px;
+  height: 320px;
   transition: .5s;
 }
 .card:hover .cardImage img
