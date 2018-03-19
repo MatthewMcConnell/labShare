@@ -302,6 +302,12 @@ float:right;
 .name {
   color: #4cffff;
   font-size: 50px;
+  font-weight: bold;
+}
+
+.status {
+  color: #4cffff;
+  font-size: 40px;
 }
 
 .comment {
