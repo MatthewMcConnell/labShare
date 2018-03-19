@@ -11,10 +11,6 @@ Lab 8 Team D - WAD2 Team Project - LabShare - A platform to share the labs you a
 * django-registration-redux :: latest :: 'pip install django-registration-redux' :: VE
 * python :: 3.5+ :: see python website :: anywhere
 
-If you would like to see the coverage of the tests then you can also install the following
-
-* coverage :: latest :: 'pip install coverage' :: VE
-
 ## Set up
 
 Once you have all the dependencies installed in a virtual env then run these commands in your VE
