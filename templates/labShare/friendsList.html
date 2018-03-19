@@ -26,11 +26,10 @@
               <p>{{ friend.bio }}</p>
               <ul>
                 <!-- I do not know how the external social media works so I haven't put this in yet -->
-                <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="{{ friend.facebook }}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
+                <li><a href="{{ friend.twitter }}"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
+                <li><a href="{[ friend.linkedIn }}"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                <li><a href="{{ friend.instagram }}"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
               </ul>
             </div>
           </div>
@@ -39,12 +38,10 @@
     {% endfor %}
 
     {% if pageUser == user %}
-      <div class="card">
-        <a href="{% url 'addFriend' %}">
-          <h3><font color="FFFFFF">Add or delete a friend</font></h3>
-        </a>
-      </div>
+    <a href="{% url 'addFriend' %}">
+      <h3><font color="FFFFFF">Add or delete a friend</font></h3>
+    </a>
     {% endif %}
-    
+
   </div>
 {% endblock %}
