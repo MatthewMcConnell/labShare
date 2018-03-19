@@ -39,12 +39,10 @@
     {% endfor %}
 
     {% if pageUser == user %}
-      <div class="card">
-        <a href="{% url 'addFriend' %}">
-          <h3><font color="FFFFFF">Add or delete a friend</font></h3>
-        </a>
-      </div>
+    <a href="{% url 'addFriend' %}">
+      <h3><font color="FFFFFF">Add or delete a friend</font></h3>
+    </a>
     {% endif %}
-    
+
   </div>
 {% endblock %}
