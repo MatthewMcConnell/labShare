@@ -22,24 +22,31 @@
 
   <body>
     <nav>
-      <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="330" height="100">
-      {% url 'register-profile' as no_nav %}
-      {% if request.get_full_path != no_nav %}
-          {% if user.is_authenticated %}
-            <ul>
-              <li id= "linkRef"><a href="{% url 'labList' user.username %}" id="link">My Labs</a></li>
-              <li id= "linkRef"><a href="{% url 'profile' user.username %}" id="link">My Profile</a></li>
-              <li id= "linkRef"><a href="{% url 'friendsList' user.username %}" id="link">My Friends</a></li>
-              <li id= "linkRef"><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
-            </ul>
-          {% endif %}
-      {% endif %}
+        {% url 'register-profile' as no_nav %}
+        {% url 'register' as no_nav2 %}
+        {% if request.get_full_path != no_nav and request.get_full_path != no_nav2 %}
+            <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="330" height="100">
+            {% if user.is_authenticated %}
+                <ul>
+                  <li id= "linkRef"><a href="{% url 'labList' user.username %}" id="link">My Labs</a></li>
+                  <li id= "linkRef"><a href="{% url 'profile' user.username %}" id="link">My Profile</a></li>
+                  <li id= "linkRef"><a href="{% url 'friendsList' user.username %}" id="link">My Friends</a></li>
+                  <li id= "linkRef"><a href="{% url 'auth_logout' %}?next=/labShare/" id="link">Sign Out</a></li>
+                </ul>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'enter' %}">
+            <img class="logo" src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="330" height="100">
+            </a>
+        {% endif %}
       <div style="clear:both;"></div>
     </nav>
 
-    <div class="responsive-bar">
+    <div class="responsive-bar" style="border-bottom: 3px solid #fff;">
       <img  src="{% static "images/logo.png" %}" alt="logo" draggable="false" width="330" height="100">
+      {% if user.is_authenticated %}
       <button class="purpleButton"><i class="fa fa-bars" aria-hidden="true"> </i></button>
+      {% endif %}
       <div style="clear: both;"></div>
     </div>
 
