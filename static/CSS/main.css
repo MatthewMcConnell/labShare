@@ -100,6 +100,16 @@ nav ul {
   display: inline-block;
   text-align: center;
 }
+
+nav ul li p:hover
+{
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+}
 nav ul li:not(:last-child)
 {
   border-right: 2px dashed #d2d5e4;
@@ -185,7 +195,7 @@ float:right;
   {
     display: none;
   }
-  @media (min-width:1000px)
+  @media (min-width:1001px)
   {
     nav
     {
