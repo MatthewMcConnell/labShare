@@ -33,3 +33,4 @@ Once you have all the dependencies installed in a virtual env then run these com
 * Registration page bullet points
 * CSS for enrol page
 * Enrol page doesn't display correct error message if the level doesn't exist (views.py)
+* Dynamic folders for lab posts
