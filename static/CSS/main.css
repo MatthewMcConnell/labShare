@@ -422,11 +422,14 @@ float:right;
   -o-transition: 0.2s ease-in-out;
   z-index;
   padding: 0 1rem;
-  transition: opacity 1.2s;
+  transition: opacity 0.6s;
 }
 .box:hover{
   opacity: 1 !important;
   box-shadow: inset 0 0 0 5px white;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
   -webkit-transform: scale(1.15);
   -ms-transform: scale(1.15);
   transform: scale(1.15);
@@ -854,7 +857,9 @@ border-radius: 15px 0 0 15px;
   transform: perspective(2000px) rotateY(0deg);
 
 }
-
+.card a:link {
+  text-decoration: none !important;
+}
 .card .details .center
 {
 

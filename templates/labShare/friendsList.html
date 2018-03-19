@@ -14,18 +14,18 @@
 
   <div class="bodyDiv">
     {% for friend in profile.friends.all %}
-      <a href="{% url 'profile' friend.user.username %}">
         <div class="card">
-        </a>
-
           <div class="cardImage">
+            <a href="{% url 'profile' friend.user.username %}">
+
             <img src="{{ MEDIA_URL }}{{ friend.picture }}" alt="{{ friend.name }}'s picture">
           </div>
-
           <div class="details">
             <div class="center">
-              <h1 class="friendDetails">{{ friend.name }} <br> <span class="friendDetails"> {{ friend.status }} </span> </h1>
-              <p class="friendDetails">{{ friend.bio }}</p>
+
+              <h1 class="friendDetails" style="text-decoration:none;">{{ friend.name }} <br> <span class="friendDetails" style="text-decoration:none;"> {{ friend.status }} </span> </h1>
+              <p class="friendDetails" style="text-decoration:none;" >{{ friend.bio }}</p>
+              </a>
               <ul>
                 <!-- I do not know how the external social media works so I haven't put this in yet -->
                 <li><a href="#"><i class="fab fa-github" aria-hidden="true"></i></a></li>
@@ -50,6 +50,5 @@
       <h3><font color="FFFFFF">Add or delete a friend</font></h3>
     </a>
     {% endif %}
-
   </div>
 {% endblock %}
