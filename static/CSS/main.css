@@ -793,7 +793,7 @@ table
   /* float: left; */
   /* margin: 40px 40px 0 55px; */
   /* border-radius: 20px; */
-  /* top: 50%;
+  /* top: 50%;s
   left: 50%;
   transform: translate(-50%, 0%); */
 
@@ -816,11 +816,14 @@ table
   height: 100%;
   overflow: hidden;
   /* border-radius: 25px; */
+  border-radius: 15px;
+
 }
 .card .cardImage img
 {
   margin-top: 0px;
   border-radius: 0;
+
   width: 270px;
   height: 320px;
   transition: .5s;
@@ -829,6 +832,8 @@ table
 {
   opacity: .5;
   transform: translateX(30%);
+  /* border-radius: 25px; */
+
 
 }
 .card .details
@@ -838,11 +843,11 @@ top: 0;
 left: 0;
 width: 70%;
 height: 100%;
-background: #25876c;
+/* background: #25876c; */
 transition: .5s;
 transform-origin: left;
 transform: perspective(2000px) rotateY(-90deg);
-/* border-radius: 25px; */
+border-radius: 15px 0 0 15px;
 }
 .card:hover .details
 {
@@ -855,7 +860,8 @@ transform: perspective(2000px) rotateY(-90deg);
 
   padding: 20px;
   text-align: center;
-  background: #25876c;
+  /* background: #25876c; */
+  background: #fff;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -865,7 +871,7 @@ transform: perspective(2000px) rotateY(-90deg);
 {
   margin: 0;
   padding: 0;
-  color: #ff3636;
+  color: #000;
   line-height: 20px;
   font-size: 20px;
   text-transform: uppercase;
@@ -873,22 +879,27 @@ transform: perspective(2000px) rotateY(-90deg);
 .card .details .center h1 span
 {
   font-size: 14px;
-  color: #262626;
+  color: #000;
+}
+.friendDetails
+{
+  color: black;
 }
 
 .card .details .center h1 p
 {
-
+  list-style: none;
+  text-decoration: none;
   margin: 10px 0;
   padding: 0;
-  color: #262626;
+  color: #000 !important;
 }
 
 .card .details .center ul
 {
-  margin: 10px auto 0;
+  margin: 0;
   padding: 0;
-  display: table;
+  display: inline-block;
   list-style: none;
 
 }
@@ -1059,9 +1070,9 @@ transform: perspective(2000px) rotateY(-90deg);
 {
   background:#007bb5;
 }
-#google:hover
+#github:hover
 {
-  background:#cb2027;
+  background:#000;
 }
 #instagram:hover
 {
@@ -1080,7 +1091,9 @@ transform: perspective(2000px) rotateY(-90deg);
   left: 25px;
 }
 .socialMediaSection ul li a:hover
-{color: #fff;}
+{
+  color: #fff;
+}
 
 .name h3 {
   font-family: "Dosis";
