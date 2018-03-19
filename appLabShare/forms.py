@@ -44,6 +44,5 @@ class PostForm(forms.ModelForm):
 
 class AddFriendForm (forms.Form):
     friend = forms.CharField (required = True)
-
     # Note: this form does not need a meta class (it actually breaks the form) as we are not creating
     # a model object! Simply adding to a field!

@@ -189,7 +189,7 @@ float:right;
   {
     nav
     {
-      display: flex;
+      display: flex !important;
     }
     .responsive-bar
     {
@@ -592,7 +592,7 @@ input {
 
 .registerList {
   text-align: center;
-  /* list-style-type: none; */
+  list-style-type: none;
   align-self: center;
   float: none;
 }
@@ -811,8 +811,8 @@ table
 {
   margin-top: 0px;
   border-radius: 0;
-  width: 360px;
-  height: 480px;
+  width: 270px;
+  height: 320px;
   transition: .5s;
 }
 .card:hover .cardImage img
