@@ -20,13 +20,3 @@ Once you have all the dependencies installed in a virtual env then run these com
 * 'python manage.py migrate' to set up the database
 * 'python populate.py' to populate the database with useful example data
 * 'python manage.py runserver' to run the website and try it out, have fun!
-
-## Issues
-
-* Main menu bar, when pressed, removes the nav bar once removed from screen frame
-* Details on friends list card is bigger than image
-* Profile social CSS has disappeared
-* Registration page bullet points
-* CSS for enrol page
-* Enrol page doesn't display correct error message if the level doesn't exist (views.py)
-* Dynamic folders for lab posts
