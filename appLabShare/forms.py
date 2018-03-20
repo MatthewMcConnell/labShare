@@ -17,6 +17,7 @@ class UserProfileForm (forms.ModelForm):
     instagram = forms.URLField(required = False, max_length = 300)
     twitter = forms.URLField(required = False, max_length = 300)
     linkedIn = forms.URLField(required = False, max_length = 300)
+    github = forms.URLField(required = False, max_length = 300)
 
 
     class Meta:

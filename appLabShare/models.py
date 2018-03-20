@@ -30,6 +30,7 @@ class UserProfile(models.Model):
     instagram = models.URLField(max_length = 300, default = "")
     twitter = models.URLField(max_length = 300, default = "")
     linkedIn = models.URLField(max_length = 300, default = "")
+    github = models.URLField(max_length = 300, default = "")
 
     # The symmetrical set to false as we do not want adding friends to add both ways
     friends = models.ManyToManyField ("self", symmetrical=False)
