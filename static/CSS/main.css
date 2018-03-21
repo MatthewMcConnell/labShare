@@ -868,7 +868,7 @@ table
 position: absolute;
 top: 0;
 left: 0;
-width: 70%;
+width: 75%;
 height: 100%;
 /* background: #25876c; */
 transition: .5s;
@@ -887,11 +887,12 @@ border-radius: 15px 0 0 15px;
 .card .details .center
 {
 
-  padding: 20px;
+  padding: 5px;
   text-align: center;
   /* background: #25876c; */
   background: #fff;
   position: absolute;
+
   top: 50%;
   transform: translateY(-50%);
 }
