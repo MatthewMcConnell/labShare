@@ -1,5 +1,6 @@
 html{
   /*background-color: #313440;*/
+
   margin: 0;
   padding: 0;
 }
@@ -195,11 +196,12 @@ float:right;
   {
     display: none;
   }
-  @media (min-width:1001px)
+  @media (min-width:1000px)
   {
-    nav
+    nav[style]
     {
-      display: flex !important;
+      visibility: visible;
+      display: inline !important;
     }
     .responsive-bar
     {
@@ -784,6 +786,7 @@ table
 }
 .bodyDiv
 {
+  align-items: center;
   /*align-items: left;*/
   margin:0;
   padding: 0;
@@ -799,6 +802,9 @@ table
 }
 .card
 {
+
+
+  align-items: center;
   -webkit-column-gap: 40px;
   column-gap: 40px;
   display: grid;
@@ -808,6 +814,8 @@ table
   /* display: inline-block; */
   position: relative;
   justify-content: space-between;
+  justify-content: center;
+  align-content: center;
   display: inline-block;
   /* float: left; */
   /* margin: 40px 40px 0 55px; */
@@ -818,7 +826,7 @@ table
 
   width: 270px;
   height: 320px;
-  margin: 50px;
+  margin: 30px;
   padding: 0;
   clear:both;
   /* padding-left: 15px; */
@@ -1111,6 +1119,7 @@ border-radius: 15px 0 0 15px;
   top:25px;
   left: 25px;
 }
+
 .socialMediaSection ul li a:hover
 {
   color: #fff;
