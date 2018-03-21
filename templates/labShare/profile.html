@@ -13,7 +13,8 @@
   <div class="grid">
     <div class="mainSection">
       <div class="name">{{profile.name}}</div>
-      <div class="status">{{profile.status}}</div>
+      <div class="status">{{profile.status}} - {{ profile.user.username}}</div>
+      <div class="email">{{profile.email}}</div>
       <div class="bio"><p>{{profile.bio}}</p></div>
       <div class="degree"> <p>{{profile.degree}}</p></div>
       <div class="uni"> <p>{{profile.university}}</p></div>
@@ -54,11 +55,21 @@
     <div class="socialMediaSection">
       <div class="links"> <span>links</span></div>
         <ul>
-              <li id="github"><a href="{{ profile.github }}"><i class="fab fa-github" aria-hidden="true"></i></a></li>
-              <li id="facebook"><a href="{{ profile.facebook }}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-              <li id="twitter" ><a href="{{ profile.twitter }}"><i class= "fab fa-twitter" aria-hidden="true"></i></a></li>
-              <li id="linkedin" ><a href="{{ profile.linkedIn}}"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-              <li id="instagram" ><a href="{{ profile.instagram }}"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+              {% if profile.github != "" %}
+                <li id="github"><a href="{{ profile.github }}"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+              {% endif %}
+              {% if profile.facebook != "" %}
+                <li id="facebook"><a href="{{ profile.facebook }}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+              {% endif %}
+              {% if profile.twitter != "" %}
+                <li id="twitter" ><a href="{{ profile.twitter }}"><i class= "fab fa-twitter" aria-hidden="true"></i></a></li>
+              {% endif %}
+              {% if profile.linkedIn != "" %}
+                <li id="linkedin" ><a href="{{ profile.linkedIn}}"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+              {% endif %}
+              {% if profile.instagram != "" %}
+                <li id="instagram" ><a href="{{ profile.instagram }}"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+              {% endif %}
         </ul>
   </div>
 {% endblock %}
