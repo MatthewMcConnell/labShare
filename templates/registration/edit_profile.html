@@ -33,13 +33,9 @@
             <input type="text" name="name" value="{{ profile.name }}" maxlength="128" required="" class="setup_profile" id="id_name">
         </p>
         <p>
-            <label for="id_picture">Picture Currently:</label>
-            <a href="{{ MEDIA_URL }}{{ profile.picture }}">profile_images/media_209689_en_QB9Ectt.jpg</a>
-            <input type="checkbox" name="picture-clear" id="picture-clear_id">
-            <label for="picture-clear_id">Clear</label><br>
-            Change:
+            <img id="blah" src="{{ MEDIA_URL }}{{ profile.picture }}" alt="your image"/><br>
+            New Profile Picture:<br>
             <input type="file" name="picture" onchange="previewFile()" id="id_picture" style="margin-top:10px;"><br>
-            <img id="blah" src="{{ MEDIA_URL }}{{ profile.picture }}" alt="your image"/>
         </p>
         <p>
             <label for="id_bio">Bio:</label><br>
