@@ -27,12 +27,21 @@
               <p class="friendDetails" style="text-decoration:none;" >{{ friend.bio }}</p>
               </a>
               <ul>
-                <!-- I do not know how the external social media works so I haven't put this in yet -->
-                <li><a href="#"><i class="fab fa-github" aria-hidden="true"></i></a></li>
-                <li><a href="{{ friend.facebook }}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-                <li><a href="{{ friend.twitter }}"><i class="fab fa-twitter" aria-hidden="true"></i></a></a></li>
-                <li><a href="{[ friend.linkedIn }}"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                <li><a href="{{ friend.instagram }}"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                {% if friend.github != "" %}
+                  <li id="github"><a href="{{ friend.github }}"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                {% endif %}
+                {% if friend.facebook != "" %}
+                  <li id="facebook"><a href="{{ friend.facebook }}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                {% endif %}
+                {% if friend.twitter != "" %}
+                  <li id="twitter" ><a href="{{ friend.twitter }}"><i class= "fab fa-twitter" aria-hidden="true"></i></a></li>
+                {% endif %}
+                {% if friend.linkedIn != "" %}
+                  <li id="linkedin" ><a href="{{ friend.linkedIn}}"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                {% endif %}
+                {% if friend.instagram != "" %}
+                  <li id="instagram" ><a href="{{ friend.instagram }}"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                {% endif %}
               </ul>
             </div>
           </div>
