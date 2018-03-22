@@ -35,7 +35,14 @@ def profile(request, username):
     # I call the user object 'pageUser' as if I used user this would be confused by the client user
     # in the template
     contextDict["pageUser"] = User.objects.get (username = username)
-    contextDict["profile"] = UserProfile.objects.get (user = contextDict["pageUser"])
+    profile = UserProfile.objects.get (user = contextDict["pageUser"])
+    contextDict["profile"] = profile
+
+    # To easily get a 'this user has no links' message to display conditionally
+    if (profile.github == "" and profile.facebook == "" and profile.instagram == "" and profile.linkedIn == "" and profile.twitter == ""):
+        contextDict["hasLinks"] = False
+    else:
+        contextDict["hasLinks"] = True
 
     return render(request, "labShare/profile.html", contextDict)
 
