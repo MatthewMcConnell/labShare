@@ -54,10 +54,11 @@
     </div>
     <div class="socialMediaSection">
       <div class="links"> <span>Links</span></div>
-        {% if not hasLinks %}
-          <h3>This user has no social media links!</h3>
-        {% endif %}
+      {% if not hasLinks %}
+                <p style="margin-left:45px;" class="hasNoLinks">This user has no social media links!</p>
+              {% endif %}
         <ul>
+              
               {% if profile.github != "" %}
                 <li id="github"><a href="{{ profile.github }}"><i class="fab fa-github" aria-hidden="true"></i></a></li>
               {% endif %}
