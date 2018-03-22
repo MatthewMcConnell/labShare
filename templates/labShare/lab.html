@@ -1,9 +1,10 @@
-{% extends "labShare/loggedInBase.html" %}
+﻿{% extends "labShare/loggedInBase.html" %}
 
 {% block title_block %}
   {{ lab.course.name }} - Lab {{ lab.labNumber }}
 {% endblock %}
 
+<!-- This is a work in progress and can be ignored -->
 <!-- People in Labs - Sidebar -->
 {% block sidebar_block %}
   {% for user in lab.peopleInLab.all %}
@@ -19,6 +20,34 @@
 
   <!-- Javascript for the "Lab X" circle -->
   <script type="text/javascript">colour_randomiser(".box");</script>
+
+  <!-- List of users in the lab -->
+  <div class="userList" >
+    <!-- Tutors -->
+    <div class="tutorList" style="float:left; margin-left:10%; display: inline-block; ">
+      <strong><p style="font-size: 35px; letter-spaceing: 6px;">Tutors: </p style="text-align:center"></strong>
+      {% for person in lab.peopleInLab.all %}
+        {% if person.status == "Tutor" %}
+          <ul style="text-align: left;">
+            <li style="text-align: left;text-decoration: none; display: inline-block; font-size: 25px; letter-spaceing: 6px;">  {{ person }} </li>
+          </ul>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Students -->
+    <div class="studentList" style="float:right; margin-right:10%; display: inline-block; text-align: right;">
+      <strong><p style="font-size: 35px; letter-spaceing: 6px;" >Students: </p style="text-align:center"></strong>
+      {% for person in lab.peopleInLab.all %}
+        {% if person.status == "Student" %}
+        <ul style="text-align: left;">
+          <li style="text-decoration: none; display: inline-block; font-size: 25px; letter-spaceing: 6px;">  {{ person }} </li>
+        </ul>
+
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 
   <!-- Comment submission -->
   <form action="" method="POST" enctype="multipart/form-data">
