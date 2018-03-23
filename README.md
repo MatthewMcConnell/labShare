@@ -4,19 +4,25 @@ Lab 8 Team D - WAD2 Team Project - LabShare - A platform to share the labs you a
 
 ## Dependencies
 
-{what :: version :: command :: where}
-
-* django :: 1.11.7 :: 'pip install django==1.11.7' :: VE
-* pillow :: latest :: 'pip install pillow' :: VE
-* django-registration-redux :: latest :: 'pip install django-registration-redux' :: VE
-* python :: 3.5+ :: see python website :: anywhere
+Look at the requirements.txt file to see what the dependencies and what we used in our virtual environement
 
 ## Set up
 
-Once you have all the dependencies installed in a virtual env then run these commands in your VE
+After creating your virtual environment, then within it run these commands to get set up
 
+* 'pip install -r requirements.txt'
 * 'python manage.py makemigrations'
 * 'python manage.py makemigrations appLabShare' if in the previous command you did not see 'appLabShare'
 * 'python manage.py migrate' to set up the database
 * 'python populate.py' to populate the database with useful example data
 * 'python manage.py runserver' to run the website and try it out, have fun!
+
+## Any issues?
+
+Then simply contact us at 2235757m@student.gla.ac.uk
+
+## External Sources
+
+* Django-Registration-Redux
+* jQuery
+* Font awesome - bootstrapCDN
