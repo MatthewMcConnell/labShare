@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 
-from populate import *
+from population_script import *
 
 from appLabShare.models import *
 

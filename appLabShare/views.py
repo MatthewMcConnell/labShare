@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.views.generic.edit import UpdateView
 from django.utils import timezone
 
 from appLabShare.forms import *
@@ -38,7 +36,7 @@ def profile(request, username):
     profile = UserProfile.objects.get (user = contextDict["pageUser"])
     contextDict["profile"] = profile
 
-    # To easily get a 'this user has no links' message to display conditionally
+    # To easily get a 'this user has no links' message to display conditionally in the template
     if (profile.github == "" and profile.facebook == "" and profile.instagram == "" and profile.linkedIn == "" and profile.twitter == ""):
         contextDict["hasLinks"] = False
     else:
@@ -82,13 +80,18 @@ def lab (request, course, labNumber):
     contextDict = {}
     form = PostForm()
 
-    user = request.user
     lab = Lab.objects.get (course = Course.objects.get (name = course), labNumber = labNumber)
     contextDict["lab"] = lab
 
+    user = request.user
+
+    # If the client user is not part of the lab then we redirect them to the enrol page so they can
+    # enrol in that lab if they wish
     if not UserProfile.objects.get(user = user) in lab.peopleInLab.all():
         return redirect ('enrol')
 
+
+    # For any comments put in the discussion page
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
 
@@ -101,6 +104,7 @@ def lab (request, course, labNumber):
             return redirect('lab', course, labNumber)
     else:
         form = PostForm()
+
 
     contextDict["form"] = form
     contextDict["posts"] = Post.objects.filter(postedIn = lab).order_by('-timePosted')[:9]

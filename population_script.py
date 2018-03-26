@@ -16,6 +16,7 @@ from registration.signals import user_registered, user_activated
 
 from appLabShare.models import UserProfile, Post, Course, Lab
 
+
 def populate():
     # Any pictures with an empty "" should automatically assign it the picture called user_image.png in the media/profile_images folder
     # for both students and tutors

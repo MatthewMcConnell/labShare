@@ -3,8 +3,6 @@
     My Profile
 {% endblock %}
 
-<!-- Currently I'm figuring out how to get images from profile_images folder to load
-     If anyone can do this quickly please tell me :) -->
 <div class="profilePicture">
 {% block picture %}{{ MEDIA_URL }}{{ profile.picture }}{% endblock %}
 </div>
@@ -55,10 +53,9 @@
     <div class="socialMediaSection">
       <div class="links"> <span>Links</span></div>
       {% if not hasLinks %}
-                <p style="margin-left:45px;" class="hasNoLinks">This user has no social media links!</p>
-              {% endif %}
+        <p style="margin-left:45px;" class="hasNoLinks">This user has no social media links!</p>
+      {% endif %}
         <ul>
-              
               {% if profile.github != "" %}
                 <li id="github"><a href="{{ profile.github }}"><i class="fab fa-github" aria-hidden="true"></i></a></li>
               {% endif %}
