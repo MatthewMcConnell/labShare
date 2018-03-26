@@ -14,7 +14,7 @@ After creating your virtual environment, then within it run these commands to ge
 * 'python manage.py makemigrations'
 * 'python manage.py makemigrations appLabShare' if in the previous command you did not see 'appLabShare'
 * 'python manage.py migrate' to set up the database
-* 'python populate.py' to populate the database with useful example data
+* 'python population_script.py' to populate the database with useful example data
 * 'python manage.py runserver' to run the website and try it out, have fun!
 
 ## Any issues?
