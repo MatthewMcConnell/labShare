@@ -1,10 +1,9 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.core.urlresolvers import reverse
 
 from population_script import *
 
 from appLabShare.models import *
-
 
 class ModelTests (TestCase):
     def test_creatingCourse (self):
@@ -167,6 +166,12 @@ class PopulationScriptTests (TestCase):
 
 
 class ViewTests (TestCase):
+    # Set up method for all the tests below as we will need a client for the view tests to look into
+    # the templates
+
+    def setUp(self):
+        self.client = Client()
+
     # HELPER METHODS #
 
     def create_user (self, username, password, name):
