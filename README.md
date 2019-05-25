@@ -4,7 +4,6 @@ Lab 8 Team D - WAD2 Team Project - LabShare - A platform to share the labs you a
 
 ![](labsharedemo.gif)
 
-
 ## Dependencies
 
 Look at the requirements.txt file to see what the dependencies and what we used in our virtual environement
